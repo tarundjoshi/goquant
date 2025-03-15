@@ -36,6 +36,8 @@ public:
         : ssl_ctx(ssl::context::tlsv12_client), pool(std::thread::hardware_concurrency()) {
         ssl_ctx.set_default_verify_paths();
         load_private_key(key_path);
+        // asio::executor_work_guard<asio::io_context::executor_type> work_guard = asio::make_work_guard(ioc);
+
     }
 
     ~WebSocketClient() {
@@ -148,39 +150,148 @@ public:
     }
 
     void connect(const std::string& host, const std::string& port, const std::string& auth_request) {
-        post(pool, [this, host, port, auth_request]() {
-            try {
-                tcp::resolver resolver(ioc);
-                auto results = resolver.resolve(host, port);
+        try {
+            tcp::resolver resolver(ioc);
+            auto results = resolver.resolve(host, port);
 
-                ws = std::make_unique<websocket::stream<ssl::stream<tcp::socket>>>(ioc, ssl_ctx);
-                asio::connect(ws->next_layer().next_layer(), results.begin(), results.end());
+            ws = std::make_unique<websocket::stream<ssl::stream<tcp::socket>>>(ioc, ssl_ctx);
+            asio::connect(ws->next_layer().next_layer(), results.begin(), results.end());
 
-                enable_tcp_nodelay(ws->next_layer().next_layer());
-                ws->next_layer().handshake(ssl::stream_base::client);
-                ws->handshake(host, "/ws/api/v2");
+            enable_tcp_nodelay(ws->next_layer().next_layer());
+            ws->next_layer().handshake(ssl::stream_base::client);
+            ws->handshake(host, "/ws/api/v2");
 
-                beast::flat_buffer buffer;
-                ws->async_write(asio::buffer(auth_request),
-                                [this, &buffer](boost::system::error_code ec, std::size_t) {
-                                    if (!ec) {
-                                        ws->async_read(buffer, 
-                                                       [this, &buffer](boost::system::error_code ec, std::size_t) {
-                                                           on_read(buffer, ec);
-                                                       });
-                                    }
-                                });
-                ioc.run();
+            beast::flat_buffer buffer;
+            ws->async_write(asio::buffer(auth_request),
+                            [this, &buffer](boost::system::error_code ec, std::size_t) {
+                                if (!ec) {
+                                    ws->async_read(buffer, 
+                                                    [this, &buffer](boost::system::error_code ec, std::size_t) {
+                                                        on_read(buffer, ec);
+                                                    });
+                                }
+                            });
+            ioc.run();
 
-            } catch (const std::exception& e) {
-                std::cerr << "Connection error: " << e.what() << "\n";
+        } catch (const std::exception& e) {
+            std::cerr << "Connection error: " << e.what() << "\n";
+        }
+    }
+
+    void async_read_response() {
+        auto buffer = std::make_shared<beast::flat_buffer>();
+        ws->async_read(
+            *buffer,
+            [this, buffer](boost::system::error_code ec, std::size_t bytes_transferred) {
+                if (ec) {
+                    std::cerr << "Read error: " << ec.message() << "\n";
+                    return;
+                }
+    
+                std::cout << "Response (" << bytes_transferred << " bytes): "
+                          << beast::make_printable(buffer->data()) << "\n";
+    
+                // You can parse the JSON response here if needed
+                simdjson::dom::parser parser;
+                try {
+                    auto json = parser.parse(beast::buffers_to_string(buffer->data()));
+                    std::cout << "Parsed response: " << json << "\n";
+                } catch (const simdjson::simdjson_error &e) {
+                    std::cerr << "JSON parse error: " << e.what() << "\n";
+                }
+    
+                // Continue reading the next response
+                async_read_response();
+            });
+    }
+    
+
+    // Place an order
+    void place_order(const std::string& instrument, const std::string& direction, 
+                    double price, double amount, const std::string& order_type = "limit") {
+        long long timestamp = get_current_timestamp();
+        std::string nonce = generate_nonce();
+        
+        std::string request = R"({
+            "jsonrpc": "2.0",
+            "id": 2,
+            "method": ")" + std::string(direction == "buy" ? "private/buy" : "private/sell") + R"(",
+            "params": {
+                "instrument_name": ")" + instrument + R"(",
+                "amount": )" + std::to_string(amount) + R"(,
+                "price": )" + std::to_string(price) + R"(,
+                "type": ")" + order_type + R"(",
+                "label": "test",
+                "timestamp": )" + std::to_string(timestamp) + R"(,
+                "signature": ")" + sign_data(std::to_string(timestamp) + "\n" + nonce + "\n") + R"("
             }
-        });
+        })";
+
+        auto buffer = std::make_shared<beast::flat_buffer>();
+        ws->async_write(
+            asio::buffer(request),
+            [this, buffer](boost::system::error_code ec, std::size_t bytes_transferred) {
+                if (ec) {
+                    std::cerr << "Write error (place_order): " << ec.message() << "\n";
+                    return;
+                }
+                std::cout << "Order placed (" << bytes_transferred << " bytes written)\n";
+                // Start listening for response
+                async_read_response();
+            });
     }
 
-    void run() {
-        pool.join();
+    // Cancel an order
+    void cancel_order(const std::string& order_id) {
+        std::string request = R"({
+            "jsonrpc": "2.0",
+            "id": 3,
+            "method": "private/cancel",
+            "params": {
+                "order_id": ")" + order_id + R"("
+            }
+        })";
+
+        auto buffer = std::make_shared<beast::flat_buffer>();
+
+        ws->async_write(
+            asio::buffer(request),
+            [this, buffer](boost::system::error_code ec, std::size_t bytes_transferred) {
+                if (ec) {
+                    std::cerr << "Write error (cancel_order): " << ec.message() << "\n";
+                    return;
+                }
+                std::cout << "Order canceled (" << bytes_transferred << " bytes written)\n";
+                async_read_response();
+            });
     }
+
+    // Modify an order
+    void modify_order(const std::string& order_id, double new_price, double new_amount) {
+        std::string request = R"({
+            "jsonrpc": "2.0",
+            "id": 4,
+            "method": "private/edit",
+            "params": {
+                "order_id": ")" + order_id + R"(",
+                "price": )" + std::to_string(new_price) + R"(,
+                "amount": )" + std::to_string(new_amount) + R"("
+            }
+        })";
+
+        auto buffer = std::make_shared<beast::flat_buffer>();
+        ws->async_write(
+            asio::buffer(request),
+            [this, buffer](boost::system::error_code ec, std::size_t bytes_transferred) {
+                if (ec) {
+                    std::cerr << "Write error (modify_order): " << ec.message() << "\n";
+                    return;
+                }
+                std::cout << "Order modified (" << bytes_transferred << " bytes written)\n";
+                async_read_response();
+            });
+    }
+
 };
 
 // Main function
@@ -212,8 +323,11 @@ int main() {
 
         std::cout << "Auth request: " << auth_request << std::endl;
 
-        // client.connect("test.deribit.com", "443", auth_request);
-        // client.run();
+        client.connect("test.deribit.com", "443", auth_request);
+        // client.cancel_order("USDC-31500143739");
+
+        client.place_order("ADA_USDC-PERPETUAL", "buy", 0.77, 998, "limit");
+
 
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << "\n";

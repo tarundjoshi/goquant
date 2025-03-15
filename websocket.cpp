@@ -3,11 +3,11 @@
 #include <boost/beast/websocket/ssl.hpp>
 #include <boost/asio.hpp>
 #include <boost/asio/ssl.hpp>
-#include <nlohmann/json.hpp>
 #include <openssl/pem.h>
 #include <openssl/evp.h>
 #include <openssl/bio.h>
 #include <openssl/buffer.h>
+#include <simdjson.h>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -16,12 +16,12 @@
 #include <mutex>
 #include <thread>
 
-using json = nlohmann::json;
 namespace beast = boost::beast;
 namespace websocket = beast::websocket;
 namespace asio = boost::asio;
 namespace ssl = asio::ssl;
 using tcp = asio::ip::tcp;
+using namespace simdjson;
 
 class WebSocketClient {
 public:
@@ -30,23 +30,32 @@ public:
     ssl::context ssl_ctx;
     std::unique_ptr<websocket::stream<ssl::stream<tcp::socket>>> ws;
     std::mutex mtx;
-
     EVP_PKEY* private_key = nullptr;
 
-    // Generate current timestamp in milliseconds
+    WebSocketClient(const std::string& key_path)
+        : ssl_ctx(ssl::context::tlsv12_client), pool(std::thread::hardware_concurrency()) {
+        ssl_ctx.set_default_verify_paths();
+        load_private_key(key_path);
+    }
+
+    ~WebSocketClient() {
+        if (private_key) {
+            EVP_PKEY_free(private_key);
+        }
+    }
+
     long long get_current_timestamp() {
         return std::chrono::duration_cast<std::chrono::milliseconds>(
             std::chrono::system_clock::now().time_since_epoch()).count();
     }
 
-    // Generate a random nonce
     std::string generate_nonce() {
         const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         constexpr size_t length = 16;
         std::random_device rd;
         std::mt19937 generator(rd());
         std::uniform_int_distribution<> dist(0, sizeof(charset) - 2);
-        
+
         std::string nonce;
         nonce.reserve(length);
         for (size_t i = 0; i < length; ++i) {
@@ -55,7 +64,6 @@ public:
         return nonce;
     }
 
-    // Preload private key
     void load_private_key(const std::string& private_key_path) {
         FILE* private_key_file = fopen(private_key_path.c_str(), "r");
         if (!private_key_file) {
@@ -72,7 +80,6 @@ public:
         std::cout << "Private key loaded successfully.\n";
     }
 
-    // Sign data using preloaded Ed25519 private key
     std::string sign_data(const std::string& data) {
         if (!private_key) {
             throw std::runtime_error("Private key not loaded");
@@ -123,15 +130,14 @@ public:
         base64_string.erase(std::remove(base64_string.begin(), base64_string.end(), '='), base64_string.end());
 
         return base64_string;
+
     }
 
-    // Enable TCP_NODELAY for reduced latency
     void enable_tcp_nodelay(tcp::socket& socket) {
         boost::asio::ip::tcp::no_delay option(true);
         socket.set_option(option);
     }
 
-    // Handle response
     void on_read(beast::flat_buffer& buffer, boost::system::error_code ec) {
         if (ec) {
             std::cerr << "Read error: " << ec.message() << "\n";
@@ -141,19 +147,7 @@ public:
         std::cout << "Response: " << beast::make_printable(buffer.data()) << "\n";
     }
 
-    WebSocketClient(const std::string& key_path)
-        : ssl_ctx(ssl::context::tlsv12_client), pool(std::thread::hardware_concurrency()) {
-        ssl_ctx.set_default_verify_paths();
-        load_private_key(key_path);
-    }
-
-    ~WebSocketClient() {
-        if (private_key) {
-            EVP_PKEY_free(private_key);
-        }
-    }
-
-    void connect(const std::string& host, const std::string& port, const json& auth_request) {
+    void connect(const std::string& host, const std::string& port, const std::string& auth_request) {
         post(pool, [this, host, port, auth_request]() {
             try {
                 tcp::resolver resolver(ioc);
@@ -164,11 +158,10 @@ public:
 
                 enable_tcp_nodelay(ws->next_layer().next_layer());
                 ws->next_layer().handshake(ssl::stream_base::client);
-
                 ws->handshake(host, "/ws/api/v2");
 
                 beast::flat_buffer buffer;
-                ws->async_write(asio::buffer(auth_request.dump()), 
+                ws->async_write(asio::buffer(auth_request),
                                 [this, &buffer](boost::system::error_code ec, std::size_t) {
                                     if (!ec) {
                                         ws->async_read(buffer, 
@@ -201,22 +194,26 @@ int main() {
         long long timestamp = client.get_current_timestamp();
         std::string nonce = client.generate_nonce();
 
-        json auth_request = {
-            {"jsonrpc", "2.0"},
-            {"id", 1},
-            {"method", "public/auth"},
-            {"params", {
-                {"grant_type", "client_signature"},
-                {"client_id", client_id},
-                {"timestamp", timestamp},
-                {"signature", client.sign_data(std::to_string(timestamp) + "\n" + nonce + "\n")},
-                {"nonce", nonce},
-                {"data", ""}
-            }}
-        };
 
-        client.connect("test.deribit.com", "443", auth_request);
-        client.run();
+        // Construct JSON request using simdjson
+        std::string auth_request = R"({
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "public/auth",
+            "params": {
+                "grant_type": "client_signature",
+                "client_id": ")" + client_id + R"(",
+                "timestamp": )" + std::to_string(timestamp) + R"(,
+                "signature": ")" + client.sign_data(std::to_string(timestamp) + "\n" + nonce + "\n") + R"(",
+                "nonce": ")" + nonce + R"(",
+                "data": ""
+            }
+        })";
+
+        std::cout << "Auth request: " << auth_request << std::endl;
+
+        // client.connect("test.deribit.com", "443", auth_request);
+        // client.run();
 
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << "\n";

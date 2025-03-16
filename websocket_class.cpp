@@ -16,6 +16,8 @@
 #include <mutex>
 #include <thread>
 #include <queue>
+#include <unordered_map>
+#include <set>
 
 namespace beast = boost::beast;
 namespace websocket = beast::websocket;
@@ -32,13 +34,17 @@ public:
     asio::io_context ioc;
     ssl::context ssl_ctx;
     std::unique_ptr<websocket::stream<ssl::stream<tcp::socket>>> ws;
+    std::unordered_map<int, std::function<void(const std::string&)>> response_handlers;
     std::queue<std::string> write_queue;
+    int request_id;
     std::atomic<bool> is_writing{false}; // Make atomic
     const std::string client_id;
     EVP_PKEY* private_key = nullptr;
 
     WebSocketClient(const std::string& key_path, std::string client_id)
-        : ssl_ctx(ssl::context::tlsv12_client), client_id(client_id) {
+        :   ssl_ctx(ssl::context::tlsv12_client), 
+            client_id(client_id), 
+            request_id(0) {
         ssl_ctx.set_default_verify_paths();
         load_private_key(key_path);
         // asio::executor_work_guard<asio::io_context::executor_type> work_guard = asio::make_work_guard(ioc);
@@ -145,15 +151,6 @@ public:
         socket.set_option(option);
     }
 
-    void on_read(beast::flat_buffer& buffer, boost::system::error_code ec) {
-        if (ec) {
-            std::cerr << "Read error: " << ec.message() << "\n";
-            return;
-        }
-
-        std::cout << "Response: " << beast::make_printable(buffer.data()) << "\n";
-    }
-
     void write_next() {
         if (is_writing.load() || write_queue.empty()) return;
 
@@ -203,7 +200,7 @@ public:
             // Construct JSON request using simdjson
             std::string auth_request = R"({
                 "jsonrpc": "2.0",
-                "id": 1,
+                "id": 0,
                 "method": "public/auth",
                 "params": {
                     "grant_type": "client_signature",
@@ -237,18 +234,42 @@ public:
                     std::cerr << "Read error: " << ec.message() << "\n";
                     return;
                 }
-    
+                
                 std::cout << "Response (" << bytes_transferred << " bytes): "
                           << beast::make_printable(buffer->data()) << "\n";
     
-                // You can parse the JSON response here if needed
                 simdjson::dom::parser parser;
                 try {
                     auto json = parser.parse(beast::buffers_to_string(buffer->data()));
-                    std::cout << "Parsed response: " << json << "\n";
+                    std::string raw_json = simdjson::minify(json);
+
+                    int id = json["id"].get_int64();
+
+                    if (response_handlers.find(id) != response_handlers.end()) {
+                        response_handlers[id](raw_json);  // Fulfill the promise
+                        response_handlers.erase(id);      // Clean up
+                    }   
+                
+                    int indent = 0;
+                    for (char c : raw_json) {
+                        if (c == '{' || c == '[') {
+                            std::cout << c << "\n" << std::string(++indent * 4, ' ');
+                        } else if (c == '}' || c == ']') {
+                            std::cout << "\n" << std::string(--indent * 4, ' ') << c;
+                        } else if (c == ',') {
+                            std::cout << c << "\n" << std::string(indent * 4, ' ');
+                        } else if (c == ':') {
+                            std::cout << c << ' ';
+                        } else {
+                            std::cout << c;
+                        }
+                    }
+                    std::cout << "\n"; 
+
                 } catch (const simdjson::simdjson_error &e) {
                     std::cerr << "JSON parse error: " << e.what() << "\n";
                 }
+                          
     
                 // Continue reading the next response
                 async_read_response();
@@ -257,14 +278,16 @@ public:
     
 
     // Place an order
-    void place_order(const std::string& instrument, const std::string& direction, 
+    std::future<std::string> place_order(const std::string& instrument, const std::string& direction, 
                     double price, double amount, const std::string& order_type = "limit") {
         long long timestamp = get_current_timestamp();
         std::string nonce = generate_nonce();
+        auto promise = std::make_shared<std::promise<std::string>>();
+        auto future = promise->get_future();
         
         std::string request = R"({
             "jsonrpc": "2.0",
-            "id": 2,
+            "id": )" + std::to_string(++request_id) + R"(,
             "method": ")" + std::string(direction == "buy" ? "private/buy" : "private/sell") + R"(",
             "params": {
                 "instrument_name": ")" + instrument + R"(",
@@ -279,13 +302,22 @@ public:
 
         write_queue.push(request);
         write_next();
+
+        response_handlers[request_id] = [promise](const std::string& response) {
+            promise->set_value(response);
+        };
+    
+        return future;
     }
 
     // Cancel an order
-    void cancel_order(const std::string& order_id) {
+    std::future<std::string> cancel_order(const std::string& order_id) {
+        auto promise = std::make_shared<std::promise<std::string>>();
+        auto future = promise->get_future();
+
         std::string request = R"({
             "jsonrpc": "2.0",
-            "id": 3,
+            "id": )" + std::to_string(++request_id) + R"(,
             "method": "private/cancel",
             "params": {
                 "order_id": ")" + order_id + R"("
@@ -294,13 +326,22 @@ public:
 
         write_queue.push(request);
         write_next();
+
+        response_handlers[request_id] = [promise](const std::string& response) {
+            promise->set_value(response);
+        };
+    
+        return future;
     }
 
     // Modify an order
-    void modify_order(const std::string& order_id, double new_price, double new_amount) {
+    std::future<std::string> modify_order(const std::string& order_id, double new_price, double new_amount) {
+        auto promise = std::make_shared<std::promise<std::string>>();
+        auto future = promise->get_future();
+
         std::string request = R"({
             "jsonrpc": "2.0",
-            "id": 4,
+            "id": )" + std::to_string(++request_id) + R"(,
             "method": "private/edit",
             "params": {
                 "order_id": ")" + order_id + R"(",
@@ -311,9 +352,68 @@ public:
 
         write_queue.push(request);
         write_next();
+
+        response_handlers[request_id] = [promise](const std::string& response) {
+            promise->set_value(response);
+        };
+    
+        return future;
     }
 
+    std::future<std::string> get_order_book(const std::string& instrument, int depth) {
+        auto promise = std::make_shared<std::promise<std::string>>();
+        auto future = promise->get_future();
+
+        std::string request = R"({
+            "jsonrpc": "2.0",
+            "id": )" + std::to_string(++request_id) + R"(,
+            "method": "public/get_order_book",
+            "params": {
+                "instrument_name": ")" + instrument + R"(",
+                "depth": )" + std::to_string(depth) + R"(
+            }
+        })";
+    
+        write_queue.push(request);
+        write_next();
+
+        response_handlers[request_id] = [promise](const std::string& response) {
+            promise->set_value(response);
+        };
+    
+        return future;
+    }
+
+    std::future<std::string> get_positions() {
+    
+        std::string request = R"({
+            "jsonrpc": "2.0",
+            "id": )" + std::to_string(++request_id) + R"(,
+            "method": "private/get_positions",
+            "params": {
+            }
+        })";
+    
+        // Create promise and store future
+        auto promise = std::make_shared<std::promise<std::string>>();
+        auto future = promise->get_future();
+    
+        // Store the promise in the map
+        response_handlers[request_id] = [promise](const std::string& response) {
+            promise->set_value(response);
+        };
+    
+        // Send the request
+        write_queue.push(request);
+        write_next();
+    
+        return future;
+    }
+    
+    
+
 };
+
 
 // Main function
 int main() {
@@ -326,10 +426,11 @@ int main() {
         std::thread t([&]() { client.ioc.run(); });
 
 
-        client.place_order("ADA_USDC-PERPETUAL", "buy", 0.77, 996, "limit");
-        client.place_order("ADA_USDC-PERPETUAL", "buy", 0.77, 995, "limit");
+        // client.place_order("ADA_USDC-PERPETUAL", "buy", 0.77, 996, "limit");
+        // client.place_order("ADA_USDC-PERPETUAL", "buy", 0.77, 996, "limit");
 
-        // client.ioc.run();
+        // client.get_order_book("ADA_USDC-PERPETUAL", 10);
+        client.get_positions();
 
         t.join();
 

@@ -18,6 +18,7 @@
 #include <queue>
 #include <unordered_map>
 #include <set>
+#include <concurrentqueue.h>
 
 namespace beast = boost::beast;
 namespace websocket = beast::websocket;
@@ -35,7 +36,7 @@ public:
     ssl::context ssl_ctx;
     std::unique_ptr<websocket::stream<ssl::stream<tcp::socket>>> ws;
     std::unordered_map<int, std::function<void(const std::string&)>> response_handlers;
-    std::queue<std::string> write_queue;
+    moodycamel::ConcurrentQueue<std::string> write_queue;
     int request_id;
     std::atomic<bool> is_writing{false}; // Make atomic
     const std::string client_id;
@@ -152,11 +153,13 @@ public:
     }
 
     void write_next() {
-        if (is_writing.load() || write_queue.empty()) return;
+        if (is_writing.load()) return;
+
+        std::string msg;
+        if (!write_queue.try_dequeue(msg)) return; // Empty queue check
 
         // Try to set is_writing to true (if already true, don't proceed)
         if (!is_writing.exchange(true)) {
-            auto msg = write_queue.front();
 
             ws->async_write(
                 asio::buffer(msg),
@@ -169,9 +172,6 @@ public:
                     }
 
                     std::cout << "Successfully wrote (" << bytes_transferred << "bytes)\n";
-
-                    // Remove the completed request from the queue
-                    write_queue.pop();
 
                     // Try writing the next message
                     // async_read_response();
@@ -213,7 +213,7 @@ public:
             })";
 
 
-            write_queue.push(auth_request);
+            write_queue.enqueue(auth_request);
             write_next();
 
             async_read_response();
@@ -300,7 +300,7 @@ public:
             }
         })";
 
-        write_queue.push(request);
+        write_queue.enqueue(request);
         write_next();
 
         response_handlers[request_id] = [promise](const std::string& response) {
@@ -324,7 +324,7 @@ public:
             }
         })";
 
-        write_queue.push(request);
+        write_queue.enqueue(request);
         write_next();
 
         response_handlers[request_id] = [promise](const std::string& response) {
@@ -350,7 +350,7 @@ public:
             }
         })";
 
-        write_queue.push(request);
+        write_queue.enqueue(request);
         write_next();
 
         response_handlers[request_id] = [promise](const std::string& response) {
@@ -374,7 +374,7 @@ public:
             }
         })";
     
-        write_queue.push(request);
+        write_queue.enqueue(request);
         write_next();
 
         response_handlers[request_id] = [promise](const std::string& response) {
@@ -404,7 +404,7 @@ public:
         };
     
         // Send the request
-        write_queue.push(request);
+        write_queue.enqueue(request);
         write_next();
     
         return future;

@@ -75,7 +75,7 @@
       * 
       * This is typically called when a client disconnects.
       */
-     void unsubscribe_all(std::shared_ptr<WebSocketSession> session);
+     void unsubscribe_all(WebSocketSession* session);
      
      /**
       * @brief Broadcast a market data update to all subscribed clients

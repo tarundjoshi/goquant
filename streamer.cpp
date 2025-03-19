@@ -36,32 +36,69 @@
  }
  
  void SubscriptionManager::unsubscribe(const std::string& symbol, std::shared_ptr<WebSocketSession> session) {
-     std::lock_guard<std::mutex> lock(subscription_mutex);
-     auto it = symbol_subscribers.find(symbol);
-     if (it != symbol_subscribers.end()) {
-         it->second.erase(session);
-         if (it->second.empty()) {
-             symbol_subscribers.erase(it);
-         }
-        //  std::cout << "Session unsubscribed from " << symbol << std::endl;
-        LOG_INFO(logger, "Session unsubscribed from {}", symbol);
-     }
-     deri_client_.unsubscribe_from_orderbook(symbol);
- }
+    std::lock_guard<std::mutex> lock(subscription_mutex);
+    auto it = symbol_subscribers.find(symbol);
+    if (it != symbol_subscribers.end()) {
+        it->second.erase(session);
+        
+        if (it->second.empty()) {
+            symbol_subscribers.erase(it);
+            LOG_INFO(logger, "Session unsubscribed from {}. No more subscribers, unsubscribing from Deribit", symbol);
+            deri_client_.unsubscribe_from_orderbook(symbol);
+        } else {
+            LOG_INFO(logger, "Session unsubscribed from {}. {} subscribers remaining", 
+                    symbol, it->second.size());
+        }
+    }
+}
+
  
- void SubscriptionManager::unsubscribe_all(std::shared_ptr<WebSocketSession> session) {
-     std::lock_guard<std::mutex> lock(subscription_mutex);
-     for (auto it = symbol_subscribers.begin(); it != symbol_subscribers.end();) {
-         it->second.erase(session);
-         if (it->second.empty()) {
-             it = symbol_subscribers.erase(it);
-         } else {
-             ++it;
-         }
-     }
-    //  std::cout << "Session unsubscribed from all symbols" << std::endl;
+void SubscriptionManager::unsubscribe_all(WebSocketSession* raw_ptr) {
+    std::lock_guard<std::mutex> lock(subscription_mutex);
+    std::vector<std::string> symbols_to_unsubscribe;
+    
+    // First collect symbols that will have no subscribers
+    for (auto it = symbol_subscribers.begin(); it != symbol_subscribers.end(); ++it) {
+        auto& subscribers = it->second;
+        // Check if this session is the only subscriber
+        if (subscribers.size() == 1 && 
+            std::any_of(subscribers.begin(), subscribers.end(), 
+                       [raw_ptr](const std::shared_ptr<WebSocketSession>& s) { 
+                           return s.get() == raw_ptr; 
+                       })) {
+            symbols_to_unsubscribe.push_back(it->first);
+        }
+    }
+    
+    // Now remove the session from all subscription lists
+    for (auto it = symbol_subscribers.begin(); it != symbol_subscribers.end();) {
+        auto& subscribers = it->second;
+        // Manual loop for removing from the set
+        for (auto sub_it = subscribers.begin(); sub_it != subscribers.end();) {
+            if (sub_it->get() == raw_ptr) {
+                sub_it = subscribers.erase(sub_it);
+            } else {
+                ++sub_it;
+            }
+        }
+        
+        if (subscribers.empty()) {
+            it = symbol_subscribers.erase(it);
+        } else {
+            ++it;
+        }
+    }
+    
     LOG_INFO(logger, "Session unsubscribed from all symbols");
- }
+    
+    // Unsubscribe from Deribit for symbols with no more subscribers
+    for (const auto& symbol : symbols_to_unsubscribe) {
+        LOG_INFO(logger, "Unsubscribing from {} on Deribit (no more subscribers)", symbol);
+        deri_client_.unsubscribe_from_orderbook(symbol);
+    }
+}
+
+
  
  void SubscriptionManager::broadcast(const std::string& symbol, const std::string& message) {
      // Create a vector to store sessions to avoid holding the lock during sending
@@ -162,11 +199,13 @@
  }
  
  void WebSocketSession::on_read(beast::error_code ec, std::size_t bytes_transferred) {
-     if(ec == websocket::error::closed) {
-        //  std::cout << "WebSocket connection closed" << std::endl;
-        LOG_INFO(logger, "WebSocket connection closed");
-         return;
-     }
+    // Check for connection closed or reset
+    if(ec == websocket::error::closed || ec == boost::asio::error::connection_reset) {
+        LOG_INFO(logger, "WebSocket connection closed: {}", ec.message());
+        // Clean up resources properly
+        subscription_manager_.unsubscribe_all(this);
+        return;  // Don't attempt further reads
+    }
      
      if(ec) {
         //  std::cerr << "Read failed: " << ec.message() << std::endl;
@@ -239,7 +278,7 @@
  }
  
  WebSocketSession::~WebSocketSession() {
-     subscription_manager_.unsubscribe_all(shared_from_this());
+     subscription_manager_.unsubscribe_all(this);
     //  std::cout << "Session destroyed" << std::endl;
      LOG_INFO(logger, "Session destroyed");
  }

@@ -52,8 +52,11 @@
      std::unique_ptr<websocket::stream<ssl::stream<tcp::socket>>> ws;
      std::unordered_map<std::string, std::function<void(const std::string&)>> streaming_handlers;
      std::unordered_map<int, std::chrono::high_resolution_clock::time_point> order_latency_timers;
+     std::unordered_map<uint64_t, std::string> request_methods;
      std::vector<long long> order_latencies;
+
      moodycamel::ConcurrentQueue<std::string> write_queue;
+     
      uint64_t request_id;
      std::atomic<bool> is_writing{false};
      const std::string client_id;

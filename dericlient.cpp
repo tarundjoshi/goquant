@@ -223,32 +223,118 @@ void DeriClient::async_read_response() {
                         simdjson::error_code error;
                         simdjson::dom::object error_obj;
                         if (json["error"].get(error_obj) == simdjson::SUCCESS) {
-                            // Order failed
+                            // Request failed
                             int64_t error_code;
                             std::string_view error_message;
                             error_obj["code"].get(error_code);
                             error_obj["message"].get(error_message);
                             
-                            LOG_ERROR(logger, "Order failed. Error code: {}, message: {}. Latency: {} us", 
+                            LOG_ERROR(logger, "Request failed. Error code: {}, message: {}. Latency: {} us", 
                                      error_code, error_message, latency);
                         } else {
-                             // Order succeeded - Add more detailed logging here
-                            std::string_view instrument;
-                            std::string_view direction;
-                            double price = 0.0;
-                            double amount = 0.0;
-                            std::string_view order_id;
-                            
-                            // Extract order details from the response
-                            json["result"]["order"]["instrument_name"].get(instrument);
-                            json["result"]["order"]["direction"].get(direction);
-                            json["result"]["order"]["price"].get(price);
-                            json["result"]["order"]["amount"].get(amount);
-                            json["result"]["order"]["order_id"].get(order_id);
-                            
-                            LOG_INFO(logger, "Order placed successfully: {} {} {} @ {} USD. Order ID: {}. Latency: {} us", 
-                                    direction, amount, instrument, price, order_id, latency);
-                            
+                            // Request succeeded - Check the method type from the request map
+                            auto method_it = request_methods.find(id);
+                            if (method_it != request_methods.end()) {
+                                std::string method = method_it->second;
+                                
+                                if (method == "private/buy" || method == "private/sell") {
+                                    // Order placement
+                                    std::string_view instrument;
+                                    std::string_view direction;
+                                    double price = 0.0;
+                                    double amount = 0.0;
+                                    std::string_view order_id;
+                                    
+                                    // Extract order details from the response
+                                    if (json["result"]["order"]["order_id"].get(order_id) == simdjson::SUCCESS &&
+                                        json["result"]["order"]["instrument_name"].get(instrument) == simdjson::SUCCESS &&
+                                        json["result"]["order"]["direction"].get(direction) == simdjson::SUCCESS &&
+                                        json["result"]["order"]["price"].get(price) == simdjson::SUCCESS &&
+                                        json["result"]["order"]["amount"].get(amount) == simdjson::SUCCESS) {
+                                        
+                                        LOG_INFO(logger, "Order placed successfully: {} {} {} @ {} USD. Order ID: {}. Latency: {} us", 
+                                                direction, amount, instrument, price, order_id, latency);
+                                    } else {
+                                        LOG_INFO(logger, "Order placed successfully. Latency: {} us", latency);
+                                    }
+                                } 
+                                else if (method == "private/cancel") {
+                                    // Order cancellation
+                                    std::string_view order_id;
+                                    if (json["result"]["order"]["order_id"].get(order_id) == simdjson::SUCCESS) {
+                                        LOG_INFO(logger, "Order {} cancelled successfully. Latency: {} us", 
+                                                order_id, latency);
+                                    } else {
+                                        LOG_INFO(logger, "Order cancelled successfully. Latency: {} us", latency);
+                                    }
+                                }
+                                else if (method == "private/edit") {
+                                    // Order modification
+                                    std::string_view order_id;
+                                    double price = 0.0;
+                                    double amount = 0.0;
+                                    
+                                    if (json["result"]["order"]["order_id"].get(order_id) == simdjson::SUCCESS &&
+                                        json["result"]["order"]["price"].get(price) == simdjson::SUCCESS &&
+                                        json["result"]["order"]["amount"].get(amount) == simdjson::SUCCESS) {
+                                        
+                                        LOG_INFO(logger, "Order {} modified successfully. New price: {}, New amount: {}. Latency: {} us", 
+                                                order_id, price, amount, latency);
+                                    } else {
+                                        LOG_INFO(logger, "Order modified successfully. Latency: {} us", latency);
+                                    }
+                                }
+                                else if (method == "public/subscribe") {
+                                    // Subscription confirmation
+                                    LOG_INFO(logger, "Successfully subscribed to channel. Latency: {} us", latency);
+                                }
+                                else if (method == "private/get_positions") {
+                                    // Positions response
+                                    auto positions = json["result"];
+                                    if (positions.type() == simdjson::dom::element_type::ARRAY) {
+                                        int position_count = 0;
+                                        double total_delta = 0.0;
+                                        
+                                        // First log a summary
+                                        for (auto position : positions) {
+                                            position_count++;
+                                            double delta = 0.0;
+                                            position["delta"].get(delta);
+                                            total_delta += delta;
+                                        }
+                                        
+                                        LOG_INFO(logger, "Retrieved {} positions with total delta: {}. Latency: {} us", 
+                                                 position_count, total_delta, latency);
+                                        
+                                        // Then log details for each position
+                                        for (auto position : positions) {
+                                            std::string_view instrument;
+                                            std::string_view direction;
+                                            double size = 0.0;
+                                            double avg_price = 0.0;
+                                            double unrealized_pnl = 0.0;
+                                            
+                                            position["instrument_name"].get(instrument);
+                                            position["direction"].get(direction);
+                                            position["size"].get(size);
+                                            position["average_price"].get(avg_price);
+                                            position["floating_profit_loss"].get(unrealized_pnl);
+                                            
+                                            LOG_INFO(logger, "Position: {} {} {} contracts at avg price {}. Unrealized P&L: {}", 
+                                                     direction, instrument, size, avg_price, unrealized_pnl);
+                                        }
+                                    }
+                                } else {
+                                    // Generic success for other methods
+                                    LOG_INFO(logger, "Request successful. Method: {}. Latency: {} us", 
+                                            method, latency);
+                                }
+                                
+                                // Remove the method from the map
+                                request_methods.erase(method_it);
+                            } else {
+                                LOG_INFO(logger, "Request successful. Latency: {} us", latency);
+                            }
                         }
                         
                         // Store for later analysis
@@ -256,6 +342,7 @@ void DeriClient::async_read_response() {
                         order_latency_timers.erase(it);
                     }
                 }
+                
                 
 
                 if (json["method"].get_string().get(method) == simdjson::SUCCESS && 
@@ -293,7 +380,7 @@ void DeriClient::place_order(const std::string& instrument, const std::string& d
     auto start_time = std::chrono::high_resolution_clock::now();
     
     // Store the request ID and start time
-    int order_req_id = ++request_id;
+    uint64_t order_req_id = ++request_id;
     order_latency_timers[order_req_id] = start_time;
     
     std::string request = R"({
@@ -311,6 +398,9 @@ void DeriClient::place_order(const std::string& instrument, const std::string& d
         }
     })";
 
+    // Store the request method
+    request_methods[order_req_id] = std::string(direction == "buy" ? "private/buy" : "private/sell");
+
     write_queue.enqueue(request);
     write_next();
 
@@ -326,6 +416,14 @@ void DeriClient::cancel_order(const std::string& order_id) {
             "order_id": ")" + order_id + R"("
         }
     })";
+
+    // Store the request method
+    request_methods[request_id] = "private/cancel";
+
+    auto start_time = std::chrono::high_resolution_clock::now();
+    
+    // Store the request ID and start time
+    order_latency_timers[request_id] = start_time;
 
     write_queue.enqueue(request);
     write_next();
@@ -345,6 +443,14 @@ void DeriClient::modify_order(const std::string& order_id, double new_price, dou
         }
     })";
 
+    // Store the request method
+    request_methods[request_id] = "private/edit";
+
+    auto start_time = std::chrono::high_resolution_clock::now();
+    
+    // Store the request ID and start time
+    order_latency_timers[request_id] = start_time;
+
     write_queue.enqueue(request);
     write_next();
 
@@ -362,6 +468,14 @@ void DeriClient::get_order_book(const std::string& instrument, int depth) {
         }
     })";
 
+    // Store the request method
+    request_methods[request_id] = "public/get_order_book";
+
+    auto start_time = std::chrono::high_resolution_clock::now();
+    
+    // Store the request ID and start time
+    order_latency_timers[request_id] = start_time;
+
     write_queue.enqueue(request);
     write_next();
 }
@@ -374,6 +488,14 @@ void DeriClient::get_positions() {
         "params": {
         }
     })";
+
+    // Store the request method
+    request_methods[request_id] = "private/get_positions";
+
+    auto start_time = std::chrono::high_resolution_clock::now();
+    
+    // Store the request ID and start time
+    order_latency_timers[request_id] = start_time;
 
     // Send the request
     write_queue.enqueue(request);
@@ -394,6 +516,14 @@ void DeriClient::subscribe_to_orderbook(const std::string& instrument,
 
     streaming_handlers["book." + instrument + ".100ms"] = callback;
 
+    // Store the request method
+    request_methods[request_id] = "public/subscribe";
+
+    auto start_time = std::chrono::high_resolution_clock::now();
+    
+    // Store the request ID and start time
+    order_latency_timers[request_id] = start_time;
+
     write_queue.enqueue(request);
     write_next();
 
@@ -408,6 +538,14 @@ void DeriClient::unsubscribe_from_orderbook(const std::string& instrument) {
             "channels": ["book.)" + instrument + R"(.100ms"]
         }
     })";
+
+    // Store the request method
+    request_methods[request_id] = "public/unsubscribe";
+
+    auto start_time = std::chrono::high_resolution_clock::now();
+    
+    // Store the request ID and start time
+    order_latency_timers[request_id] = start_time;
 
     // Remove the handler from the map
     streaming_handlers.erase("book." + instrument + ".100ms");

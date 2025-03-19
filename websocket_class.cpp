@@ -121,8 +121,9 @@ int main() {
         
         // Wait for the threads (this won't be reached in this example)
 
-        client.place_order("ADA_USDC-PERPETUAL", "buy", 0.72, 10, "market");
-        client.place_order("ADA_USDC-PERPETUAL", "buy", 0.72, 0.72, "market");
+        // client.place_order("ADA_USDC-PERPETUAL", "buy", 0.72, 10, "market");
+        // client.place_order("ADA_USDC-PERPETUAL", "buy", 0.72, 0.72, "market");
+        client.get_positions();
 
         
         server_thread.join();

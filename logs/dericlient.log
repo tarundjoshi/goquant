@@ -1,0 +1,50 @@
+[14:23:57.561767841] [DeriClient] [INFO] Private key loaded successfully.
+[14:23:58.281325999] [DeriClient] [DEBUG] Successfully Sent request : {
+[14:23:58.281325999] [DeriClient] [DEBUG]             "jsonrpc": "2.0",
+[14:23:58.281325999] [DeriClient] [DEBUG]             "id": 0,
+[14:23:58.281325999] [DeriClient] [DEBUG]             "method": "public/auth",
+[14:23:58.281325999] [DeriClient] [DEBUG]             "params": {
+[14:23:58.281325999] [DeriClient] [DEBUG]                 "grant_type": "client_signature",
+[14:23:58.281325999] [DeriClient] [DEBUG]                 "client_id": "zavRq-oY",
+[14:23:58.281325999] [DeriClient] [DEBUG]                 "timestamp": 1742374438280,
+[14:23:58.281325999] [DeriClient] [DEBUG]                 "signature": "kCQ6Y7AygeSCZHSIiDIXPqJA9s7y2ASjosyiGrVZBE6nzL2ENHuc629CDDhqExnYntO5wIOHuJV4C7xO4RRNCA",
+[14:23:58.281325999] [DeriClient] [DEBUG]                 "nonce": "4KOCIrKPhmY4eN0f",
+[14:23:58.281325999] [DeriClient] [DEBUG]                 "data": ""
+[14:23:58.281325999] [DeriClient] [DEBUG]             }
+[14:23:58.281325999] [DeriClient] [DEBUG]         }
+[14:23:58.281414603] [DeriClient] [DEBUG] Successfully Sent request : {
+[14:23:58.281414603] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[14:23:58.281414603] [DeriClient] [DEBUG]         "id": 1,
+[14:23:58.281414603] [DeriClient] [DEBUG]         "method": "private/buy",
+[14:23:58.281414603] [DeriClient] [DEBUG]         "params": {
+[14:23:58.281414603] [DeriClient] [DEBUG]             "instrument_name": "ADA_USDC-PERPETUAL",
+[14:23:58.281414603] [DeriClient] [DEBUG]             "amount": 10.000000,
+[14:23:58.281414603] [DeriClient] [DEBUG]             "price": 0.720000,
+[14:23:58.281414603] [DeriClient] [DEBUG]             "type": "market",
+[14:23:58.281414603] [DeriClient] [DEBUG]             "label": "test",
+[14:23:58.281414603] [DeriClient] [DEBUG]             "timestamp": 1742374438281,
+[14:23:58.281414603] [DeriClient] [DEBUG]             "signature": "VJm9-l_bpqk9oaUi_-J8Ycr8uxMsjT14BBNFlb0WNiRjhIM-V6fK7WduPtR6_i6eZhmPTLTZ9hFybCg_9mpfAw"
+[14:23:58.281414603] [DeriClient] [DEBUG]         }
+[14:23:58.281414603] [DeriClient] [DEBUG]     }
+[14:23:58.281446947] [DeriClient] [DEBUG] Successfully Sent request : {
+[14:23:58.281446947] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[14:23:58.281446947] [DeriClient] [DEBUG]         "id": 2,
+[14:23:58.281446947] [DeriClient] [DEBUG]         "method": "private/buy",
+[14:23:58.281446947] [DeriClient] [DEBUG]         "params": {
+[14:23:58.281446947] [DeriClient] [DEBUG]             "instrument_name": "ADA_USDC-PERPETUAL",
+[14:23:58.281446947] [DeriClient] [DEBUG]             "amount": 0.720000,
+[14:23:58.281446947] [DeriClient] [DEBUG]             "price": 0.720000,
+[14:23:58.281446947] [DeriClient] [DEBUG]             "type": "market",
+[14:23:58.281446947] [DeriClient] [DEBUG]             "label": "test",
+[14:23:58.281446947] [DeriClient] [DEBUG]             "timestamp": 1742374438281,
+[14:23:58.281446947] [DeriClient] [DEBUG]             "signature": "42jee4Va0MPN0tTsOjX01mPuIlTNlShKGA9GevkQ752eCwG18jJwMytdcaIzn1mEL0GwBMiLfTe3BhQiAF03CA"
+[14:23:58.281446947] [DeriClient] [DEBUG]         }
+[14:23:58.281446947] [DeriClient] [DEBUG]     }
+[14:23:58.459302206] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":0,"result":{"enabled_features":["block_trade_approval"],"access_token":"1773910438395.1YVpwKad.d0h0g15RM1_FZetbHDsPN-fjmwqI0QyTycIDVTiTZSWEiwXZAkXvGPLdgtrw8Lr97yMuMDpVjxbi4fMzio0eo3Cq4Ldk33_Pd5X8sl-XWGQE0_MgvJPUcr03STnYty_EU8hJl7AUWU8n-HM8pAREQq6HsGtUc4EfuH2f1ol-7IKfvVG6fYvBI8OM4C-IZsQcV-QxgDnxpfoJ54PHCZPwzokm-Oayg19bHAgdbhuO1-hOjDGrDB84L9CXHqCztR8RoLmFnv3kIBbYxkbUsQ3ruO-IemjoxXtnfqNUiLEMflau6KLm97zH7ac2KW_JUfIf2N43c1ty5sQ35rntBLCS8gSToNh-rqemNA_CYMyz4QW7g96koZjmygmMhRoXnpBKS847X40","expires_in":31536000,"refresh_token":"1773910438395.1cfkREQx.u23KV1lH1KHWXcY96uzcQjpvH8VILDSr4ri3sUBUfGIGNhcU2-rDwPhjADHxRPCQRHVu9ejUZl7blW7YqMGJUQPpvK-XwxN144LpAthSpmHEDP22fNx2OHQvXsAD2U7l17axCVajNtmXykk-72vGvzSz0Bv0U1dqiVsB-XNfjEsjUcLBL2aQ7p4wUpo8fhkgSeLGCgm43WfqO6XBk3WYNzoKPfEXZxmxxM8iOaqzcW4wni2Lj6aQdmuGcxw6rzLDDhSQOVByunLqSHSXeO-tQ8ofRUalRUYon7da396FgXGe6bstgKoljwlOiYr8B_6YHj6CAQQ0bD6qoUQDHV5Qwzw_NNJ1IQ4h8zY5wLCWz6eR7spI5wQ6K1-pK5CrTXX49M9ZeA","scope":"name:go_assymetric block_rfq:read_write block_trade:read_write connection trade:read_write custody:read_write account:read_write wallet:read_write mainaccount","token_type":"bearer"},"usIn":1742374438395181,"usOut":1742374438395904,"usDiff":723,"testnet":true}
+[14:23:58.459305317] [DeriClient] [INFO] Received response for request ID 0.
+[14:23:58.459558144] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":2,"error":{"code":-32602,"data":{"reason":"must be a multiple of contract size","param":"amount"},"message":"Invalid params"},"usIn":1742374438396258,"usOut":1742374438396425,"usDiff":167,"testnet":true}
+[14:23:58.459559678] [DeriClient] [INFO] Received response for request ID 2.
+[14:23:58.459563087] [DeriClient] [ERROR] Order failed. Error code: -32602, message: Invalid params. Latency: 178180 us
+[14:23:58.461064675] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":1,"result":{"order":{"label":"test","price":0.74,"direction":"buy","time_in_force":"good_til_cancelled","max_show":10.0,"instrument_name":"ADA_USDC-PERPETUAL","api":true,"web":false,"amount":10.0,"order_id":"USDC-32616016545","creation_timestamp":1742374438375,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":0.0,"last_update_timestamp":1742374438375,"average_price":0.0,"contracts":50.0,"original_order_type":"market","order_state":"open","order_type":"limit","is_liquidation":false,"risk_reducing":false},"trades":[]},"usIn":1742374438396024,"usOut":1742374438398000,"usDiff":1976,"testnet":true}
+[14:23:58.461065417] [DeriClient] [INFO] Received response for request ID 1.
+[14:23:58.461071216] [DeriClient] [INFO] Order placed successfully: buy 10 ADA_USDC-PERPETUAL @ 0.74 USD. Order ID: USDC-32616016545. Latency: 179787 us

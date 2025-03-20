@@ -1,0 +1,29 @@
+\hypertarget{structmoodycamel_1_1details_1_1const__numeric__max}{}\doxysection{moodycamel\+::details\+::const\+\_\+numeric\+\_\+max$<$ T $>$ Struct Template Reference}
+\label{structmoodycamel_1_1details_1_1const__numeric__max}\index{moodycamel::details::const\_numeric\_max$<$ T $>$@{moodycamel::details::const\_numeric\_max$<$ T $>$}}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const T {\bfseries value}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structmoodycamel_1_1details_1_1const__numeric__max_a18f0f864e8beccade82b82b542f9859c}\label{structmoodycamel_1_1details_1_1const__numeric__max_a18f0f864e8beccade82b82b542f9859c}} 
+\index{moodycamel::details::const\_numeric\_max$<$ T $>$@{moodycamel::details::const\_numeric\_max$<$ T $>$}!value@{value}}
+\index{value@{value}!moodycamel::details::const\_numeric\_max$<$ T $>$@{moodycamel::details::const\_numeric\_max$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const T \mbox{\hyperlink{structmoodycamel_1_1details_1_1const__numeric__max}{moodycamel\+::details\+::const\+\_\+numeric\+\_\+max}}$<$ T $>$\+::value\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= std::numeric\_limits<T>::is\_signed}
+\DoxyCodeLine{            ? (\textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(1) << (\textcolor{keyword}{sizeof}(T) * CHAR\_BIT -\/ 1)) -\/ \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(1)}
+\DoxyCodeLine{            : \textcolor{keyword}{static\_cast<}T\textcolor{keyword}{>}(-\/1)}
+
+\end{DoxyCode}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+concurrentqueue.\+h\end{DoxyCompactItemize}

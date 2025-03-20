@@ -1,0 +1,61 @@
+\hypertarget{dericlient_8h}{}\doxysection{dericlient.\+h File Reference}
+\label{dericlient_8h}\index{dericlient.h@{dericlient.h}}
+
+
+Client for connecting to Deribit API.  
+
+
+{\ttfamily \#include $<$boost/beast/core.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/beast/websocket.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/beast/websocket/ssl.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/asio.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/asio/ssl.\+hpp$>$}\newline
+{\ttfamily \#include $<$openssl/pem.\+h$>$}\newline
+{\ttfamily \#include $<$openssl/evp.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+{\ttfamily \#include \char`\"{}concurrentqueue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}quill/\+Backend.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}quill/\+Frontend.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}quill/\+Log\+Macros.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}quill/\+Logger.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}quill/sinks/\+Console\+Sink.\+h\char`\"{}}\newline
+Include dependency graph for dericlient.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dericlient_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{dericlient_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classDeriClient}{Deri\+Client}}
+\begin{DoxyCompactList}\small\item\em Client for connecting to Deribit\textquotesingle{}s Web\+Socket API. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{dericlient_8h_a4b2c0fd18b7d3d44cd0e91270fffaff1}\label{dericlient_8h_a4b2c0fd18b7d3d44cd0e91270fffaff1}} 
+using {\bfseries tcp} = asio\+::ip\+::tcp
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Client for connecting to Deribit API. 
+
+\begin{DoxyDate}{Date}
+2025-\/03-\/20
+\end{DoxyDate}
+This file contains declarations for a client implementation that connects to Deribit\textquotesingle{}s API, handles authentication, and provides methods for order management and market data streaming. 

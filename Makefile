@@ -1,5 +1,5 @@
 all:
-	g++ -std=c++17 websocket_class.cpp streamer.cpp dericlient.cpp \
+	g++ -std=c++17 main.cpp streamer.cpp dericlient.cpp \
         -I /usr/include \
         -I /usr/local/include \
         -I ./ \

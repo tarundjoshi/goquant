@@ -1,0 +1,74 @@
+\hypertarget{classServer}{}\doxysection{Server Class Reference}
+\label{classServer}\index{Server@{Server}}
+
+
+Accepts incoming Web\+Socket connections.  
+
+
+
+
+{\ttfamily \#include $<$streamer.\+h$>$}
+
+
+
+Inheritance diagram for Server\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{classServer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Server\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{classServer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classServer_a5d8a6c2ac2bf25168e12ad31458ea8d5}{Server}} (asio\+::io\+\_\+context \&ioc, tcp\+::endpoint endpoint, \mbox{\hyperlink{classSubscriptionManager}{Subscription\+Manager}} \&manager, quill\+::\+Logger $\ast$logger)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classServer}{Server}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classServer_abb27d30b40a94326e3fd629d3b30b7d5}\label{classServer_abb27d30b40a94326e3fd629d3b30b7d5}} 
+void \mbox{\hyperlink{classServer_abb27d30b40a94326e3fd629d3b30b7d5}{run}} ()
+\begin{DoxyCompactList}\small\item\em Start accepting connections. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Accepts incoming Web\+Socket connections. 
+
+This class listens for incoming TCP connections and creates a new \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} for each accepted connection. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classServer_a5d8a6c2ac2bf25168e12ad31458ea8d5}\label{classServer_a5d8a6c2ac2bf25168e12ad31458ea8d5}} 
+\index{Server@{Server}!Server@{Server}}
+\index{Server@{Server}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{Server()}{Server()}}
+{\footnotesize\ttfamily Server\+::\+Server (\begin{DoxyParamCaption}\item[{asio\+::io\+\_\+context \&}]{ioc,  }\item[{tcp\+::endpoint}]{endpoint,  }\item[{\mbox{\hyperlink{classSubscriptionManager}{Subscription\+Manager}} \&}]{manager,  }\item[{quill\+::\+Logger $\ast$}]{logger }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classServer}{Server}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ioc} & The I/O context \\
+\hline
+{\em endpoint} & The endpoint to listen on \\
+\hline
+{\em manager} & Reference to the subscription manager \\
+\hline
+{\em logger} & Logger for recording events \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{streamer_8h}{streamer.\+h}}\item 
+streamer.\+cpp\end{DoxyCompactItemize}

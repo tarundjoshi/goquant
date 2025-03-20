@@ -1,0 +1,116 @@
+\hypertarget{classOrderBookManager}{}\doxysection{Order\+Book\+Manager Class Reference}
+\label{classOrderBookManager}\index{OrderBookManager@{OrderBookManager}}
+
+
+Manages order books for different trading symbols.  
+
+
+
+
+{\ttfamily \#include $<$streamer.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOrderBookManager_a9d2da9568c98627ced817dda6441b51b}{Order\+Book\+Manager}} (quill\+::\+Logger $\ast$logger)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{classOrderBookManager}{Order\+Book\+Manager}} with the specified logger. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classOrderBookManager_a2b2d6c30eb490fb5a20167bfcbdd5414}{process\+\_\+message}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Processes an incoming Web\+Socket message and updates the local order book. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classOrderBookManager_ad92c418893b8a27b3aced332488e45c3}{get\+\_\+current\+\_\+orderbook}} (const std\+::string \&symbol)
+\begin{DoxyCompactList}\small\item\em Retrieves the latest order book state for a given symbol. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classOrderBookManager_a86bd875ad129603c16d1544cc91f9329}{has\+\_\+orderbook}} (const std\+::string \&symbol)
+\begin{DoxyCompactList}\small\item\em Checks if an order book exists for a given symbol. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages order books for different trading symbols. 
+
+This class is responsible for\+:
+\begin{DoxyItemize}
+\item Processing and storing order book data from the exchange
+\item Maintaining up-\/to-\/date local copies of order books
+\item Providing access to the latest order book state for each symbol
+\item Thread-\/safe access to order book data 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classOrderBookManager_a9d2da9568c98627ced817dda6441b51b}\label{classOrderBookManager_a9d2da9568c98627ced817dda6441b51b}} 
+\index{OrderBookManager@{OrderBookManager}!OrderBookManager@{OrderBookManager}}
+\index{OrderBookManager@{OrderBookManager}!OrderBookManager@{OrderBookManager}}
+\doxysubsubsection{\texorpdfstring{OrderBookManager()}{OrderBookManager()}}
+{\footnotesize\ttfamily Order\+Book\+Manager\+::\+Order\+Book\+Manager (\begin{DoxyParamCaption}\item[{quill\+::\+Logger $\ast$}]{logger }\end{DoxyParamCaption})}
+
+
+
+Constructs an \mbox{\hyperlink{classOrderBookManager}{Order\+Book\+Manager}} with the specified logger. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em logger} & Pointer to a quill logger for logging events. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classOrderBookManager_ad92c418893b8a27b3aced332488e45c3}\label{classOrderBookManager_ad92c418893b8a27b3aced332488e45c3}} 
+\index{OrderBookManager@{OrderBookManager}!get\_current\_orderbook@{get\_current\_orderbook}}
+\index{get\_current\_orderbook@{get\_current\_orderbook}!OrderBookManager@{OrderBookManager}}
+\doxysubsubsection{\texorpdfstring{get\_current\_orderbook()}{get\_current\_orderbook()}}
+{\footnotesize\ttfamily std\+::string Order\+Book\+Manager\+::get\+\_\+current\+\_\+orderbook (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol }\end{DoxyParamCaption})}
+
+
+
+Retrieves the latest order book state for a given symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The trading symbol (e.\+g., \char`\"{}\+BTC-\/\+PERPETUAL\char`\"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The JSON representation of the current order book, or an empty string if not available. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classOrderBookManager_a86bd875ad129603c16d1544cc91f9329}\label{classOrderBookManager_a86bd875ad129603c16d1544cc91f9329}} 
+\index{OrderBookManager@{OrderBookManager}!has\_orderbook@{has\_orderbook}}
+\index{has\_orderbook@{has\_orderbook}!OrderBookManager@{OrderBookManager}}
+\doxysubsubsection{\texorpdfstring{has\_orderbook()}{has\_orderbook()}}
+{\footnotesize\ttfamily bool Order\+Book\+Manager\+::has\+\_\+orderbook (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol }\end{DoxyParamCaption})}
+
+
+
+Checks if an order book exists for a given symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The trading symbol to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if an order book exists, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classOrderBookManager_a2b2d6c30eb490fb5a20167bfcbdd5414}\label{classOrderBookManager_a2b2d6c30eb490fb5a20167bfcbdd5414}} 
+\index{OrderBookManager@{OrderBookManager}!process\_message@{process\_message}}
+\index{process\_message@{process\_message}!OrderBookManager@{OrderBookManager}}
+\doxysubsubsection{\texorpdfstring{process\_message()}{process\_message()}}
+{\footnotesize\ttfamily std\+::string Order\+Book\+Manager\+::process\+\_\+message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Processes an incoming Web\+Socket message and updates the local order book. 
+
+This method parses the message, updates the appropriate order book, and maintains an up-\/to-\/date local copy.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The JSON message received from the Web\+Socket connection. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The symbol that was updated, or empty string if not applicable. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{streamer_8h}{streamer.\+h}}\item 
+streamer.\+cpp\end{DoxyCompactItemize}

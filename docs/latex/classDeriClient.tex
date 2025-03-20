@@ -1,0 +1,337 @@
+\hypertarget{classDeriClient}{}\doxysection{Deri\+Client Class Reference}
+\label{classDeriClient}\index{DeriClient@{DeriClient}}
+
+
+Client for connecting to Deribit\textquotesingle{}s Web\+Socket API.  
+
+
+
+
+{\ttfamily \#include $<$dericlient.\+h$>$}
+
+
+
+Collaboration diagram for Deri\+Client\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{classDeriClient__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDeriClient_a1573f5413fa485892d87c67d32b10e67}{Deri\+Client}} (const std\+::string \&key\+\_\+path, std\+::string client\+\_\+id, quill\+::\+Logger $\ast$logger)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classDeriClient}{Deri\+Client}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDeriClient_a8298f7934775a3359db8895e499a6fb5}\label{classDeriClient_a8298f7934775a3359db8895e499a6fb5}} 
+\mbox{\hyperlink{classDeriClient_a8298f7934775a3359db8895e499a6fb5}{$\sim$\+Deri\+Client}} ()
+\begin{DoxyCompactList}\small\item\em Destructor that cleans up resources. \end{DoxyCompactList}\item 
+long long \mbox{\hyperlink{classDeriClient_a6d820affff4755f5c43feca23d25c3c9}{get\+\_\+current\+\_\+timestamp}} ()
+\begin{DoxyCompactList}\small\item\em Get current timestamp in milliseconds. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDeriClient_aea3ed5b25b31a55da51fdf491b45c69a}{generate\+\_\+nonce}} ()
+\begin{DoxyCompactList}\small\item\em Generate a random nonce string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeriClient_ad5c3ae4b5abb1364678dd5de3d407567}{load\+\_\+private\+\_\+key}} (const std\+::string \&private\+\_\+key\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Load the Ed25519 private key from file. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDeriClient_af440de5c03c571fc42850967a3da05e8}{sign\+\_\+data}} (const std\+::string \&data)
+\begin{DoxyCompactList}\small\item\em Sign data using the Ed25519 private key. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeriClient_a1bf8315d3ace1053f9d2953ea4a7a551}{enable\+\_\+tcp\+\_\+nodelay}} (tcp\+::socket \&socket)
+\begin{DoxyCompactList}\small\item\em Enable TCP\+\_\+\+NODELAY for reduced latency. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDeriClient_a16cb6700da1da785fb7f608a558344e5}\label{classDeriClient_a16cb6700da1da785fb7f608a558344e5}} 
+void \mbox{\hyperlink{classDeriClient_a16cb6700da1da785fb7f608a558344e5}{write\+\_\+next}} ()
+\begin{DoxyCompactList}\small\item\em Write the next message in the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeriClient_a7d5ba659232ecbba68259c7e70c84fe2}{connect}} (const std\+::string \&host, const std\+::string \&port)
+\begin{DoxyCompactList}\small\item\em Connect to Deribit\textquotesingle{}s Web\+Socket API. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDeriClient_a387b9997be8d18917a8f020b494344bc}\label{classDeriClient_a387b9997be8d18917a8f020b494344bc}} 
+void \mbox{\hyperlink{classDeriClient_a387b9997be8d18917a8f020b494344bc}{async\+\_\+read\+\_\+response}} ()
+\begin{DoxyCompactList}\small\item\em Start asynchronous reading of responses. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeriClient_aa66493e04fd505ce1b05b9b9039dd75d}{place\+\_\+order}} (const std\+::string \&instrument, const std\+::string \&direction, double price, double amount, const std\+::string \&order\+\_\+type=\char`\"{}limit\char`\"{})
+\begin{DoxyCompactList}\small\item\em Place an order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeriClient_afce3c46cde4255b437edc9f1c61c8393}{cancel\+\_\+order}} (const std\+::string \&order\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Cancel an order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeriClient_a7cf2af4fcc90bc41816d659258c9eee9}{modify\+\_\+order}} (const std\+::string \&order\+\_\+id, double new\+\_\+price, double new\+\_\+amount)
+\begin{DoxyCompactList}\small\item\em Modify an existing order. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeriClient_ac664a110a7ea5c69ac44eed93007a555}{get\+\_\+order\+\_\+book}} (const std\+::string \&instrument, int depth)
+\begin{DoxyCompactList}\small\item\em Get the order book for an instrument. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDeriClient_a6e6f0a4c88b4ade3945f9d45be3767b7}\label{classDeriClient_a6e6f0a4c88b4ade3945f9d45be3767b7}} 
+void \mbox{\hyperlink{classDeriClient_a6e6f0a4c88b4ade3945f9d45be3767b7}{get\+\_\+positions}} ()
+\begin{DoxyCompactList}\small\item\em Get current positions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeriClient_adc78af181b52f32cf69109394edd7f1e}{subscribe\+\_\+to\+\_\+orderbook}} (const std\+::string \&instrument, std\+::function$<$ void(const std\+::string \&)$>$ callback=nullptr)
+\begin{DoxyCompactList}\small\item\em Subscribe to real-\/time orderbook updates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeriClient_adeee3e182cdb77dcf6a395530df0d8d3}{unsubscribe\+\_\+from\+\_\+orderbook}} (const std\+::string \&instrument)
+\begin{DoxyCompactList}\small\item\em Unsubscribe from real-\/time orderbook updates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDeriClient_a6d0ff5f308513ab4add7589547ef19bd}\label{classDeriClient_a6d0ff5f308513ab4add7589547ef19bd}} 
+asio\+::io\+\_\+context {\bfseries ioc}
+\item 
+\mbox{\Hypertarget{classDeriClient_a029f78831162a03a57e7bd5b18546dcd}\label{classDeriClient_a029f78831162a03a57e7bd5b18546dcd}} 
+ssl\+::context {\bfseries ssl\+\_\+ctx}
+\item 
+\mbox{\Hypertarget{classDeriClient_a61cdec9ae98efa347e0f63d2d02925c4}\label{classDeriClient_a61cdec9ae98efa347e0f63d2d02925c4}} 
+std\+::unique\+\_\+ptr$<$ websocket\+::stream$<$ ssl\+::stream$<$ tcp\+::socket $>$ $>$ $>$ {\bfseries ws}
+\item 
+\mbox{\Hypertarget{classDeriClient_a9d01a455bf046f1c429104276aa9677d}\label{classDeriClient_a9d01a455bf046f1c429104276aa9677d}} 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::function$<$ void(const std\+::string \&)$>$ $>$ {\bfseries streaming\+\_\+handlers}
+\item 
+\mbox{\Hypertarget{classDeriClient_adb8de305981b9cd7cd876370f4462a05}\label{classDeriClient_adb8de305981b9cd7cd876370f4462a05}} 
+std\+::unordered\+\_\+map$<$ uint64\+\_\+t, std\+::string $>$ {\bfseries request\+\_\+methods}
+\item 
+\mbox{\Hypertarget{classDeriClient_ab0e0f2083f722ce006642a12fb2a9499}\label{classDeriClient_ab0e0f2083f722ce006642a12fb2a9499}} 
+std\+::unordered\+\_\+map$<$ uint64\+\_\+t, std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::high\+\_\+resolution\+\_\+clock $>$ $>$ {\bfseries order\+\_\+latency\+\_\+timers}
+\item 
+\mbox{\Hypertarget{classDeriClient_a34dfb919f47fe39a268105a20aaefc2d}\label{classDeriClient_a34dfb919f47fe39a268105a20aaefc2d}} 
+std\+::vector$<$ long long $>$ {\bfseries order\+\_\+latencies}
+\item 
+\mbox{\Hypertarget{classDeriClient_a7c98bc50574cae4cd5e79828e01be1d1}\label{classDeriClient_a7c98bc50574cae4cd5e79828e01be1d1}} 
+\mbox{\hyperlink{classmoodycamel_1_1ConcurrentQueue}{moodycamel\+::\+Concurrent\+Queue}}$<$ std\+::string $>$ {\bfseries write\+\_\+queue}
+\item 
+\mbox{\Hypertarget{classDeriClient_a12e8ca2f31a387609d34d86c2c36cd99}\label{classDeriClient_a12e8ca2f31a387609d34d86c2c36cd99}} 
+uint64\+\_\+t {\bfseries request\+\_\+id}
+\item 
+\mbox{\Hypertarget{classDeriClient_aeb0708a207dce33a0056317aef557bb0}\label{classDeriClient_aeb0708a207dce33a0056317aef557bb0}} 
+std\+::atomic$<$ bool $>$ {\bfseries is\+\_\+writing} \{false\}
+\item 
+\mbox{\Hypertarget{classDeriClient_aa2321223e4093d42bd2616a3265349be}\label{classDeriClient_aa2321223e4093d42bd2616a3265349be}} 
+const std\+::string {\bfseries client\+\_\+id}
+\item 
+\mbox{\Hypertarget{classDeriClient_ab4ce7bb77ed95cbe3708d88989d0d99d}\label{classDeriClient_ab4ce7bb77ed95cbe3708d88989d0d99d}} 
+EVP\+\_\+\+PKEY $\ast$ {\bfseries private\+\_\+key} = nullptr
+\item 
+\mbox{\Hypertarget{classDeriClient_a2a3fdd6b9c7b37329dc9475def57f467}\label{classDeriClient_a2a3fdd6b9c7b37329dc9475def57f467}} 
+quill\+::\+Logger $\ast$ {\bfseries logger}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Client for connecting to Deribit\textquotesingle{}s Web\+Socket API. 
+
+This class handles connection to Deribit, authentication, order management, and market data streaming. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDeriClient_a1573f5413fa485892d87c67d32b10e67}\label{classDeriClient_a1573f5413fa485892d87c67d32b10e67}} 
+\index{DeriClient@{DeriClient}!DeriClient@{DeriClient}}
+\index{DeriClient@{DeriClient}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{DeriClient()}{DeriClient()}}
+{\footnotesize\ttfamily Deri\+Client\+::\+Deri\+Client (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{key\+\_\+path,  }\item[{std\+::string}]{client\+\_\+id,  }\item[{quill\+::\+Logger $\ast$}]{logger }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classDeriClient}{Deri\+Client}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key\+\_\+path} & Path to the Ed25519 private key file \\
+\hline
+{\em client\+\_\+id} & Deribit API client ID \\
+\hline
+{\em logger} & Logger for recording events \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDeriClient_afce3c46cde4255b437edc9f1c61c8393}\label{classDeriClient_afce3c46cde4255b437edc9f1c61c8393}} 
+\index{DeriClient@{DeriClient}!cancel\_order@{cancel\_order}}
+\index{cancel\_order@{cancel\_order}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{cancel\_order()}{cancel\_order()}}
+{\footnotesize\ttfamily void Deri\+Client\+::cancel\+\_\+order (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{order\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Cancel an order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em order\+\_\+id} & ID of the order to cancel \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeriClient_a7d5ba659232ecbba68259c7e70c84fe2}\label{classDeriClient_a7d5ba659232ecbba68259c7e70c84fe2}} 
+\index{DeriClient@{DeriClient}!connect@{connect}}
+\index{connect@{connect}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily void Deri\+Client\+::connect (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{host,  }\item[{const std\+::string \&}]{port }\end{DoxyParamCaption})}
+
+
+
+Connect to Deribit\textquotesingle{}s Web\+Socket API. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em host} & Hostname (e.\+g., \char`\"{}test.\+deribit.\+com\char`\"{}) \\
+\hline
+{\em port} & Port (e.\+g., \char`\"{}443\char`\"{}) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeriClient_a1bf8315d3ace1053f9d2953ea4a7a551}\label{classDeriClient_a1bf8315d3ace1053f9d2953ea4a7a551}} 
+\index{DeriClient@{DeriClient}!enable\_tcp\_nodelay@{enable\_tcp\_nodelay}}
+\index{enable\_tcp\_nodelay@{enable\_tcp\_nodelay}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{enable\_tcp\_nodelay()}{enable\_tcp\_nodelay()}}
+{\footnotesize\ttfamily void Deri\+Client\+::enable\+\_\+tcp\+\_\+nodelay (\begin{DoxyParamCaption}\item[{tcp\+::socket \&}]{socket }\end{DoxyParamCaption})}
+
+
+
+Enable TCP\+\_\+\+NODELAY for reduced latency. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket} & TCP socket to configure \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeriClient_aea3ed5b25b31a55da51fdf491b45c69a}\label{classDeriClient_aea3ed5b25b31a55da51fdf491b45c69a}} 
+\index{DeriClient@{DeriClient}!generate\_nonce@{generate\_nonce}}
+\index{generate\_nonce@{generate\_nonce}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{generate\_nonce()}{generate\_nonce()}}
+{\footnotesize\ttfamily std\+::string Deri\+Client\+::generate\+\_\+nonce (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Generate a random nonce string. 
+
+\begin{DoxyReturn}{Returns}
+Random nonce string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeriClient_a6d820affff4755f5c43feca23d25c3c9}\label{classDeriClient_a6d820affff4755f5c43feca23d25c3c9}} 
+\index{DeriClient@{DeriClient}!get\_current\_timestamp@{get\_current\_timestamp}}
+\index{get\_current\_timestamp@{get\_current\_timestamp}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{get\_current\_timestamp()}{get\_current\_timestamp()}}
+{\footnotesize\ttfamily long long Deri\+Client\+::get\+\_\+current\+\_\+timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get current timestamp in milliseconds. 
+
+\begin{DoxyReturn}{Returns}
+Timestamp as a long long 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeriClient_ac664a110a7ea5c69ac44eed93007a555}\label{classDeriClient_ac664a110a7ea5c69ac44eed93007a555}} 
+\index{DeriClient@{DeriClient}!get\_order\_book@{get\_order\_book}}
+\index{get\_order\_book@{get\_order\_book}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{get\_order\_book()}{get\_order\_book()}}
+{\footnotesize\ttfamily void Deri\+Client\+::get\+\_\+order\+\_\+book (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instrument,  }\item[{int}]{depth }\end{DoxyParamCaption})}
+
+
+
+Get the order book for an instrument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instrument} & Instrument name \\
+\hline
+{\em depth} & Order book depth \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeriClient_ad5c3ae4b5abb1364678dd5de3d407567}\label{classDeriClient_ad5c3ae4b5abb1364678dd5de3d407567}} 
+\index{DeriClient@{DeriClient}!load\_private\_key@{load\_private\_key}}
+\index{load\_private\_key@{load\_private\_key}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{load\_private\_key()}{load\_private\_key()}}
+{\footnotesize\ttfamily void Deri\+Client\+::load\+\_\+private\+\_\+key (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{private\+\_\+key\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Load the Ed25519 private key from file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em private\+\_\+key\+\_\+path} & Path to the private key file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeriClient_a7cf2af4fcc90bc41816d659258c9eee9}\label{classDeriClient_a7cf2af4fcc90bc41816d659258c9eee9}} 
+\index{DeriClient@{DeriClient}!modify\_order@{modify\_order}}
+\index{modify\_order@{modify\_order}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{modify\_order()}{modify\_order()}}
+{\footnotesize\ttfamily void Deri\+Client\+::modify\+\_\+order (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{order\+\_\+id,  }\item[{double}]{new\+\_\+price,  }\item[{double}]{new\+\_\+amount }\end{DoxyParamCaption})}
+
+
+
+Modify an existing order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em order\+\_\+id} & ID of the order to modify \\
+\hline
+{\em new\+\_\+price} & New price \\
+\hline
+{\em new\+\_\+amount} & New amount \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeriClient_aa66493e04fd505ce1b05b9b9039dd75d}\label{classDeriClient_aa66493e04fd505ce1b05b9b9039dd75d}} 
+\index{DeriClient@{DeriClient}!place\_order@{place\_order}}
+\index{place\_order@{place\_order}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{place\_order()}{place\_order()}}
+{\footnotesize\ttfamily void Deri\+Client\+::place\+\_\+order (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instrument,  }\item[{const std\+::string \&}]{direction,  }\item[{double}]{price,  }\item[{double}]{amount,  }\item[{const std\+::string \&}]{order\+\_\+type = {\ttfamily \char`\"{}limit\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Place an order. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instrument} & Instrument name (e.\+g., \char`\"{}\+BTC-\/\+PERPETUAL\char`\"{}) \\
+\hline
+{\em direction} & \char`\"{}buy\char`\"{} or \char`\"{}sell\char`\"{} \\
+\hline
+{\em price} & Order price \\
+\hline
+{\em amount} & Order amount \\
+\hline
+{\em order\+\_\+type} & Order type (default\+: \char`\"{}limit\char`\"{}) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeriClient_af440de5c03c571fc42850967a3da05e8}\label{classDeriClient_af440de5c03c571fc42850967a3da05e8}} 
+\index{DeriClient@{DeriClient}!sign\_data@{sign\_data}}
+\index{sign\_data@{sign\_data}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{sign\_data()}{sign\_data()}}
+{\footnotesize\ttfamily std\+::string Deri\+Client\+::sign\+\_\+data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{data }\end{DoxyParamCaption})}
+
+
+
+Sign data using the Ed25519 private key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Data to sign \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+URL-\/safe base64 encoded signature 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classDeriClient_adc78af181b52f32cf69109394edd7f1e}\label{classDeriClient_adc78af181b52f32cf69109394edd7f1e}} 
+\index{DeriClient@{DeriClient}!subscribe\_to\_orderbook@{subscribe\_to\_orderbook}}
+\index{subscribe\_to\_orderbook@{subscribe\_to\_orderbook}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{subscribe\_to\_orderbook()}{subscribe\_to\_orderbook()}}
+{\footnotesize\ttfamily void Deri\+Client\+::subscribe\+\_\+to\+\_\+orderbook (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instrument,  }\item[{std\+::function$<$ void(const std\+::string \&)$>$}]{callback = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Subscribe to real-\/time orderbook updates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instrument} & Instrument name \\
+\hline
+{\em callback} & Optional function to call when updates are received \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classDeriClient_adeee3e182cdb77dcf6a395530df0d8d3}\label{classDeriClient_adeee3e182cdb77dcf6a395530df0d8d3}} 
+\index{DeriClient@{DeriClient}!unsubscribe\_from\_orderbook@{unsubscribe\_from\_orderbook}}
+\index{unsubscribe\_from\_orderbook@{unsubscribe\_from\_orderbook}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{unsubscribe\_from\_orderbook()}{unsubscribe\_from\_orderbook()}}
+{\footnotesize\ttfamily void Deri\+Client\+::unsubscribe\+\_\+from\+\_\+orderbook (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instrument }\end{DoxyParamCaption})}
+
+
+
+Unsubscribe from real-\/time orderbook updates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instrument} & Instrument name \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{dericlient_8h}{dericlient.\+h}}\item 
+dericlient.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,55 @@
+\hypertarget{streamer_8h}{}\doxysection{streamer.\+h File Reference}
+\label{streamer_8h}\index{streamer.h@{streamer.h}}
+
+
+Web\+Socket server for real-\/time market data distribution.  
+
+
+{\ttfamily \#include $<$boost/beast/core.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/beast/websocket.\+hpp$>$}\newline
+{\ttfamily \#include $<$boost/asio.\+hpp$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$simdjson.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}dericlient.\+h\char`\"{}}\newline
+Include dependency graph for streamer.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{streamer_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classOrderBook}{Order\+Book}}
+\begin{DoxyCompactList}\small\item\em Represents a single order book with bids and asks. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classOrderBookManager}{Order\+Book\+Manager}}
+\begin{DoxyCompactList}\small\item\em Manages order books for different trading symbols. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classSubscriptionManager}{Subscription\+Manager}}
+\begin{DoxyCompactList}\small\item\em Manages client subscriptions to market data symbols. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}}
+\begin{DoxyCompactList}\small\item\em Handles an individual client Web\+Socket connection. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classServer}{Server}}
+\begin{DoxyCompactList}\small\item\em Accepts incoming Web\+Socket connections. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{streamer_8h_a4b2c0fd18b7d3d44cd0e91270fffaff1}\label{streamer_8h_a4b2c0fd18b7d3d44cd0e91270fffaff1}} 
+using {\bfseries tcp} = asio\+::ip\+::tcp
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Web\+Socket server for real-\/time market data distribution. 
+
+\begin{DoxyDate}{Date}
+2025-\/03-\/20
+\end{DoxyDate}
+This file contains declarations for a Web\+Socket server implementation that handles client connections, manages subscriptions to different trading symbols, and efficiently broadcasts market data updates to subscribed clients. 

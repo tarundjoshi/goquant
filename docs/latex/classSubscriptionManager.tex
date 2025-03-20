@@ -1,0 +1,179 @@
+\hypertarget{classSubscriptionManager}{}\doxysection{Subscription\+Manager Class Reference}
+\label{classSubscriptionManager}\index{SubscriptionManager@{SubscriptionManager}}
+
+
+Manages client subscriptions to market data symbols.  
+
+
+
+
+{\ttfamily \#include $<$streamer.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSubscriptionManager_a65ffe4fe5dfb4ce4a3f1d9b154168998}{Subscription\+Manager}} (\mbox{\hyperlink{classDeriClient}{Deri\+Client}} \&deri\+\_\+client, quill\+::\+Logger $\ast$logger)
+\begin{DoxyCompactList}\small\item\em Constructs a \mbox{\hyperlink{classSubscriptionManager}{Subscription\+Manager}} with the specified client and logger. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSubscriptionManager_a91ab882ee0102a54ce1082fe72bcefba}{ensure\+\_\+deribit\+\_\+subscription}} (const std\+::string \&symbol)
+\begin{DoxyCompactList}\small\item\em Ensures that we are subscribed to a symbol on Deribit. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSubscriptionManager_a5a11625df08b3f6978321d6b0e30a8cd}{subscribe}} (const std\+::string \&symbol, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$ session)
+\begin{DoxyCompactList}\small\item\em Subscribe a client session to a market data symbol. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSubscriptionManager_af31c22ca21431d39c2fe23abe34099c1}{unsubscribe}} (const std\+::string \&symbol, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$ session)
+\begin{DoxyCompactList}\small\item\em Unsubscribe a client session from a market data symbol. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSubscriptionManager_a66b96b979dd0f10395554792e34d7c5b}{unsubscribe\+\_\+all}} (\mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $\ast$session)
+\begin{DoxyCompactList}\small\item\em Unsubscribe a client session from all symbols. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSubscriptionManager_adc352eaa8de5e6ffa0cf4f0a3d7f8a3f}{unsubscribe\+\_\+all}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$ session)
+\begin{DoxyCompactList}\small\item\em Unsubscribe a client session from all symbols. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSubscriptionManager_a09b41c36aebd58d627dbcb4ad0d55d64}{broadcast}} (const std\+::string \&symbol, const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Broadcast a market data update to all subscribed clients. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classSubscriptionManager_aeaa99dfb2fc6db3b876b96f816092137}{get\+\_\+active\+\_\+symbols}} ()
+\begin{DoxyCompactList}\small\item\em Get a list of all symbols with active subscribers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSubscriptionManager_a2fd0dc0eee137a2f1de6222ec8d309a9}\label{classSubscriptionManager_a2fd0dc0eee137a2f1de6222ec8d309a9}} 
+std\+::vector$<$ long long $>$ \mbox{\hyperlink{classSubscriptionManager_a2fd0dc0eee137a2f1de6222ec8d309a9}{market\+\_\+data\+\_\+processing\+\_\+latencies}}
+\begin{DoxyCompactList}\small\item\em Vector to store market data processing latency measurements in nanoseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages client subscriptions to market data symbols. 
+
+This class maintains a mapping between symbols and the clients subscribed to them. It handles subscription/unsubscription requests and broadcasts market data updates to interested clients. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSubscriptionManager_a65ffe4fe5dfb4ce4a3f1d9b154168998}\label{classSubscriptionManager_a65ffe4fe5dfb4ce4a3f1d9b154168998}} 
+\index{SubscriptionManager@{SubscriptionManager}!SubscriptionManager@{SubscriptionManager}}
+\index{SubscriptionManager@{SubscriptionManager}!SubscriptionManager@{SubscriptionManager}}
+\doxysubsubsection{\texorpdfstring{SubscriptionManager()}{SubscriptionManager()}}
+{\footnotesize\ttfamily Subscription\+Manager\+::\+Subscription\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classDeriClient}{Deri\+Client}} \&}]{deri\+\_\+client,  }\item[{quill\+::\+Logger $\ast$}]{logger }\end{DoxyParamCaption})}
+
+
+
+Constructs a \mbox{\hyperlink{classSubscriptionManager}{Subscription\+Manager}} with the specified client and logger. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deri\+\_\+client} & Reference to the Deribit client \\
+\hline
+{\em logger} & Pointer to a quill logger for logging events \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSubscriptionManager_a09b41c36aebd58d627dbcb4ad0d55d64}\label{classSubscriptionManager_a09b41c36aebd58d627dbcb4ad0d55d64}} 
+\index{SubscriptionManager@{SubscriptionManager}!broadcast@{broadcast}}
+\index{broadcast@{broadcast}!SubscriptionManager@{SubscriptionManager}}
+\doxysubsubsection{\texorpdfstring{broadcast()}{broadcast()}}
+{\footnotesize\ttfamily void Subscription\+Manager\+::broadcast (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol,  }\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Broadcast a market data update to all subscribed clients. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The symbol for which data is being broadcasted \\
+\hline
+{\em message} & The market data message to broadcast \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSubscriptionManager_a91ab882ee0102a54ce1082fe72bcefba}\label{classSubscriptionManager_a91ab882ee0102a54ce1082fe72bcefba}} 
+\index{SubscriptionManager@{SubscriptionManager}!ensure\_deribit\_subscription@{ensure\_deribit\_subscription}}
+\index{ensure\_deribit\_subscription@{ensure\_deribit\_subscription}!SubscriptionManager@{SubscriptionManager}}
+\doxysubsubsection{\texorpdfstring{ensure\_deribit\_subscription()}{ensure\_deribit\_subscription()}}
+{\footnotesize\ttfamily void Subscription\+Manager\+::ensure\+\_\+deribit\+\_\+subscription (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol }\end{DoxyParamCaption})}
+
+
+
+Ensures that we are subscribed to a symbol on Deribit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The trading symbol to subscribe to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSubscriptionManager_aeaa99dfb2fc6db3b876b96f816092137}\label{classSubscriptionManager_aeaa99dfb2fc6db3b876b96f816092137}} 
+\index{SubscriptionManager@{SubscriptionManager}!get\_active\_symbols@{get\_active\_symbols}}
+\index{get\_active\_symbols@{get\_active\_symbols}!SubscriptionManager@{SubscriptionManager}}
+\doxysubsubsection{\texorpdfstring{get\_active\_symbols()}{get\_active\_symbols()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Subscription\+Manager\+::get\+\_\+active\+\_\+symbols (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get a list of all symbols with active subscribers. 
+
+\begin{DoxyReturn}{Returns}
+Vector of symbol strings 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classSubscriptionManager_a5a11625df08b3f6978321d6b0e30a8cd}\label{classSubscriptionManager_a5a11625df08b3f6978321d6b0e30a8cd}} 
+\index{SubscriptionManager@{SubscriptionManager}!subscribe@{subscribe}}
+\index{subscribe@{subscribe}!SubscriptionManager@{SubscriptionManager}}
+\doxysubsubsection{\texorpdfstring{subscribe()}{subscribe()}}
+{\footnotesize\ttfamily void Subscription\+Manager\+::subscribe (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$}]{session }\end{DoxyParamCaption})}
+
+
+
+Subscribe a client session to a market data symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The trading symbol to subscribe to (e.\+g., \char`\"{}\+BTC-\/\+PERPETUAL\char`\"{}) \\
+\hline
+{\em session} & The client session requesting the subscription \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSubscriptionManager_af31c22ca21431d39c2fe23abe34099c1}\label{classSubscriptionManager_af31c22ca21431d39c2fe23abe34099c1}} 
+\index{SubscriptionManager@{SubscriptionManager}!unsubscribe@{unsubscribe}}
+\index{unsubscribe@{unsubscribe}!SubscriptionManager@{SubscriptionManager}}
+\doxysubsubsection{\texorpdfstring{unsubscribe()}{unsubscribe()}}
+{\footnotesize\ttfamily void Subscription\+Manager\+::unsubscribe (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$}]{session }\end{DoxyParamCaption})}
+
+
+
+Unsubscribe a client session from a market data symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The trading symbol to unsubscribe from \\
+\hline
+{\em session} & The client session requesting unsubscription \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSubscriptionManager_adc352eaa8de5e6ffa0cf4f0a3d7f8a3f}\label{classSubscriptionManager_adc352eaa8de5e6ffa0cf4f0a3d7f8a3f}} 
+\index{SubscriptionManager@{SubscriptionManager}!unsubscribe\_all@{unsubscribe\_all}}
+\index{unsubscribe\_all@{unsubscribe\_all}!SubscriptionManager@{SubscriptionManager}}
+\doxysubsubsection{\texorpdfstring{unsubscribe\_all()}{unsubscribe\_all()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Subscription\+Manager\+::unsubscribe\+\_\+all (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$}]{session }\end{DoxyParamCaption})}
+
+
+
+Unsubscribe a client session from all symbols. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & The client session to unsubscribe (shared\+\_\+ptr version)\\
+\hline
+\end{DoxyParams}
+This is typically called when a client disconnects. \mbox{\Hypertarget{classSubscriptionManager_a66b96b979dd0f10395554792e34d7c5b}\label{classSubscriptionManager_a66b96b979dd0f10395554792e34d7c5b}} 
+\index{SubscriptionManager@{SubscriptionManager}!unsubscribe\_all@{unsubscribe\_all}}
+\index{unsubscribe\_all@{unsubscribe\_all}!SubscriptionManager@{SubscriptionManager}}
+\doxysubsubsection{\texorpdfstring{unsubscribe\_all()}{unsubscribe\_all()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Subscription\+Manager\+::unsubscribe\+\_\+all (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $\ast$}]{session }\end{DoxyParamCaption})}
+
+
+
+Unsubscribe a client session from all symbols. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em session} & The client session to unsubscribe (raw pointer version)\\
+\hline
+\end{DoxyParams}
+This is typically called when a client disconnects. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{streamer_8h}{streamer.\+h}}\item 
+streamer.\+cpp\end{DoxyCompactItemize}

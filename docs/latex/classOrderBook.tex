@@ -1,0 +1,85 @@
+\hypertarget{classOrderBook}{}\doxysection{Order\+Book Class Reference}
+\label{classOrderBook}\index{OrderBook@{OrderBook}}
+
+
+Represents a single order book with bids and asks.  
+
+
+
+
+{\ttfamily \#include $<$streamer.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOrderBook_aaa1c56400f04085c7b1b9f3d00697e2b}{Order\+Book}} (const std\+::string \&symbol)
+\begin{DoxyCompactList}\small\item\em Constructs an \mbox{\hyperlink{classOrderBook}{Order\+Book}} for a specific symbol. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classOrderBook_ac5d132c051e3fdc1c17bd1bb0eb7f8e2}\label{classOrderBook_ac5d132c051e3fdc1c17bd1bb0eb7f8e2}} 
+\mbox{\hyperlink{classOrderBook_ac5d132c051e3fdc1c17bd1bb0eb7f8e2}{Order\+Book}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for use in containers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classOrderBook_a18ce037c41e9e08717232584820c7e53}{update}} (simdjson\+::dom\+::element data, bool is\+\_\+snapshot)
+\begin{DoxyCompactList}\small\item\em Updates the order book with new data (either snapshot or incremental update). \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classOrderBook_a692aaabf437e306554fc82e33ee0abe2}{to\+\_\+json}} () const
+\begin{DoxyCompactList}\small\item\em Generates a JSON string representing the current state of the order book. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single order book with bids and asks. 
+
+This class maintains the current state of an order book by applying both snapshots and incremental updates. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classOrderBook_aaa1c56400f04085c7b1b9f3d00697e2b}\label{classOrderBook_aaa1c56400f04085c7b1b9f3d00697e2b}} 
+\index{OrderBook@{OrderBook}!OrderBook@{OrderBook}}
+\index{OrderBook@{OrderBook}!OrderBook@{OrderBook}}
+\doxysubsubsection{\texorpdfstring{OrderBook()}{OrderBook()}}
+{\footnotesize\ttfamily Order\+Book\+::\+Order\+Book (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{symbol }\end{DoxyParamCaption})}
+
+
+
+Constructs an \mbox{\hyperlink{classOrderBook}{Order\+Book}} for a specific symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The trading symbol this order book represents. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classOrderBook_a692aaabf437e306554fc82e33ee0abe2}\label{classOrderBook_a692aaabf437e306554fc82e33ee0abe2}} 
+\index{OrderBook@{OrderBook}!to\_json@{to\_json}}
+\index{to\_json@{to\_json}!OrderBook@{OrderBook}}
+\doxysubsubsection{\texorpdfstring{to\_json()}{to\_json()}}
+{\footnotesize\ttfamily std\+::string Order\+Book\+::to\+\_\+json (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Generates a JSON string representing the current state of the order book. 
+
+\begin{DoxyReturn}{Returns}
+A JSON string containing the complete order book. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classOrderBook_a18ce037c41e9e08717232584820c7e53}\label{classOrderBook_a18ce037c41e9e08717232584820c7e53}} 
+\index{OrderBook@{OrderBook}!update@{update}}
+\index{update@{update}!OrderBook@{OrderBook}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Order\+Book\+::update (\begin{DoxyParamCaption}\item[{simdjson\+::dom\+::element}]{data,  }\item[{bool}]{is\+\_\+snapshot }\end{DoxyParamCaption})}
+
+
+
+Updates the order book with new data (either snapshot or incremental update). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data from the exchange. \\
+\hline
+{\em is\+\_\+snapshot} & Whether this is a full snapshot (true) or an incremental update (false). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{streamer_8h}{streamer.\+h}}\item 
+streamer.\+cpp\end{DoxyCompactItemize}

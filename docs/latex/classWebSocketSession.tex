@@ -1,0 +1,95 @@
+\hypertarget{classWebSocketSession}{}\doxysection{Web\+Socket\+Session Class Reference}
+\label{classWebSocketSession}\index{WebSocketSession@{WebSocketSession}}
+
+
+Handles an individual client Web\+Socket connection.  
+
+
+
+
+{\ttfamily \#include $<$streamer.\+h$>$}
+
+
+
+Inheritance diagram for Web\+Socket\+Session\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{classWebSocketSession__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Web\+Socket\+Session\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{classWebSocketSession__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWebSocketSession_af6b735c31f680b9523886526c9642c77}{Web\+Socket\+Session}} (tcp\+::socket \&\&socket, \mbox{\hyperlink{classSubscriptionManager}{Subscription\+Manager}} \&manager, quill\+::\+Logger $\ast$logger)
+\begin{DoxyCompactList}\small\item\em Construct a new Web\+Socket session. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebSocketSession_aa60a520432526e90b74fd97713469a56}\label{classWebSocketSession_aa60a520432526e90b74fd97713469a56}} 
+void \mbox{\hyperlink{classWebSocketSession_aa60a520432526e90b74fd97713469a56}{run}} ()
+\begin{DoxyCompactList}\small\item\em Start the session by accepting the Web\+Socket handshake. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWebSocketSession_a2d685b67a6ef95b4e53b726e89df56db}{send}} (const std\+::string \&message)
+\begin{DoxyCompactList}\small\item\em Send a message to this client. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classWebSocketSession_a9a95a1b78a6b9e72a43e32dee39ea0c3}\label{classWebSocketSession_a9a95a1b78a6b9e72a43e32dee39ea0c3}} 
+\mbox{\hyperlink{classWebSocketSession_a9a95a1b78a6b9e72a43e32dee39ea0c3}{$\sim$\+Web\+Socket\+Session}} ()
+\begin{DoxyCompactList}\small\item\em Destructor that ensures client is unsubscribed from all symbols. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles an individual client Web\+Socket connection. 
+
+This class manages the lifecycle of a client connection, including accepting the connection, processing subscription requests, and sending market data updates. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWebSocketSession_af6b735c31f680b9523886526c9642c77}\label{classWebSocketSession_af6b735c31f680b9523886526c9642c77}} 
+\index{WebSocketSession@{WebSocketSession}!WebSocketSession@{WebSocketSession}}
+\index{WebSocketSession@{WebSocketSession}!WebSocketSession@{WebSocketSession}}
+\doxysubsubsection{\texorpdfstring{WebSocketSession()}{WebSocketSession()}}
+{\footnotesize\ttfamily Web\+Socket\+Session\+::\+Web\+Socket\+Session (\begin{DoxyParamCaption}\item[{tcp\+::socket \&\&}]{socket,  }\item[{\mbox{\hyperlink{classSubscriptionManager}{Subscription\+Manager}} \&}]{manager,  }\item[{quill\+::\+Logger $\ast$}]{logger }\end{DoxyParamCaption})}
+
+
+
+Construct a new Web\+Socket session. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket} & TCP socket for the connection \\
+\hline
+{\em manager} & Reference to the subscription manager \\
+\hline
+{\em logger} & Logger for recording events \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWebSocketSession_a2d685b67a6ef95b4e53b726e89df56db}\label{classWebSocketSession_a2d685b67a6ef95b4e53b726e89df56db}} 
+\index{WebSocketSession@{WebSocketSession}!send@{send}}
+\index{send@{send}!WebSocketSession@{WebSocketSession}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily void Web\+Socket\+Session\+::send (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+
+
+Send a message to this client. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message to send\\
+\hline
+\end{DoxyParams}
+This method is thread-\/safe and can be called from any thread. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{streamer_8h}{streamer.\+h}}\item 
+streamer.\+cpp\end{DoxyCompactItemize}

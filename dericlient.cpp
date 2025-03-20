@@ -3,6 +3,7 @@
 #include <simdjson.h>
 
 // DeriClient implementation
+extern std::vector<std::string> order_ids;
 
 DeriClient::DeriClient(const std::string& key_path, std::string client_id, quill::Logger* logger)
     : ssl_ctx(ssl::context::tlsv12_client), 
@@ -217,7 +218,7 @@ void DeriClient::async_read_response() {
                     auto it = order_latency_timers.find(id);
                     if (it != order_latency_timers.end()) {
                         auto end_time = std::chrono::high_resolution_clock::now();
-                        auto latency = std::chrono::duration_cast<std::chrono::microseconds>(end_time - it->second).count();
+                        auto latency = std::chrono::duration_cast<std::chrono::nanoseconds>(end_time - it->second).count();
                         
                         // Check if there's an error in the response
                         simdjson::error_code error;
@@ -229,8 +230,8 @@ void DeriClient::async_read_response() {
                             error_obj["code"].get(error_code);
                             error_obj["message"].get(error_message);
                             
-                            LOG_ERROR(logger, "Request failed. Error code: {}, message: {}. Latency: {} us", 
-                                     error_code, error_message, latency);
+                            LOG_ERROR(logger, "Request failed for request ID {}. Error code: {}, message: {}. Latency: {} ns", 
+                                     id, error_code, error_message, latency);
                         } else {
                             // Request succeeded - Check the method type from the request map
                             auto method_it = request_methods.find(id);
@@ -252,20 +253,21 @@ void DeriClient::async_read_response() {
                                         json["result"]["order"]["price"].get(price) == simdjson::SUCCESS &&
                                         json["result"]["order"]["amount"].get(amount) == simdjson::SUCCESS) {
                                         
-                                        LOG_INFO(logger, "Order placed successfully: {} {} {} @ {} USD. Order ID: {}. Latency: {} us", 
+                                        LOG_INFO(logger, "Order placed successfully: {} {} {} @ {} nsD. Order ID: {}. Latency: {} ns", 
                                                 direction, amount, instrument, price, order_id, latency);
+                                        order_ids.push_back(std::string(order_id));
                                     } else {
-                                        LOG_INFO(logger, "Order placed successfully. Latency: {} us", latency);
+                                        LOG_INFO(logger, "Order placed successfully. Latency: {} ns", latency);
                                     }
                                 } 
                                 else if (method == "private/cancel") {
                                     // Order cancellation
                                     std::string_view order_id;
                                     if (json["result"]["order"]["order_id"].get(order_id) == simdjson::SUCCESS) {
-                                        LOG_INFO(logger, "Order {} cancelled successfully. Latency: {} us", 
+                                        LOG_INFO(logger, "Order {} cancelled successfully. Latency: {} ns", 
                                                 order_id, latency);
                                     } else {
-                                        LOG_INFO(logger, "Order cancelled successfully. Latency: {} us", latency);
+                                        LOG_INFO(logger, "Order cancelled successfully. Latency: {} ns", latency);
                                     }
                                 }
                                 else if (method == "private/edit") {
@@ -278,16 +280,98 @@ void DeriClient::async_read_response() {
                                         json["result"]["order"]["price"].get(price) == simdjson::SUCCESS &&
                                         json["result"]["order"]["amount"].get(amount) == simdjson::SUCCESS) {
                                         
-                                        LOG_INFO(logger, "Order {} modified successfully. New price: {}, New amount: {}. Latency: {} us", 
+                                        LOG_INFO(logger, "Order {} modified successfully. New price: {}, New amount: {}. Latency: {} ns", 
                                                 order_id, price, amount, latency);
                                     } else {
-                                        LOG_INFO(logger, "Order modified successfully. Latency: {} us", latency);
+                                        LOG_INFO(logger, "Order modified successfully. Latency: {} ns", latency);
                                     }
                                 }
                                 else if (method == "public/subscribe") {
                                     // Subscription confirmation
-                                    LOG_INFO(logger, "Successfully subscribed to channel. Latency: {} us", latency);
+                                    LOG_INFO(logger, "Successfully subscribed to channel. Latency: {} ns", latency);
                                 }
+                                else if (method == "public/get_order_book") {
+                                    // // Orderbook response
+                                    std::string_view instrument;
+                                    json["result"]["instrument_name"].get(instrument);
+                                    
+                                    // Format the orderbook in a readable way
+                                    std::stringstream formatted_book;
+                                    formatted_book << "\n=== ORDER BOOK FOR " << instrument << " ===\n\n";
+                                    
+                                    // Format asks (reversed to show highest ask at the top)
+                                    formatted_book << "ASKS:\n";
+                                    formatted_book << "+-----------------+-----------------+\n";
+                                    formatted_book << "| Price           | Size            |\n";
+                                    formatted_book << "+-----------------+-----------------+\n";
+                                    
+                                    auto asks = json["result"]["asks"];
+                                    std::vector<std::pair<double, double>> ask_prices;
+                                    
+                                    if (asks.type() == simdjson::dom::element_type::ARRAY) {
+                                        for (auto ask : asks) {
+                                            double price = 0.0, size = 0.0;
+                                            if (ask.at(0).get(price) == simdjson::SUCCESS && 
+                                                ask.at(1).get(size) == simdjson::SUCCESS) {
+                                                ask_prices.push_back({price, size});
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Sort asks in descending order and display top 10
+                                    std::sort(ask_prices.begin(), ask_prices.end(), std::greater<>());
+                                    int count = 0;
+                                    for (const auto& [price, size] : ask_prices) {
+                                        formatted_book << "| " << std::left << std::setw(15) << price 
+                                                      << " | " << std::left << std::setw(15) << size << " |\n";
+                                        if (++count >= 10) break;
+                                    }
+                                    formatted_book << "+-----------------+-----------------+\n\n";
+                                    
+                                    // Format bids
+                                    formatted_book << "BIDS:\n";
+                                    formatted_book << "+-----------------+-----------------+\n";
+                                    formatted_book << "| Price           | Size            |\n";
+                                    formatted_book << "+-----------------+-----------------+\n";
+                                    
+                                    auto bids = json["result"]["bids"];
+                                    std::vector<std::pair<double, double>> bid_prices;
+                                    
+                                    if (bids.type() == simdjson::dom::element_type::ARRAY) {
+                                        for (auto bid : bids) {
+                                            double price = 0.0, size = 0.0;
+                                            if (bid.at(0).get(price) == simdjson::SUCCESS && 
+                                                bid.at(1).get(size) == simdjson::SUCCESS) {
+                                                bid_prices.push_back({price, size});
+                                            }
+                                        }
+                                    }
+                                    
+                                    // Sort bids in descending order and display top 10
+                                    std::sort(bid_prices.begin(), bid_prices.end(), std::greater<>());
+                                    count = 0;
+                                    for (const auto& [price, size] : bid_prices) {
+                                        formatted_book << "| " << std::left << std::setw(15) << price 
+                                                      << " | " << std::left << std::setw(15) << size << " |\n";
+                                        if (++count >= 10) break;
+                                    }
+                                    formatted_book << "+-----------------+-----------------+\n";
+                                    
+                                    // Calculate and display spread
+                                    double spread = 0.0;
+                                    double spread_percent = 0.0;
+                                    if (!ask_prices.empty() && !bid_prices.empty()) {
+                                        spread = ask_prices.back().first - bid_prices.front().first;
+                                        spread_percent = (spread / bid_prices.front().first) * 100;
+                                    }
+                                    
+                                    formatted_book << "\nSpread: " << spread << " (" << std::fixed << std::setprecision(4) 
+                                                  << spread_percent << "%)\n";
+                                    
+                                    LOG_INFO(logger, "Received orderbook for {}. Latency: {} ns\n{}", 
+                                             instrument, latency, formatted_book.str());
+                                }
+                                
                                 else if (method == "private/get_positions") {
                                     // Positions response
                                     auto positions = json["result"];
@@ -303,7 +387,7 @@ void DeriClient::async_read_response() {
                                             total_delta += delta;
                                         }
                                         
-                                        LOG_INFO(logger, "Retrieved {} positions with total delta: {}. Latency: {} us", 
+                                        LOG_INFO(logger, "Retrieved {} positions with total delta: {}. Latency: {} ns", 
                                                  position_count, total_delta, latency);
                                         
                                         // Then log details for each position
@@ -326,14 +410,14 @@ void DeriClient::async_read_response() {
                                     }
                                 } else {
                                     // Generic success for other methods
-                                    LOG_INFO(logger, "Request successful. Method: {}. Latency: {} us", 
+                                    LOG_INFO(logger, "Request successful. Method: {}. Latency: {} ns", 
                                             method, latency);
                                 }
                                 
                                 // Remove the method from the map
                                 request_methods.erase(method_it);
                             } else {
-                                LOG_INFO(logger, "Request successful. Latency: {} us", latency);
+                                LOG_INFO(logger, "Request successful. Latency: {} ns", latency);
                             }
                         }
                         
@@ -372,39 +456,68 @@ void DeriClient::async_read_response() {
         });
 }
 
-void DeriClient::place_order(const std::string& instrument, const std::string& direction, 
-                double price, double amount, const std::string& order_type) {
+void DeriClient::place_order(const std::string& instrument, const std::string& direction,
+    double price, double amount, const std::string& order_type) {
     long long timestamp = get_current_timestamp();
     std::string nonce = generate_nonce();
-
     auto start_time = std::chrono::high_resolution_clock::now();
-    
+
     // Store the request ID and start time
     uint64_t order_req_id = ++request_id;
     order_latency_timers[order_req_id] = start_time;
-    
-    std::string request = R"({
+
+    // Determine if this is a spot instrument (contains '_')
+    bool is_spot = instrument.find('_') != std::string::npos;
+
+    std::string request;
+    if (is_spot) {
+        // Spot trading uses different parameters
+        request = R"({
         "jsonrpc": "2.0",
         "id": )" + std::to_string(order_req_id) + R"(,
         "method": ")" + std::string(direction == "buy" ? "private/buy" : "private/sell") + R"(",
         "params": {
-            "instrument_name": ")" + instrument + R"(",
-            "amount": )" + std::to_string(amount) + R"(,
-            "price": )" + std::to_string(price) + R"(,
-            "type": ")" + order_type + R"(",
-            "label": "test",
-            "timestamp": )" + std::to_string(timestamp) + R"(,
-            "signature": ")" + sign_data(std::to_string(timestamp) + "\n" + nonce + "\n") + R"("
+        "instrument_name": ")" + instrument + R"(",
+        "amount": )" + std::to_string(amount) + R"(,
+        "price": )" + std::to_string(price) + R"(,
+        "type": ")" + order_type + R"(",
+        "label": "test",
+        "timestamp": )" + std::to_string(timestamp) + R"(,
+        "signature": ")" + sign_data(std::to_string(timestamp) + "\n" + nonce + "\n") + R"("
         }
-    })";
+        })";
+    } else {
+        // Determine if this is an option (contains '-C' or '-P')
+        bool is_option = instrument.find("-C") != std::string::npos || instrument.find("-P") != std::string::npos;
+
+        request = R"({
+        "jsonrpc": "2.0",
+        "id": )" + std::to_string(order_req_id) + R"(,
+        "method": ")" + std::string(direction == "buy" ? "private/buy" : "private/sell") + R"(",
+        "params": {
+        "instrument_name": ")" + instrument + R"(",
+        "amount": )" + std::to_string(amount) + R"(,
+        "price": )" + std::to_string(price) + R"(,
+        "type": ")" + order_type + R"(",
+        "label": "test",
+        "time_in_force": "good_til_cancelled",)" +
+        (is_option ? R"("max_show": )" + std::to_string(amount) + "," : "") + R"(
+        "timestamp": )" + std::to_string(timestamp) + R"(,
+        "signature": ")" + sign_data(std::to_string(timestamp) + "\n" + nonce + "\n") + R"("
+        }
+        })";
+    }
 
     // Store the request method
     request_methods[order_req_id] = std::string(direction == "buy" ? "private/buy" : "private/sell");
 
+    LOG_INFO(logger, "Placing order for {}: {} {} @ {} nsD", instrument, direction, amount, price);
+
     write_queue.enqueue(request);
     write_next();
-
 }
+
+
 
 void DeriClient::cancel_order(const std::string& order_id) {
 
@@ -430,31 +543,45 @@ void DeriClient::cancel_order(const std::string& order_id) {
 
 }
 
-void DeriClient::modify_order(const std::string& order_id, double new_price, double new_amount) {
-
-    std::string request = R"({
-        "jsonrpc": "2.0",
-        "id": )" + std::to_string(++request_id) + R"(,
-        "method": "private/edit",
-        "params": {
-            "order_id": ")" + order_id + R"(",
-            "price": )" + std::to_string(new_price) + R"(,
-            "amount": )" + std::to_string(new_amount) + R"(
-        }
-    })";
-
-    // Store the request method
-    request_methods[request_id] = "private/edit";
-
+void DeriClient::modify_order(const std::string& order_id, double price, double amount) {
+    long long timestamp = get_current_timestamp();
+    std::string nonce = generate_nonce();
     auto start_time = std::chrono::high_resolution_clock::now();
     
     // Store the request ID and start time
-    order_latency_timers[request_id] = start_time;
-
+    uint64_t modify_req_id = ++request_id;
+    order_latency_timers[modify_req_id] = start_time;
+    
+    // Create the modify order request with all necessary parameters
+    std::string request = R"({
+        "jsonrpc": "2.0",
+        "id": )" + std::to_string(modify_req_id) + R"(,
+        "method": "private/edit",
+        "params": {
+            "order_id": ")" + order_id + R"(",
+            "amount": )" + std::to_string(amount) + R"(,
+            "price": )" + std::to_string(price) + R"(,
+            "post_only": true,
+            "reject_post_only": false,
+            "reduce_only": false,
+            "time_in_force": "good_til_cancelled",
+            "max_show": )" + std::to_string(amount) + R"(,
+            "timestamp": )" + std::to_string(timestamp) + R"(,
+            "signature": ")" + sign_data(std::to_string(timestamp) + "\n" + nonce + "\n") + R"("
+        }
+    })";
+    
+    // Store the request method
+    request_methods[modify_req_id] = "private/edit";
+    
+    LOG_INFO(logger, "Modifying order {}: new price {}, new amount {}", 
+             order_id, price, amount);
+    
     write_queue.enqueue(request);
     write_next();
-
 }
+
+
 
 void DeriClient::get_order_book(const std::string& instrument, int depth) {
 

@@ -85,6 +85,7 @@ void print_latency_statistics(const std::string& metric_name, const std::vector<
 
 
 int main() {
+    quill::Logger* client_logger = nullptr;
     try {
         // Initialize Quill logging
         quill::BackendOptions backend_options;
@@ -92,15 +93,15 @@ int main() {
         quill::Backend::start(backend_options);
 
         // Create logs directory if it doesn't exist
-        std::filesystem::create_directories("logs");
+        std::filesystem::create_directories("/home/tarun/goquant_application/logs");
 
         // Create sinks
-        auto file_sink_client = quill::Frontend::create_or_get_sink<quill::FileSink>("./../logs/dericlient.log");
-        auto file_sink_server = quill::Frontend::create_or_get_sink<quill::FileSink>("./../logs/server.log");
+        auto file_sink_client = quill::Frontend::create_or_get_sink<quill::FileSink>("/home/tarun/goquant_application/logs/dericlient.log");
+        auto file_sink_server = quill::Frontend::create_or_get_sink<quill::FileSink>("/home/tarun/goquant_application/logs/server.log");
         auto console_sink = quill::Frontend::create_or_get_sink<quill::ConsoleSink>("console");
 
         // Create loggers with pattern formatting
-        quill::Logger* client_logger = quill::Frontend::create_or_get_logger(
+        client_logger = quill::Frontend::create_or_get_logger(
             "DeriClient", 
             {file_sink_client, console_sink},
             quill::PatternFormatterOptions{"[%(time)] [%(logger)] [%(log_level)] %(message)"});
@@ -118,7 +119,7 @@ int main() {
         client_logger->set_log_level(quill::LogLevel::Debug);
         server_logger->set_log_level(quill::LogLevel::Debug);
 
-        auto file_sink_perf = quill::Frontend::create_or_get_sink<quill::FileSink>("./../logs/performance.log");
+        auto file_sink_perf = quill::Frontend::create_or_get_sink<quill::FileSink>("/home/tarun/goquant_application/logs/performance.log");
         quill::Logger* perf_logger = quill::Frontend::create_or_get_logger(
             "Performance",
             {file_sink_perf},
@@ -209,7 +210,7 @@ int main() {
         client.get_order_book("BTC-PERPETUAL", 10);
 
 
-        std::this_thread::sleep_for(std::chrono::seconds(10));
+        std::this_thread::sleep_for(std::chrono::seconds(100));
 
         client.ioc.stop();
         server_ioc.stop();
@@ -223,7 +224,8 @@ int main() {
         client_thread.join();
         
     } catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << "\n";
+        // std::cerr << "Error: " << e.what() << "\n";
+        LOG_ERROR(client_logger, "Error in main program : {}", e.what());
         return 1;
     }
     

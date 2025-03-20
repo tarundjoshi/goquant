@@ -36,6 +36,47 @@
  namespace asio = boost::asio;
  namespace ssl = asio::ssl;
  using tcp = asio::ip::tcp;
+
+
+ /**
+ * @class BufferPool
+ * @brief A thread-safe pool for managing reusable buffers.
+ *
+ * This class is designed to reduce memory allocation overhead by reusing
+ * buffers in high-frequency operations such as WebSocket message handling.
+ */
+class BufferPool {
+    private:
+        std::vector<std::shared_ptr<boost::beast::flat_buffer>> pool_; ///< Pool of reusable buffers
+        std::mutex mutex_; ///< Mutex for thread-safe access to the pool
+    
+    public:
+         /**
+         * @brief Construct a new BufferPool
+         * @param size The initial size of the pool
+         */
+        BufferPool(size_t size = 10);
+        
+        /**
+         * @brief Acquire a buffer from the pool.
+         *
+         * If the pool is empty, a new buffer is created. Otherwise, an existing
+         * buffer is returned.
+         *
+         * @return A shared pointer to a reusable buffer.
+         */
+        std::shared_ptr<boost::beast::flat_buffer> acquire();
+    
+        /**
+         * @brief Release a buffer back to the pool.
+         *
+         * This method returns a buffer to the pool for reuse by other operations.
+         *
+         * @param buffer The buffer to release.
+         */
+        void release(std::shared_ptr<boost::beast::flat_buffer> buffer);
+    };
+    
  
  /**
   * @class DeriClient
@@ -59,6 +100,7 @@
      const std::string client_id;
      EVP_PKEY* private_key = nullptr;
      quill::Logger* logger;
+     BufferPool buffer_pool;
  
      /**
       * @brief Construct a new DeriClient
@@ -172,6 +214,7 @@
       */
      void unsubscribe_from_orderbook(const std::string& instrument);
  };
+
  
  #endif // DERICLIENT_H
  

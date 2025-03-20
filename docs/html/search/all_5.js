@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['enable_5ftcp_5fnodelay_15',['enable_tcp_nodelay',['../classDeriClient.html#a1bf8315d3ace1053f9d2953ea4a7a551',1,'DeriClient']]],
-  ['ensure_5fderibit_5fsubscription_16',['ensure_deribit_subscription',['../classSubscriptionManager.html#a91ab882ee0102a54ce1082fe72bcefba',1,'SubscriptionManager']]]
+  ['generate_5fnonce_10',['generate_nonce',['../classDeriClient.html#aea3ed5b25b31a55da51fdf491b45c69a',1,'DeriClient']]],
+  ['get_5factive_5fsymbols_11',['get_active_symbols',['../classSubscriptionManager.html#aeaa99dfb2fc6db3b876b96f816092137',1,'SubscriptionManager']]],
+  ['get_5fcurrent_5forderbook_12',['get_current_orderbook',['../classOrderBookManager.html#ad92c418893b8a27b3aced332488e45c3',1,'OrderBookManager']]],
+  ['get_5fcurrent_5ftimestamp_13',['get_current_timestamp',['../classDeriClient.html#a6d820affff4755f5c43feca23d25c3c9',1,'DeriClient']]],
+  ['get_5forder_5fbook_14',['get_order_book',['../classDeriClient.html#ac664a110a7ea5c69ac44eed93007a555',1,'DeriClient']]],
+  ['get_5fpositions_15',['get_positions',['../classDeriClient.html#a6e6f0a4c88b4ade3945f9d45be3767b7',1,'DeriClient']]]
 ];

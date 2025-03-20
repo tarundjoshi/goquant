@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['identity_26',['identity',['../structmoodycamel_1_1details_1_1identity.html',1,'moodycamel::details']]],
-  ['is_5ftrivially_5fdestructible_27',['is_trivially_destructible',['../structmoodycamel_1_1details_1_1is__trivially__destructible.html',1,'moodycamel::details']]]
+  ['load_5fprivate_5fkey_19',['load_private_key',['../classDeriClient.html#ad5c3ae4b5abb1364678dd5de3d407567',1,'DeriClient']]]
 ];

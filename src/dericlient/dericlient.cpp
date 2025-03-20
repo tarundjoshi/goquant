@@ -2,8 +2,31 @@
 #include <iostream>
 #include <simdjson.h>
 
-// DeriClient implementation
 extern std::vector<std::string> order_ids;
+
+std::shared_ptr<boost::beast::flat_buffer> BufferPool::acquire() {
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (!pool_.empty()) {
+        auto buffer = pool_.back();
+        pool_.pop_back();
+        return buffer;
+    }
+    // Create a new buffer if the pool is empty
+    return std::make_shared<boost::beast::flat_buffer>();
+}
+
+void BufferPool::release(std::shared_ptr<boost::beast::flat_buffer> buffer) {
+    buffer->consume(buffer->size());
+    std::lock_guard<std::mutex> lock(mutex_);
+    pool_.push_back(buffer);
+}
+
+BufferPool::BufferPool(size_t size) {
+    pool_.reserve(size);
+    for (size_t i = 0; i < size; ++i) {
+        pool_.emplace_back(std::make_shared<boost::beast::flat_buffer>());
+    }
+}
 
 DeriClient::DeriClient(const std::string& key_path, std::string client_id, quill::Logger* logger)
     : ssl_ctx(ssl::context::tlsv12_client), 
@@ -190,7 +213,7 @@ void DeriClient::connect(const std::string& host, const std::string& port) {
 }
 
 void DeriClient::async_read_response() {
-    auto buffer = std::make_shared<beast::flat_buffer>();
+    auto buffer = buffer_pool.acquire();
     ws->async_read(
         *buffer,
         [this, buffer](boost::system::error_code ec, std::size_t bytes_transferred) {
@@ -452,6 +475,8 @@ void DeriClient::async_read_response() {
             }
             
             // Continue reading the next response
+            buffer_pool.release(buffer);
+            
             async_read_response();
         });
 }

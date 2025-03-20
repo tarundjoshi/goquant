@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['market_5fdata_5fprocessing_5flatencies_29',['market_data_processing_latencies',['../classSubscriptionManager.html#a2fd0dc0eee137a2f1de6222ec8d309a9',1,'SubscriptionManager']]],
-  ['max_5falign_5ft_30',['max_align_t',['../unionmoodycamel_1_1details_1_1max__align__t.html',1,'moodycamel::details']]],
-  ['modify_5forder_31',['modify_order',['../classDeriClient.html#a7cf2af4fcc90bc41816d659258c9eee9',1,'DeriClient']]]
+  ['orderbook_22',['OrderBook',['../classOrderBook.html',1,'OrderBook'],['../classOrderBook.html#aaa1c56400f04085c7b1b9f3d00697e2b',1,'OrderBook::OrderBook(const std::string &amp;symbol)'],['../classOrderBook.html#ac5d132c051e3fdc1c17bd1bb0eb7f8e2',1,'OrderBook::OrderBook()']]],
+  ['orderbookmanager_23',['OrderBookManager',['../classOrderBookManager.html',1,'OrderBookManager'],['../classOrderBookManager.html#a9d2da9568c98627ced817dda6441b51b',1,'OrderBookManager::OrderBookManager()']]]
 ];

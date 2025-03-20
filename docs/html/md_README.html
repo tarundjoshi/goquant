@@ -65,14 +65,14 @@ $(function() {
 <div class="title">High-Performance Trading System </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md50"></a>
 Overview</h1>
 <p>This project implements a high-performance trading system designed to provide low-latency market data processing and order execution. It consists of two primary components:</p>
 <ul>
 <li><b><a class="el" href="classDeriClient.html" title="Client for connecting to Deribit&#39;s WebSocket API.">DeriClient</a></b>: A WebSocket client that connects to Deribit's API, handling authentication, order management, and real-time market data streaming.</li>
 <li><b>Streamer</b>: A WebSocket server that distributes real-time market data to connected clients, manages subscriptions, and maintains local order books.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md2"></a>
+<h1><a class="anchor" id="autotoc_md51"></a>
 Features</h1>
 <ul>
 <li>Real-time order book management with incremental updates</li>
@@ -81,21 +81,21 @@ Features</h1>
 <li>Efficient JSON parsing using simdjson</li>
 <li>Robust error handling and structured logging with Quill</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md3"></a>
+<h1><a class="anchor" id="autotoc_md52"></a>
 Requirements</h1>
 <ul>
 <li><b>C++17</b> compatible compiler (GCC or Clang recommended)</li>
 <li><b>Boost</b> libraries (<code>Beast</code>, <code>ASIO</code>)</li>
 <li><b>OpenSSL</b> for secure WebSocket connections</li>
 <li><b>simdjson</b> for high-performance JSON parsing</li>
-<li><b><a class="el" href="classmoodycamel_1_1ConcurrentQueue.html">moodycamel::ConcurrentQueue</a></b> for lock-free concurrent queues</li>
+<li><b>moodycamel::ConcurrentQueue</b> for lock-free concurrent queues</li>
 <li><b>Quill</b> for high-performance logging</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md53"></a>
 Install Dependencies (Ubuntu/Debian)</h2>
 <div class="fragment"><div class="line">sudo apt-get update </div>
 <div class="line">sudo apt-get install libboost-all-dev libssl-dev cmake git</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md54"></a>
 Third-party Libraries</h2>
 <p>Clone and build third-party libraries:</p>
 <p><b>1) simdjson</b></p>
@@ -109,13 +109,13 @@ Third-party Libraries</h2>
 <div class="fragment"><div class="line">git clone https://github.com/odygrd/quill.git</div>
 <div class="line">cd quill &amp;&amp; mkdir build &amp;&amp; cd build</div>
 <div class="line">cmake .. &amp;&amp; make &amp;&amp; sudo make install</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md55"></a>
 Building the Project</h1>
 <div class="fragment"><div class="line">make</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md56"></a>
 Running the Project</h1>
 <div class="fragment"><div class="line">./a.out</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md57"></a>
 Configuration</h1>
 <p>Adjust the following parameters in <code>main.cpp</code> to configure your setup:</p>
 <table class="markdownTable">
@@ -124,23 +124,15 @@ Configuration</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>CLIENT_ID</code>   </td><td class="markdownTableBodyNone">Deribit API client ID   </td><td class="markdownTableBodyNone"><code>zavRq-oY</code>    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>KEY_PATH</code>   </td><td class="markdownTableBodyNone">Path to your Ed25519 private key file   </td><td class="markdownTableBodyNone"><code>private.pem</code>    </td></tr>
+<td class="markdownTableBodyNone"><code>KEY_PATH</code>   </td><td class="markdownTableBodyNone">Path to your Ed25519 private key file   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>STREAM_ADDR</code>   </td><td class="markdownTableBodyNone">WebSocket server listening address   </td><td class="markdownTableBodyNone"><code>127.0.0.1</code>    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>STREAM_PORT</code>   </td><td class="markdownTableBodyNone">WebSocket server listening port   </td><td class="markdownTableBodyNone"><code>8080</code>   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md9"></a>
-Project Structure</h1>
-<div class="fragment"><div class="line">Order management &amp; execution system/</div>
-<div class="line">├── dericlient.h/.cpp # Client implementation for Deribit API communication</div>
-<div class="line">├── streamer.h/.cpp # WebSocket server implementation for market data distribution</div>
-<div class="line">├── main.cpp # Entry point and configuration of the application</div>
-<div class="line">├── Makefile # Build configuration file</div>
-<div class="line">└── logs/ # Directory containing log files generated by Quill logger</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md58"></a>
 Architecture Overview</h1>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md59"></a>
 DeriClient</h2>
 <p>Handles communication with Deribit's API:</p>
 <ul>
@@ -149,7 +141,7 @@ DeriClient</h2>
 <li>Market data subscription (order book updates).</li>
 <li>Position management.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md60"></a>
 Streamer (WebSocket Server)</h2>
 <p>Real-time market data distribution:</p>
 <ul>
@@ -157,7 +149,7 @@ Streamer (WebSocket Server)</h2>
 <li>Manages client subscriptions efficiently.</li>
 <li>Broadcasts market data updates to subscribed clients.</li>
 </ul>
-<h3><a class="anchor" id="autotoc_md13"></a>
+<h3><a class="anchor" id="autotoc_md61"></a>
 Key Components:</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -169,7 +161,7 @@ Key Components:</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code><a class="el" href="classWebSocketSession.html" title="Handles an individual client WebSocket connection.">WebSocketSession</a></code>   </td><td class="markdownTableBodyNone">Handles individual client connections   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md62"></a>
 Logging</h1>
 <p>The project uses Quill for structured logging. Logs are separated into different files under the <code>/logs</code> directory:</p>
 <ul>
@@ -177,17 +169,17 @@ Logging</h1>
 <li><b>server.log</b>: Logs related to WebSocket server operations and client management.</li>
 <li><b>performance.log</b>: Logs related to latency measurements</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md63"></a>
 Documentation</h1>
 <p>This project includes detailed documentation generated using <b>Doxygen</b>. The documentation provides insights into the project's architecture, usage, and implementation details.</p>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md64"></a>
 Viewing the Documentation</h2>
 <p>To view the documentation:</p>
 <ol type="1">
 <li>Navigate to the <code>docs/html/</code> directory in the project.</li>
 <li>Open the <code>index.html</code> file in your web browser.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md65"></a>
 What’s Included in the Documentation?</h2>
 <p>The Doxygen-generated documentation includes:</p><ul>
 <li>Class hierarchies and relationships.</li>

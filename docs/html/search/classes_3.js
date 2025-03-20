@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['dericlient_78',['DeriClient',['../classDeriClient.html',1,'']]]
+  ['server_48',['Server',['../classServer.html',1,'']]],
+  ['subscriptionmanager_49',['SubscriptionManager',['../classSubscriptionManager.html',1,'']]]
 ];

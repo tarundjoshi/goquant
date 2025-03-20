@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['dericlient_13',['DeriClient',['../classDeriClient.html',1,'DeriClient'],['../classDeriClient.html#a1573f5413fa485892d87c67d32b10e67',1,'DeriClient::DeriClient()']]],
-  ['dericlient_2eh_14',['dericlient.h',['../dericlient_8h.html',1,'']]]
+  ['enable_5ftcp_5fnodelay_8',['enable_tcp_nodelay',['../classDeriClient.html#a1bf8315d3ace1053f9d2953ea4a7a551',1,'DeriClient']]],
+  ['ensure_5fderibit_5fsubscription_9',['ensure_deribit_subscription',['../classSubscriptionManager.html#a91ab882ee0102a54ce1082fe72bcefba',1,'SubscriptionManager']]]
 ];

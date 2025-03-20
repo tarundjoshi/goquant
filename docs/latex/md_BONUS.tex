@@ -1,0 +1,252 @@
+This documentation is part of the bonus section for the project, detailing the optimization techniques implemented to improve CPU performance and reduce latency in high-\/frequency trading systems.\hypertarget{md_BONUS_autotoc_md1}{}\doxysection{Memory Management}\label{md_BONUS_autotoc_md1}
+\hypertarget{md_BONUS_autotoc_md2}{}\doxysubsection{Implemented Techniques}\label{md_BONUS_autotoc_md2}
+\hypertarget{md_BONUS_autotoc_md3}{}\doxysubsubsection{1. Smart Pointers}\label{md_BONUS_autotoc_md3}
+
+\begin{DoxyItemize}
+\item The project uses {\ttfamily std\+::unique\+\_\+ptr} and {\ttfamily std\+::shared\+\_\+ptr} to manage dynamic memory safely.
+\item For example, the Web\+Socket stream ({\ttfamily ws}) in {\ttfamily \mbox{\hyperlink{classDeriClient}{Deri\+Client}}} is managed using a {\ttfamily std\+::unique\+\_\+ptr}, ensuring proper cleanup when the object goes out of scope\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::unique\_ptr<websocket::stream<ssl::streambeast::tcp\_stream>> ws;}
+
+\end{DoxyCode}
+\hypertarget{md_BONUS_autotoc_md4}{}\doxysubsubsection{2. Object Pooling}\label{md_BONUS_autotoc_md4}
+
+\begin{DoxyItemize}
+\item Implemented a {\ttfamily \mbox{\hyperlink{classBufferPool}{Buffer\+Pool}}} class to reuse Web\+Socket buffers, reducing allocation overhead
+\item This optimization significantly reduces memory allocation/deallocation costs in high-\/frequency operations.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md5}{}\doxysubsubsection{3. Efficient Queuing}\label{md_BONUS_autotoc_md5}
+
+\begin{DoxyItemize}
+\item The project uses {\ttfamily moodycamel\+::\+Concurrent\+Queue} for lock-\/free message queuing, reducing memory contention and improving performance.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md6}{}\doxysubsubsection{4. Avoiding Unnecessary Copies}\label{md_BONUS_autotoc_md6}
+
+\begin{DoxyItemize}
+\item The use of {\ttfamily std\+::move} ensures efficient transfer of ownership without copying data unnecessarily.
+\item Lambda captures with {\ttfamily shared\+\_\+from\+\_\+this()} ensure proper object lifetime management.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md7}{}\doxysubsubsection{5. Buffer Reuse and preallocation}\label{md_BONUS_autotoc_md7}
+
+\begin{DoxyItemize}
+\item Shared pointers for the buffer are preallocated during instantiation of the class.
+\item Shared pointers are used for buffers in asynchronous operations to avoid repeated allocations.
+\item Buffers are properly cleared before being returned to the pool.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md8}{}\doxysection{Network Communication}\label{md_BONUS_autotoc_md8}
+\hypertarget{md_BONUS_autotoc_md9}{}\doxysubsection{Implemented Techniques}\label{md_BONUS_autotoc_md9}
+\hypertarget{md_BONUS_autotoc_md10}{}\doxysubsubsection{1. Asynchronous I/O}\label{md_BONUS_autotoc_md10}
+
+\begin{DoxyItemize}
+\item The project uses Boost.\+Asio for non-\/blocking, asynchronous I/O operations, ensuring efficient network communication without blocking threads.
+\end{DoxyItemize}
+
+{\bfseries{Justification for Asynchronous I/O in Trading Systems\+:}}
+
+{\bfseries{High Concurrency\+:}}
+
+
+\begin{DoxyItemize}
+\item Trading systems often need to handle hundreds or thousands of simultaneous Web\+Socket connections for market data updates and order execution. Async I/O enables this level of concurrency efficiently.
+\end{DoxyItemize}
+
+{\bfseries{Low Latency Requirements\+:}}
+
+
+\begin{DoxyItemize}
+\item In trading systems, every microsecond counts. Async I/O minimizes latency by allowing multiple operations to execute concurrently without blocking.
+\end{DoxyItemize}
+
+{\bfseries{Scalability\+:}}
+
+
+\begin{DoxyItemize}
+\item Async I/O scales well with increasing numbers of connections, making it ideal for high-\/frequency trading platforms.
+\end{DoxyItemize}
+
+{\bfseries{Efficient Resource Usage\+:}}
+
+
+\begin{DoxyItemize}
+\item Async I/O reduces resource consumption by eliminating the need for one thread per connection.
+\item Example\+: Asynchronous read and write operations in {\ttfamily \mbox{\hyperlink{classDeriClient}{Deri\+Client}}}\+:
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md11}{}\doxysubsubsection{2. TCP\+\_\+\+NODELAY}\label{md_BONUS_autotoc_md11}
+
+\begin{DoxyItemize}
+\item TCP\+\_\+\+NODELAY is enabled to reduce latency by disabling Nagle\textquotesingle{}s algorithm, ensuring that small packets are sent immediately instead of waiting for more data.
+\item Example\+: Enabling TCP\+\_\+\+NODELAY in {\ttfamily \mbox{\hyperlink{classDeriClient}{Deri\+Client}}}\+:
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md12}{}\doxysubsubsection{3. Web\+Socket Configuration}\label{md_BONUS_autotoc_md12}
+
+\begin{DoxyItemize}
+\item Web\+Socket-\/specific optimizations are applied to reduce write delay and improve throughput\+:
+\item Auto-\/fragmentation is disabled ({\ttfamily ws\+\_\+.\+auto\+\_\+fragment(false)}).
+\item Write buffer size is set ({\ttfamily ws\+\_\+.\+write\+\_\+buffer\+\_\+bytes(4096)}).
+\item Example\+: Web\+Socket session configuration\+:
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md13}{}\doxysubsubsection{4. Message Queuing}\label{md_BONUS_autotoc_md13}
+
+\begin{DoxyItemize}
+\item The project uses {\ttfamily moodycamel\+::\+Concurrent\+Queue} for lock-\/free queuing of outgoing messages, ensuring efficient handling of multiple write operations.
+\item Example\+: Adding messages to the queue and triggering writes\+:
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md14}{}\doxysection{Data Structure Selection}\label{md_BONUS_autotoc_md14}
+\hypertarget{md_BONUS_autotoc_md15}{}\doxysubsection{Implemented Techniques}\label{md_BONUS_autotoc_md15}
+\hypertarget{md_BONUS_autotoc_md16}{}\doxysubsubsection{1. Ordered Maps for Order Books}\label{md_BONUS_autotoc_md16}
+
+\begin{DoxyItemize}
+\item The project uses {\ttfamily std\+::map} to represent order books, where bids and asks are stored as price → size mappings.
+\item Bids are sorted in descending order ({\ttfamily std\+::greater$<$double$>$}), while asks are sorted in ascending order ({\ttfamily std\+::less$<$double$>$}).
+\item This ensures efficient retrieval of the best bid and ask prices during trading operations.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md17}{}\doxysubsubsection{2. Unordered Maps for Fast Lookups}\label{md_BONUS_autotoc_md17}
+
+\begin{DoxyItemize}
+\item {\ttfamily std\+::unordered\+\_\+map} is used for storing and retrieving order books by symbol and request methods by ID.
+\item Provides average O(1) time complexity for lookups, which is critical for high-\/frequency trading systems.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md18}{}\doxysubsubsection{3. Concurrent Queues for Thread-\/\+Safe Operations}\label{md_BONUS_autotoc_md18}
+
+\begin{DoxyItemize}
+\item {\ttfamily moodycamel\+::\+Concurrent\+Queue} is used for lock-\/free queuing of outgoing Web\+Socket messages.
+\item Ensures thread-\/safe access without the overhead of mutexes or locks.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md19}{}\doxysubsubsection{4. Sets for Subscriber Management}\label{md_BONUS_autotoc_md19}
+
+\begin{DoxyItemize}
+\item {\ttfamily std\+::set} is used to track subscribers for each trading symbol. This ensures efficient insertion, deletion, and lookup operations.
+\item Example\+:
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md20}{}\doxysubsubsection{5. Flat Buffers for Efficient Message Handling}\label{md_BONUS_autotoc_md20}
+
+\begin{DoxyItemize}
+\item {\ttfamily boost\+::beast\+::flat\+\_\+buffer} is used to store incoming Web\+Socket messages.
+\item Provides a compact and efficient buffer representation suitable for high-\/frequency message handling.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md21}{}\doxysection{Thread Management}\label{md_BONUS_autotoc_md21}
+\hypertarget{md_BONUS_autotoc_md22}{}\doxysubsection{Implemented Techniques}\label{md_BONUS_autotoc_md22}
+\hypertarget{md_BONUS_autotoc_md23}{}\doxysubsubsection{1. Asynchronous I/\+O Eliminates Thread Management}\label{md_BONUS_autotoc_md23}
+
+\begin{DoxyItemize}
+\item The project uses Boost.\+Asio\textquotesingle{}s asynchronous I/O model, which eliminates the need for explicit thread management.
+\item All operations (e.\+g., Web\+Socket reads, writes, and timers) are handled via callbacks, ensuring non-\/blocking execution without requiring dedicated threads for each connection.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md24}{}\doxysection{CPU Optimization}\label{md_BONUS_autotoc_md24}
+\hypertarget{md_BONUS_autotoc_md25}{}\doxysubsection{Implemented Techniques}\label{md_BONUS_autotoc_md25}
+\hypertarget{md_BONUS_autotoc_md26}{}\doxysubsubsection{1. SIMD-\/\+Optimized JSON Parsing}\label{md_BONUS_autotoc_md26}
+
+\begin{DoxyItemize}
+\item The project uses {\ttfamily simdjson} for parsing JSON responses from the Deribit API.
+\item {\ttfamily simdjson} leverages SIMD (Single Instruction, Multiple Data) instructions to process multiple bytes of JSON data simultaneously, significantly improving performance compared to traditional parsers.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md27}{}\doxysubsubsection{2. Compiler Optimization Flags}\label{md_BONUS_autotoc_md27}
+
+\begin{DoxyItemize}
+\item The project is compiled with aggressive optimization flags ({\ttfamily -\/O3}) to enable features like inlining, vectorization, and loop unrolling.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md28}{}\doxysubsubsection{3. CPU Frequency Scaling}\label{md_BONUS_autotoc_md28}
+
+\begin{DoxyItemize}
+\item Disable dynamic CPU frequency scaling (e.\+g., Intel Speed\+Step) to prevent latency spikes caused by frequency changes. Locking the CPU frequency at its maximum performance level makes sure consistent and predictable processing times.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md29}{}\doxysubsubsection{4. Use of Huge Pages}\label{md_BONUS_autotoc_md29}
+
+\begin{DoxyItemize}
+\item Huge pages reduce the overhead of memory management by using larger page sizes. This can reduce TLB (Translation Lookaside Buffer) misses and improve memory access performance.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md30}{}\doxysection{Detailed Analysis of Bottlenecks Identified}\label{md_BONUS_autotoc_md30}
+\hypertarget{md_BONUS_autotoc_md31}{}\doxysubsubsection{Bottleneck 1\+: Web\+Socket Message Propagation}\label{md_BONUS_autotoc_md31}
+
+\begin{DoxyItemize}
+\item {\bfseries{Observation}}\+: The Web\+Socket propagation latency statistics show\+:
+\begin{DoxyItemize}
+\item Average latency\+: {\bfseries{0.\+35 ms}}
+\item 95th percentile\+: {\bfseries{0.\+41 ms}}
+\item 99th percentile\+: {\bfseries{0.\+79 ms}}
+\end{DoxyItemize}
+\item {\bfseries{Cause}}\+: Latency spikes in the 99th percentile indicate occasional delays, likely due to message queuing or network-\/related overhead.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md32}{}\doxysubsubsection{Bottleneck 2\+: Order Placement Latency}\label{md_BONUS_autotoc_md32}
+
+\begin{DoxyItemize}
+\item {\bfseries{Observation}}\+: The order placement latency statistics show\+:
+\begin{DoxyItemize}
+\item Average latency\+: {\bfseries{170.\+4 ms}}
+\item Max latency\+: {\bfseries{181.\+3 ms}}
+\end{DoxyItemize}
+\item {\bfseries{Cause}}\+: High latencies are caused by network round-\/trip times (the ping to Deribit was showing {\bfseries{170 -\/ 171 ms}}) and the processing time required by the Deribit API.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md33}{}\doxysubsubsection{Bottleneck 3\+: Market Data Processing}\label{md_BONUS_autotoc_md33}
+
+\begin{DoxyItemize}
+\item {\bfseries{Observation}}\+: The market data processing statistics show\+:
+\begin{DoxyItemize}
+\item Average processing time\+: {\bfseries{8.\+58 µs}}
+\item Max processing time\+: {\bfseries{97.\+87 µs}}
+\end{DoxyItemize}
+\item {\bfseries{Cause}}\+: Occasional spikes in processing time are likely due to JSON parsing or order book updates, especially when the initial snapshot is received, it is larger in size thus may lead to spikes.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md34}{}\doxysection{Benchmarking and Performance Analysis}\label{md_BONUS_autotoc_md34}
+\hypertarget{md_BONUS_autotoc_md35}{}\doxysubsection{1. Benchmarking Methodology}\label{md_BONUS_autotoc_md35}
+\hypertarget{md_BONUS_autotoc_md36}{}\doxysubsubsection{Tools Used}\label{md_BONUS_autotoc_md36}
+
+\begin{DoxyItemize}
+\item {\bfseries{High-\/resolution timers}} ({\ttfamily std\+::chrono\+::high\+\_\+resolution\+\_\+clock}) were used to measure latencies at nanosecond precision.
+\item Performance metrics were collected for\+:
+\begin{DoxyItemize}
+\item Web\+Socket message propagation latency
+\item Order placement latency
+\item Market data processing latency
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md37}{}\doxysubsubsection{Steps Taken}\label{md_BONUS_autotoc_md37}
+\hypertarget{md_BONUS_autotoc_md38}{}\doxyparagraph{Web\+Socket Propagation Latency\+:}\label{md_BONUS_autotoc_md38}
+
+\begin{DoxyItemize}
+\item A ping-\/pong mechanism was implemented to measure round-\/trip message latency.
+\item Metrics were collected for a sample size of {\bfseries{1000 messages}}.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md39}{}\doxyparagraph{Order Placement Latency\+:}\label{md_BONUS_autotoc_md39}
+
+\begin{DoxyItemize}
+\item Timestamps were recorded before sending an order and after receiving a response from the Deribit API.
+\item Metrics were collected for a sample size of {\bfseries{1000 orders}}.
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md40}{}\doxyparagraph{Market Data Processing Latency\+:}\label{md_BONUS_autotoc_md40}
+
+\begin{DoxyItemize}
+\item Timestamps were recorded before and after processing market data messages.
+\item Metrics were collected for a sample size of {\bfseries{1000 messages}}.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md_BONUS_autotoc_md42}{}\doxysubsection{2. Before/\+After Performance Metrics}\label{md_BONUS_autotoc_md42}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Metric   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Before Optimization   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ After Optimization    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Metric   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Before Optimization   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ After Optimization    }\\\cline{1-3}
+\endhead
+{\bfseries{Web\+Socket Propagation Latency (ms)}}   &Avg\+: $\sim$0.50, Max\+: $\sim$1.20   &Avg\+: 0.\+35, Max\+: 0.\+79    \\\cline{1-3}
+{\bfseries{Order Placement Latency (ns)}}   &Avg\+: $\sim$200M, Max\+: $\sim$250M   &Avg\+: 170M, Max\+: 181M    \\\cline{1-3}
+{\bfseries{Market Data Processing (ns)}}   &Avg\+: $\sim$12K, Max\+: $\sim$150K   &Avg\+: 8.\+58K, Max\+: $\sim$97K   \\\cline{1-3}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md_BONUS_autotoc_md44}{}\doxysubsection{Observations}\label{md_BONUS_autotoc_md44}
+\hypertarget{md_BONUS_autotoc_md45}{}\doxysubsubsection{Web\+Socket Propagation Latency\+:}\label{md_BONUS_autotoc_md45}
+
+\begin{DoxyItemize}
+\item {\bfseries{Improvement}}\+: Reduced from an average of $\sim$0.50 ms to {\bfseries{0.\+35 ms}}, with the maximum latency reduced from $\sim$1.20 ms to {\bfseries{0.\+79 ms}}.
+\item {\bfseries{Cause of Improvement}}\+:
+\begin{DoxyItemize}
+\item Disabled Web\+Socket auto-\/fragmentation ({\ttfamily ws\+\_\+.\+auto\+\_\+fragment(false)}).
+\item Enabled {\ttfamily TCP\+\_\+\+NODELAY} to disable Nagle\textquotesingle{}s algorithm and send small packets immediately.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md46}{}\doxysubsubsection{Order Placement Latency\+:}\label{md_BONUS_autotoc_md46}
+
+\begin{DoxyItemize}
+\item {\bfseries{Improvement}}\+: Reduced from an average of $\sim$200 ms to {\bfseries{170 ms}}, with the maximum latency reduced from $\sim$250 ms to {\bfseries{181 ms}}.
+\item {\bfseries{Cause of Improvement}}\+:
+\begin{DoxyItemize}
+\item Optimized JSON serialization/deserialization using {\ttfamily simdjson}.
+\item Efficient queuing with {\ttfamily moodycamel\+::\+Concurrent\+Queue} for outgoing messages.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md_BONUS_autotoc_md47}{}\doxysubsubsection{Market Data Processing Latency\+:}\label{md_BONUS_autotoc_md47}
+
+\begin{DoxyItemize}
+\item {\bfseries{Improvement}}\+: Reduced from an average of $\sim$12 µs to {\bfseries{8.\+58 µs}}, with the maximum latency reduced from $\sim$150 µs to {\bfseries{97 µs}}.
+\item {\bfseries{Cause of Improvement}}\+:
+\begin{DoxyItemize}
+\item Reused buffers via a custom object pool to avoid frequent memory allocation/deallocation.
+\item Optimized JSON parsing with {\ttfamily simdjson}.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+ 

@@ -1,5 +1,5 @@
 all:
-	g++ -std=c++17 ./src/main.cpp ./src/streamer/streamer.cpp ./src/dericlient/dericlient.cpp \
+	g++ -O3 -std=c++17 ./src/main.cpp ./src/streamer/streamer.cpp ./src/dericlient/dericlient.cpp \
         -I /usr/include \
         -I /usr/local/include \
         -I ./src/ \

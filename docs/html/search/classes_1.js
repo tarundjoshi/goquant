@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['blockingconcurrentqueue_71',['BlockingConcurrentQueue',['../classmoodycamel_1_1BlockingConcurrentQueue.html',1,'moodycamel']]]
+  ['dericlient_45',['DeriClient',['../classDeriClient.html',1,'']]]
 ];

@@ -79,8 +79,8 @@ Collaboration diagram for DeriClient:</div>
 <div class="dyncontent">
 <div class="center"><img src="classDeriClient__coll__graph.png" border="0" usemap="#aDeriClient_coll__map" alt="Collaboration graph"/></div>
 <map name="aDeriClient_coll__map" id="aDeriClient_coll__map">
-<area shape="rect" title="Client for connecting to Deribit&#39;s WebSocket API." alt="" coords="76,109,163,136"/>
-<area shape="rect" href="classmoodycamel_1_1ConcurrentQueue.html" title=" " alt="" coords="5,5,233,47"/>
+<area shape="rect" title="Client for connecting to Deribit&#39;s WebSocket API." alt="" coords="7,95,93,121"/>
+<area shape="rect" href="classBufferPool.html" title="A thread&#45;safe pool for managing reusable buffers." alt="" coords="5,5,95,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -166,7 +166,7 @@ std::unordered_map&lt; uint64_t, std::chrono::time_point&lt; std::chrono::high_r
 std::vector&lt; long long &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>order_latencies</b></td></tr>
 <tr class="separator:a34dfb919f47fe39a268105a20aaefc2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c98bc50574cae4cd5e79828e01be1d1"><td class="memItemLeft" align="right" valign="top"><a id="a7c98bc50574cae4cd5e79828e01be1d1"></a>
-<a class="el" href="classmoodycamel_1_1ConcurrentQueue.html">moodycamel::ConcurrentQueue</a>&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>write_queue</b></td></tr>
+moodycamel::ConcurrentQueue&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>write_queue</b></td></tr>
 <tr class="separator:a7c98bc50574cae4cd5e79828e01be1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12e8ca2f31a387609d34d86c2c36cd99"><td class="memItemLeft" align="right" valign="top"><a id="a12e8ca2f31a387609d34d86c2c36cd99"></a>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>request_id</b></td></tr>
@@ -183,6 +183,9 @@ EVP_PKEY *&#160;</td><td class="memItemRight" valign="bottom"><b>private_key</b>
 <tr class="memitem:a2a3fdd6b9c7b37329dc9475def57f467"><td class="memItemLeft" align="right" valign="top"><a id="a2a3fdd6b9c7b37329dc9475def57f467"></a>
 quill::Logger *&#160;</td><td class="memItemRight" valign="bottom"><b>logger</b></td></tr>
 <tr class="separator:a2a3fdd6b9c7b37329dc9475def57f467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3c7d16f4aac817f2aadf6d65b8580ed"><td class="memItemLeft" align="right" valign="top"><a id="ad3c7d16f4aac817f2aadf6d65b8580ed"></a>
+<a class="el" href="classBufferPool.html">BufferPool</a>&#160;</td><td class="memItemRight" valign="bottom"><b>buffer_pool</b></td></tr>
+<tr class="separator:ad3c7d16f4aac817f2aadf6d65b8580ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Client for connecting to Deribit's WebSocket API. </p>

@@ -1,0 +1,84 @@
+\hypertarget{classBufferPool}{}\doxysection{Buffer\+Pool Class Reference}
+\label{classBufferPool}\index{BufferPool@{BufferPool}}
+
+
+A thread-\/safe pool for managing reusable buffers.  
+
+
+
+
+{\ttfamily \#include $<$dericlient.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBufferPool_a7ebd11966dcd5294a74d0b3116fc7db7}{Buffer\+Pool}} (size\+\_\+t size=10)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classBufferPool}{Buffer\+Pool}}. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ boost\+::beast\+::flat\+\_\+buffer $>$ \mbox{\hyperlink{classBufferPool_a9aa9209a5c393b9a932160df934044af}{acquire}} ()
+\begin{DoxyCompactList}\small\item\em Acquire a buffer from the pool. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBufferPool_aa0223fb78c5f635058ec370867b86cc3}{release}} (std\+::shared\+\_\+ptr$<$ boost\+::beast\+::flat\+\_\+buffer $>$ buffer)
+\begin{DoxyCompactList}\small\item\em Release a buffer back to the pool. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A thread-\/safe pool for managing reusable buffers. 
+
+This class is designed to reduce memory allocation overhead by reusing buffers in high-\/frequency operations such as Web\+Socket message handling. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBufferPool_a7ebd11966dcd5294a74d0b3116fc7db7}\label{classBufferPool_a7ebd11966dcd5294a74d0b3116fc7db7}} 
+\index{BufferPool@{BufferPool}!BufferPool@{BufferPool}}
+\index{BufferPool@{BufferPool}!BufferPool@{BufferPool}}
+\doxysubsubsection{\texorpdfstring{BufferPool()}{BufferPool()}}
+{\footnotesize\ttfamily Buffer\+Pool\+::\+Buffer\+Pool (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size = {\ttfamily 10} }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classBufferPool}{Buffer\+Pool}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The initial size of the pool \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBufferPool_a9aa9209a5c393b9a932160df934044af}\label{classBufferPool_a9aa9209a5c393b9a932160df934044af}} 
+\index{BufferPool@{BufferPool}!acquire@{acquire}}
+\index{acquire@{acquire}!BufferPool@{BufferPool}}
+\doxysubsubsection{\texorpdfstring{acquire()}{acquire()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ boost\+::beast\+::flat\+\_\+buffer $>$ Buffer\+Pool\+::acquire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Acquire a buffer from the pool. 
+
+If the pool is empty, a new buffer is created. Otherwise, an existing buffer is returned.
+
+\begin{DoxyReturn}{Returns}
+A shared pointer to a reusable buffer. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBufferPool_aa0223fb78c5f635058ec370867b86cc3}\label{classBufferPool_aa0223fb78c5f635058ec370867b86cc3}} 
+\index{BufferPool@{BufferPool}!release@{release}}
+\index{release@{release}!BufferPool@{BufferPool}}
+\doxysubsubsection{\texorpdfstring{release()}{release()}}
+{\footnotesize\ttfamily void Buffer\+Pool\+::release (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ boost\+::beast\+::flat\+\_\+buffer $>$}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Release a buffer back to the pool. 
+
+This method returns a buffer to the pool for reuse by other operations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The buffer to release. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/dericlient/\mbox{\hyperlink{dericlient_8h}{dericlient.\+h}}\item 
+src/dericlient/dericlient.\+cpp\end{DoxyCompactItemize}

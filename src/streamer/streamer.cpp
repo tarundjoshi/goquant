@@ -223,37 +223,42 @@ void WebSocketSession::write_next() {
  }
  
  void WebSocketSession::do_read() {
-     ws_.async_read(
-         buffer_,
-         beast::bind_front_handler(
-             &WebSocketSession::on_read,
-             shared_from_this()));
- }
- 
- void WebSocketSession::on_read(beast::error_code ec, std::size_t bytes_transferred) {
+    auto buffer = buffer_pool.acquire();
+    
+    ws_.async_read(
+        *buffer,
+        [self = shared_from_this(), buffer](beast::error_code ec, std::size_t bytes_transferred) {
+            self->on_read(ec, bytes_transferred, buffer);
+        });
+}
+
+void WebSocketSession::on_read(beast::error_code ec, std::size_t bytes_transferred, 
+                              std::shared_ptr<beast::flat_buffer> buffer) {
     // Check for connection closed or reset
     if(ec == websocket::error::closed || ec == boost::asio::error::connection_reset) {
         LOG_INFO(logger, "WebSocket connection closed: {}", ec.message());
         // Clean up resources properly
         subscription_manager_.unsubscribe_all(this);
+        buffer_pool.release(buffer); // Release the buffer before returning
         return;  // Don't attempt further reads
     }
      
-     if(ec) {
-        //  std::cerr << "Read failed: " << ec.message() << std::endl;
+    if(ec) {
         LOG_ERROR(logger, "Read failed: {}", ec.message());
-         return;
-     }
+        buffer_pool.release(buffer); // Release the buffer before returning
+        return;
+    }
      
-     // Process the message (e.g., handle subscriptions)
-     process_message(beast::buffers_to_string(buffer_.data()));
+    // Process the message (e.g., handle subscriptions)
+    process_message(beast::buffers_to_string(buffer->data()));
      
-     // Clear the buffer
-     buffer_.consume(buffer_.size());
+    // Release the buffer back to the pool
+    buffer_pool.release(buffer);
      
-     // Read the next message
-     do_read();
- }
+    // Read the next message
+    do_read();
+}
+
  
  void WebSocketSession::on_write(beast::error_code ec, std::size_t bytes_transferred) {
      if(ec) {

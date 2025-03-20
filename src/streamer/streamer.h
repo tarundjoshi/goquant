@@ -217,8 +217,6 @@
  private:
      /// The WebSocket stream for this client
      websocket::stream<beast::tcp_stream> ws_;
-     /// Buffer for reading messages from the client
-     beast::flat_buffer buffer_;
      /// Reference to the subscription manager
      SubscriptionManager& subscription_manager_;
      /// Set of symbols this client is subscribed to
@@ -232,6 +230,8 @@
      std::atomic<bool> is_writing_{false};
      
      quill::Logger* logger;
+
+     BufferPool buffer_pool;
  
  public:
      /**
@@ -282,12 +282,13 @@
       * @param ec Error code
       * @param bytes_transferred Number of bytes read
       */
-     void on_read(beast::error_code ec, std::size_t bytes_transferred);
+     void on_read(beast::error_code ec, std::size_t bytes_transferred, std::shared_ptr<boost::beast::flat_buffer> buffer_);
  
      /**
       * @brief Handler for write completion
       * @param ec Error code
       * @param bytes_transferred Number of bytes written
+      * @param buffer_ The buffer being written
       */
      void on_write(beast::error_code ec, std::size_t bytes_transferred);
  

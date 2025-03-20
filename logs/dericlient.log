@@ -1,452 +1,482 @@
-[15:25:15.898104593] [DeriClient] [INFO] Private key loaded successfully.
-[15:25:16.632587682] [DeriClient] [INFO] Placing order for BTC-PERPETUAL: buy 10 @ 85000 nsD
-[15:25:16.632548439] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:16.632548439] [DeriClient] [DEBUG]             "jsonrpc": "2.0",
-[15:25:16.632548439] [DeriClient] [DEBUG]             "id": 0,
-[15:25:16.632548439] [DeriClient] [DEBUG]             "method": "public/auth",
-[15:25:16.632548439] [DeriClient] [DEBUG]             "params": {
-[15:25:16.632548439] [DeriClient] [DEBUG]                 "grant_type": "client_signature",
-[15:25:16.632548439] [DeriClient] [DEBUG]                 "client_id": "zavRq-oY",
-[15:25:16.632548439] [DeriClient] [DEBUG]                 "timestamp": 1742464516632,
-[15:25:16.632548439] [DeriClient] [DEBUG]                 "signature": "n1oZ92hSjcwNJ_45j2mUfUBq_Q8TFg_12bDeBwgSptMFD_7LwpG7ywq9jGkv5UaSbnQ13CvXIzuN7M4aY4sxCA",
-[15:25:16.632548439] [DeriClient] [DEBUG]                 "nonce": "gkpqQubWQipcfV6e",
-[15:25:16.632548439] [DeriClient] [DEBUG]                 "data": ""
-[15:25:16.632548439] [DeriClient] [DEBUG]             }
-[15:25:16.632548439] [DeriClient] [DEBUG]         }
-[15:25:16.632647215] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:16.632647215] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:16.632647215] [DeriClient] [DEBUG]         "id": 1,
-[15:25:16.632647215] [DeriClient] [DEBUG]         "method": "private/buy",
-[15:25:16.632647215] [DeriClient] [DEBUG]         "params": {
-[15:25:16.632647215] [DeriClient] [DEBUG]         "instrument_name": "BTC-PERPETUAL",
-[15:25:16.632647215] [DeriClient] [DEBUG]         "amount": 10.000000,
-[15:25:16.632647215] [DeriClient] [DEBUG]         "price": 85000.000000,
-[15:25:16.632647215] [DeriClient] [DEBUG]         "type": "limit",
-[15:25:16.632647215] [DeriClient] [DEBUG]         "label": "test",
-[15:25:16.632647215] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled","max_show": 10.000000,
-[15:25:16.632647215] [DeriClient] [DEBUG]         "timestamp": 1742464516632,
-[15:25:16.632647215] [DeriClient] [DEBUG]         "signature": "LYvBOL-DqIcBJKWC7mYX02CPiXKAUgfc62zHxcLCSf5OEkgLJidmMcqkSdIFRCnXvCp48Yv1JS3Gy7gTjzr0AA"
-[15:25:16.632647215] [DeriClient] [DEBUG]         }
-[15:25:16.632647215] [DeriClient] [DEBUG]         }
-[15:25:16.632680004] [DeriClient] [INFO] Placing order for BTC-28MAR25: buy 10 @ 86000 nsD
-[15:25:16.632708849] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:16.632708849] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:16.632708849] [DeriClient] [DEBUG]         "id": 2,
-[15:25:16.632708849] [DeriClient] [DEBUG]         "method": "private/buy",
-[15:25:16.632708849] [DeriClient] [DEBUG]         "params": {
-[15:25:16.632708849] [DeriClient] [DEBUG]         "instrument_name": "BTC-28MAR25",
-[15:25:16.632708849] [DeriClient] [DEBUG]         "amount": 10.000000,
-[15:25:16.632708849] [DeriClient] [DEBUG]         "price": 86000.000000,
-[15:25:16.632708849] [DeriClient] [DEBUG]         "type": "market",
-[15:25:16.632708849] [DeriClient] [DEBUG]         "label": "test",
-[15:25:16.632708849] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled",
-[15:25:16.632708849] [DeriClient] [DEBUG]         "timestamp": 1742464516632,
-[15:25:16.632708849] [DeriClient] [DEBUG]         "signature": "JIWdVLUB-ofNNbxKOF8r6v4czMkZmV3bq-oHlOe28_pxu7ZMvVt4VzmBK9lnx1qjg30960idb5FW0FnVUxDJAA"
-[15:25:16.632708849] [DeriClient] [DEBUG]         }
-[15:25:16.632708849] [DeriClient] [DEBUG]         }
-[15:25:16.632766721] [DeriClient] [INFO] Placing order for BTC-28MAR25-60000-C: buy 2 @ 0.344 nsD
-[15:25:16.632790010] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:16.632790010] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:16.632790010] [DeriClient] [DEBUG]         "id": 3,
-[15:25:16.632790010] [DeriClient] [DEBUG]         "method": "private/buy",
-[15:25:16.632790010] [DeriClient] [DEBUG]         "params": {
-[15:25:16.632790010] [DeriClient] [DEBUG]         "instrument_name": "BTC-28MAR25-60000-C",
-[15:25:16.632790010] [DeriClient] [DEBUG]         "amount": 2.000000,
-[15:25:16.632790010] [DeriClient] [DEBUG]         "price": 0.344000,
-[15:25:16.632790010] [DeriClient] [DEBUG]         "type": "market",
-[15:25:16.632790010] [DeriClient] [DEBUG]         "label": "test",
-[15:25:16.632790010] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled","max_show": 2.000000,
-[15:25:16.632790010] [DeriClient] [DEBUG]         "timestamp": 1742464516632,
-[15:25:16.632790010] [DeriClient] [DEBUG]         "signature": "y-gb1GBz2SVOe5ReIWsoKP6GfyKxyNYJ_Biky_2FvOo6KuUocKLtKgDdqK9RMLud4QgN8-zVK4ufPfmKE26nCA"
-[15:25:16.632790010] [DeriClient] [DEBUG]         }
-[15:25:16.632790010] [DeriClient] [DEBUG]         }
-[15:25:16.632846108] [DeriClient] [INFO] Placing order for BTC_USDC: buy 0.1 @ 85000 nsD
-[15:25:16.632868648] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:16.632868648] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:16.632868648] [DeriClient] [DEBUG]         "id": 4,
-[15:25:16.632868648] [DeriClient] [DEBUG]         "method": "private/buy",
-[15:25:16.632868648] [DeriClient] [DEBUG]         "params": {
-[15:25:16.632868648] [DeriClient] [DEBUG]         "instrument_name": "BTC_USDC",
-[15:25:16.632868648] [DeriClient] [DEBUG]         "amount": 0.100000,
-[15:25:16.632868648] [DeriClient] [DEBUG]         "price": 85000.000000,
-[15:25:16.632868648] [DeriClient] [DEBUG]         "type": "limit",
-[15:25:16.632868648] [DeriClient] [DEBUG]         "label": "test",
-[15:25:16.632868648] [DeriClient] [DEBUG]         "timestamp": 1742464516632,
-[15:25:16.632868648] [DeriClient] [DEBUG]         "signature": "8_kzjBRJNTpC754MhT09JLr76S9m4d7Xva9KLVRW2U2b_R2Kd5ofiBhPMGn_VGjP1d0ZJB7zIvMKGWg5a1eIBQ"
-[15:25:16.632868648] [DeriClient] [DEBUG]         }
-[15:25:16.632868648] [DeriClient] [DEBUG]         }
-[15:25:16.632930710] [DeriClient] [INFO] Placing order for BTC-PERPETUAL: sell 10 @ 85000 nsD
-[15:25:16.632955112] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:16.632955112] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:16.632955112] [DeriClient] [DEBUG]         "id": 5,
-[15:25:16.632955112] [DeriClient] [DEBUG]         "method": "private/sell",
-[15:25:16.632955112] [DeriClient] [DEBUG]         "params": {
-[15:25:16.632955112] [DeriClient] [DEBUG]         "instrument_name": "BTC-PERPETUAL",
-[15:25:16.632955112] [DeriClient] [DEBUG]         "amount": 10.000000,
-[15:25:16.632955112] [DeriClient] [DEBUG]         "price": 85000.000000,
-[15:25:16.632955112] [DeriClient] [DEBUG]         "type": "limit",
-[15:25:16.632955112] [DeriClient] [DEBUG]         "label": "test",
-[15:25:16.632955112] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled","max_show": 10.000000,
-[15:25:16.632955112] [DeriClient] [DEBUG]         "timestamp": 1742464516632,
-[15:25:16.632955112] [DeriClient] [DEBUG]         "signature": "bUcQ0xXO0BBICVPTSbRnwvaOGYGL_4CIcbnKLhBDX_hCID9L46uwIM60MirxcujxmTKu7k4X2kh4yc2rH3BwAA"
-[15:25:16.632955112] [DeriClient] [DEBUG]         }
-[15:25:16.632955112] [DeriClient] [DEBUG]         }
-[15:25:16.633011507] [DeriClient] [INFO] Placing order for BTC-28MAR25: sell 10 @ 86000 nsD
-[15:25:16.633043185] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:16.633043185] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:16.633043185] [DeriClient] [DEBUG]         "id": 6,
-[15:25:16.633043185] [DeriClient] [DEBUG]         "method": "private/sell",
-[15:25:16.633043185] [DeriClient] [DEBUG]         "params": {
-[15:25:16.633043185] [DeriClient] [DEBUG]         "instrument_name": "BTC-28MAR25",
-[15:25:16.633043185] [DeriClient] [DEBUG]         "amount": 10.000000,
-[15:25:16.633043185] [DeriClient] [DEBUG]         "price": 86000.000000,
-[15:25:16.633043185] [DeriClient] [DEBUG]         "type": "market",
-[15:25:16.633043185] [DeriClient] [DEBUG]         "label": "test",
-[15:25:16.633043185] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled",
-[15:25:16.633043185] [DeriClient] [DEBUG]         "timestamp": 1742464516632,
-[15:25:16.633043185] [DeriClient] [DEBUG]         "signature": "Ek92aWp-L9apj9qPsnVXn7Kx-nbYPy2PNolLUqn-nHZhVIjYTdgrn-rF6oXP-NjvHOz3a4aAj6GCDWIiU9dKCQ"
-[15:25:16.633043185] [DeriClient] [DEBUG]         }
-[15:25:16.633043185] [DeriClient] [DEBUG]         }
-[15:25:16.633096869] [DeriClient] [INFO] Placing order for BTC-28MAR25-60000-C: sell 2 @ 1 nsD
-[15:25:16.633117061] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:16.633117061] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:16.633117061] [DeriClient] [DEBUG]         "id": 7,
-[15:25:16.633117061] [DeriClient] [DEBUG]         "method": "private/sell",
-[15:25:16.633117061] [DeriClient] [DEBUG]         "params": {
-[15:25:16.633117061] [DeriClient] [DEBUG]         "instrument_name": "BTC-28MAR25-60000-C",
-[15:25:16.633117061] [DeriClient] [DEBUG]         "amount": 2.000000,
-[15:25:16.633117061] [DeriClient] [DEBUG]         "price": 1.000000,
-[15:25:16.633117061] [DeriClient] [DEBUG]         "type": "limit",
-[15:25:16.633117061] [DeriClient] [DEBUG]         "label": "test",
-[15:25:16.633117061] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled","max_show": 2.000000,
-[15:25:16.633117061] [DeriClient] [DEBUG]         "timestamp": 1742464516633,
-[15:25:16.633117061] [DeriClient] [DEBUG]         "signature": "L_pGgJAfSumfGcWpQStuj_IojK2qbi6OW6zO7lxDJWSeE4ANLWx0Yd8eVdNbA1cxxPMiKqhx7S5ft3rS3wi9Dg"
-[15:25:16.633117061] [DeriClient] [DEBUG]         }
-[15:25:16.633117061] [DeriClient] [DEBUG]         }
-[15:25:16.633172334] [DeriClient] [INFO] Placing order for BTC_USDC: sell 0.1 @ 85000 nsD
-[15:25:16.633193911] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:16.633193911] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:16.633193911] [DeriClient] [DEBUG]         "id": 8,
-[15:25:16.633193911] [DeriClient] [DEBUG]         "method": "private/sell",
-[15:25:16.633193911] [DeriClient] [DEBUG]         "params": {
-[15:25:16.633193911] [DeriClient] [DEBUG]         "instrument_name": "BTC_USDC",
-[15:25:16.633193911] [DeriClient] [DEBUG]         "amount": 0.100000,
-[15:25:16.633193911] [DeriClient] [DEBUG]         "price": 85000.000000,
-[15:25:16.633193911] [DeriClient] [DEBUG]         "type": "market",
-[15:25:16.633193911] [DeriClient] [DEBUG]         "label": "test",
-[15:25:16.633193911] [DeriClient] [DEBUG]         "timestamp": 1742464516633,
-[15:25:16.633193911] [DeriClient] [DEBUG]         "signature": "QXw4eWwB9uNXpMlVnBPgb-E4lDQxbAPO5AWDNXTOH4w7-PAvXnP9AHPJbAt5O0tcI_qnO1_5ziJswenLmUlcAw"
-[15:25:16.633193911] [DeriClient] [DEBUG]         }
-[15:25:16.633193911] [DeriClient] [DEBUG]         }
-[15:25:16.802749610] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":0,"result":{"enabled_features":["block_trade_approval"],"access_token":"1774000516749.1QrGKlBr.cG-XhqW8bPGWr6Z2Zo-oAY6Pb2RZGbWQJbz4_5k-ipNYUoWjvXQw88vVNWFLtGnUQkWqfhOIEpMOy02zmnsbzFfxzo_G0aQsayXo_PUZTG5bF6i2NNwaqUzKj0jeSaFYp9fanTFeEJSm7PCHaGHrsmcjq3toNvZwztaWET240EOhe-w89UDI7O-Z0a5PNAUz87Z7iCwt9inAHMZLV-CepksIxUSCdfi36X6wt39fFL4-dDeG7Z03xkipysUjH7KhDinGJj6mNdRve9ZRm6XrK4VE1F5z3ER24gaF_fd6krVV2tnMiRS0O_sxidT_TGMix5G9KpcAgVy91bNWS_KU1R9pDk86XmCytCrnFfCRDm8w1kcOQG-tc4xRiPjlZlIStO2PbE0","expires_in":31536000,"refresh_token":"1774000516749.1cIHfNoG.ipcqc2roVl4YNvJVSJ4pz6PiZiA_MIZ_6pB4z1bxIo-Ekr6ycYUfxpJtj0YyxCEmFwgXuiZobDomD4V3KlPzxoplZ9RukMFOf61bqnJlrmJavc9ZQQCh8xT2ZvjgyI0dODtBE1pnCdXULMvRlmj1zNCU1louDkHUIxVREQ1SuD6n8EVkn2OB2ES_Nf_L_KKhzPbQAQ9dTy7zEz40m6YBq8SpVN5eBekSpr3aR27X-OMmKuW8vEjbi8gY7xg9C8nMWaXRYwGbOpZSCne73eKu-UUO_aMUkdKI3E1Jvn3W5wBWvS-_lx2YsDhJ6Cw2BHKPVkGjQojfpgL1bWS5ljFcRwtF_qXjypOsHytTwAKQg9HfAXRmlo2-np1-5IixxVTLD_wtNw","scope":"name:go_assymetric block_rfq:read_write block_trade:read_write connection trade:read_write custody:read_write account:read_write wallet:read_write mainaccount","token_type":"bearer"},"usIn":1742464516749105,"usOut":1742464516749810,"usDiff":705,"testnet":true}
-[15:25:16.802752949] [DeriClient] [INFO] Received response for request ID 0.
-[15:25:16.804481252] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":4,"error":{"code":10039,"data":{"currency":"USDC"},"message":"not_enough_funds_in_currency"},"usIn":1742464516750642,"usOut":1742464516751630,"usDiff":988,"testnet":true}
-[15:25:16.804484612] [DeriClient] [INFO] Received response for request ID 4.
-[15:25:16.804488940] [DeriClient] [ERROR] Request failed for request ID 4. Error code: 10039, message: not_enough_funds_in_currency. Latency: 171686569 ns
-[15:25:16.806748302] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":1,"result":{"order":{"label":"test","price":8.5e4,"direction":"buy","time_in_force":"good_til_cancelled","max_show":10.0,"instrument_name":"BTC-PERPETUAL","api":true,"web":false,"amount":10.0,"order_id":"38821701396","creation_timestamp":1742464516730,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":0.0,"last_update_timestamp":1742464516730,"average_price":0.0,"contracts":1.0,"order_state":"open","order_type":"limit","is_liquidation":false,"risk_reducing":false},"trades":[]},"usIn":1742464516749923,"usOut":1742464516753879,"usDiff":3956,"testnet":true}
-[15:25:16.806750218] [DeriClient] [INFO] Received response for request ID 1.
-[15:25:16.806759355] [DeriClient] [INFO] Order placed successfully: buy 10 BTC-PERPETUAL @ 85000 nsD. Order ID: 38821701396. Latency: 174255404 ns
-[15:25:16.807510987] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":2,"result":{"order":{"label":"test","price":103532.5,"direction":"buy","time_in_force":"good_til_cancelled","max_show":10.0,"instrument_name":"BTC-28MAR25","api":true,"web":false,"amount":10.0,"order_id":"38821701397","creation_timestamp":1742464516731,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":10.0,"last_update_timestamp":1742464516731,"average_price":86287.5,"contracts":1.0,"order_state":"filled","order_type":"market","is_liquidation":false,"risk_reducing":false},"trades":[{"label":"test","timestamp":1742464516731,"state":"filled","price":86287.5,"direction":"buy","index_price":85889.31,"instrument_name":"BTC-28MAR25","trade_seq":243025,"api":true,"amount":10.0,"mark_price":86275.27,"order_id":"38821701397","matching_id":null,"tick_direction":0,"fee":6.0e-8,"profit_loss":0.0,"mmp":false,"post_only":false,"self_trade":false,"reduce_only":false,"contracts":1.0,"trade_id":"195267834","fee_currency":"BTC","order_type":"market","risk_reducing":false,"liquidity":"T"}]},"usIn":1742464516750302,"usOut":1742464516754677,"usDiff":4375,"testnet":true}
-[15:25:16.807512399] [DeriClient] [INFO] Received response for request ID 2.
-[15:25:16.807519906] [DeriClient] [INFO] Order placed successfully: buy 10 BTC-28MAR25 @ 103532.5 nsD. Order ID: 38821701397. Latency: 174884590 ns
-[15:25:16.808533475] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":3,"result":{"order":{"label":"test","price":0.337,"direction":"buy","time_in_force":"good_til_cancelled","max_show":2.0,"instrument_name":"BTC-28MAR25-60000-C","api":true,"web":false,"amount":2.0,"order_id":"38821701398","creation_timestamp":1742464516732,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":2.0,"last_update_timestamp":1742464516732,"average_price":0.3065,"contracts":2.0,"order_state":"filled","order_type":"market","is_liquidation":false,"risk_reducing":false},"trades":[{"label":"test","timestamp":1742464516732,"state":"filled","iv":132.2,"price":0.3065,"direction":"buy","index_price":85889.31,"instrument_name":"BTC-28MAR25-60000-C","trade_seq":868,"api":true,"amount":2.0,"mark_price":0.30486997,"order_id":"38821701398","matching_id":null,"tick_direction":2,"fee":0.0006,"profit_loss":0.0,"mmp":false,"post_only":false,"self_trade":false,"reduce_only":false,"underlying_price":86274.12,"contracts":2.0,"trade_id":"195267835","fee_currency":"BTC","order_type":"market","risk_reducing":false,"liquidity":"T"}]},"usIn":1742464516750514,"usOut":1742464516755679,"usDiff":5165,"testnet":true}
-[15:25:16.808534725] [DeriClient] [INFO] Received response for request ID 3.
-[15:25:16.808542000] [DeriClient] [INFO] Order placed successfully: buy 2 BTC-28MAR25-60000-C @ 0.337 nsD. Order ID: 38821701398. Latency: 175818553 ns
-[15:25:16.812495351] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":5,"result":{"order":{"label":"test","price":8.5e4,"direction":"sell","time_in_force":"good_til_cancelled","max_show":10.0,"instrument_name":"BTC-PERPETUAL","api":true,"web":false,"amount":10.0,"order_id":"38821701399","creation_timestamp":1742464516732,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":10.0,"last_update_timestamp":1742464516732,"average_price":85925.5,"contracts":1.0,"order_state":"filled","order_type":"limit","is_liquidation":false,"risk_reducing":false},"trades":[{"label":"test","timestamp":1742464516732,"state":"filled","price":85925.5,"direction":"sell","index_price":85889.31,"instrument_name":"BTC-PERPETUAL","trade_seq":115388525,"api":true,"amount":10.0,"mark_price":85994.82,"order_id":"38821701399","matching_id":null,"tick_direction":2,"fee":6.0e-8,"profit_loss":0.0,"mmp":false,"post_only":false,"self_trade":false,"reduce_only":false,"contracts":1.0,"trade_id":"195267836","fee_currency":"BTC","order_type":"limit","risk_reducing":false,"liquidity":"T"}]},"usIn":1742464516750799,"usOut":1742464516756592,"usDiff":5793,"testnet":true}
-[15:25:16.812497191] [DeriClient] [INFO] Received response for request ID 5.
-[15:25:16.812506413] [DeriClient] [INFO] Order placed successfully: sell 10 BTC-PERPETUAL @ 85000 nsD. Order ID: 38821701399. Latency: 179620525 ns
-[15:25:16.812539780] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":6,"result":{"order":{"label":"test","price":69020.0,"direction":"sell","time_in_force":"good_til_cancelled","max_show":10.0,"instrument_name":"BTC-28MAR25","api":true,"web":false,"amount":10.0,"order_id":"38821701400","creation_timestamp":1742464516733,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":10.0,"last_update_timestamp":1742464516733,"average_price":86285.0,"contracts":1.0,"order_state":"filled","order_type":"market","is_liquidation":false,"risk_reducing":false},"trades":[{"label":"test","timestamp":1742464516733,"state":"filled","price":86285.0,"direction":"sell","index_price":85889.31,"instrument_name":"BTC-28MAR25","trade_seq":243026,"api":true,"amount":10.0,"mark_price":86275.27,"order_id":"38821701400","matching_id":null,"tick_direction":2,"fee":6.0e-8,"profit_loss":-1.65e-6,"mmp":false,"post_only":false,"self_trade":false,"reduce_only":false,"contracts":1.0,"trade_id":"195267837","fee_currency":"BTC","order_type":"market","risk_reducing":false,"liquidity":"T"}]},"usIn":1742464516750902,"usOut":1742464516757187,"usDiff":6285,"testnet":true}
-[15:25:16.812540449] [DeriClient] [INFO] Received response for request ID 6.
-[15:25:16.812545959] [DeriClient] [INFO] Order placed successfully: sell 10 BTC-28MAR25 @ 69020 nsD. Order ID: 38821701400. Latency: 179575756 ns
-[15:25:16.822393800] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":7,"result":{"order":{"label":"test","price":1.0,"direction":"sell","time_in_force":"good_til_cancelled","max_show":2.0,"instrument_name":"BTC-28MAR25-60000-C","api":true,"web":false,"amount":2.0,"order_id":"38821701401","creation_timestamp":1742464516734,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":0.0,"last_update_timestamp":1742464516734,"average_price":0.0,"contracts":2.0,"order_state":"open","order_type":"limit","is_liquidation":false,"risk_reducing":false},"trades":[]},"usIn":1742464516751004,"usOut":1742464516760133,"usDiff":9129,"testnet":true}
-[15:25:16.822396357] [DeriClient] [INFO] Received response for request ID 7.
-[15:25:16.822407078] [DeriClient] [INFO] Order placed successfully: sell 2 BTC-28MAR25-60000-C @ 1 nsD. Order ID: 38821701401. Latency: 189346067 ns
-[15:25:16.822442557] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":8,"result":{"order":{"label":"test","price":55815.0,"direction":"sell","time_in_force":"good_til_cancelled","max_show":0.1,"instrument_name":"BTC_USDC","api":true,"web":false,"amount":0.1,"order_id":"BTC_USDC-111308487","creation_timestamp":1742464516737,"mmp":false,"replaced":false,"post_only":false,"filled_amount":0.0,"last_update_timestamp":1742464516737,"average_price":0.0,"contracts":1.0e3,"original_order_type":"market","order_state":"open","order_type":"limit","is_rebalance":false,"risk_reducing":false},"trades":[]},"usIn":1742464516751112,"usOut":1742464516760506,"usDiff":9394,"testnet":true}
-[15:25:16.822443335] [DeriClient] [INFO] Received response for request ID 8.
-[15:25:16.822449682] [DeriClient] [INFO] Order placed successfully: sell 0.1 BTC_USDC @ 55815 nsD. Order ID: BTC_USDC-111308487. Latency: 189317445 ns
-[15:25:21.633365806] [DeriClient] [INFO] Modifying order 38821701396: new price 85000, new amount 20
-[15:25:21.633485714] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:21.633485714] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:21.633485714] [DeriClient] [DEBUG]         "id": 9,
-[15:25:21.633485714] [DeriClient] [DEBUG]         "method": "private/edit",
-[15:25:21.633485714] [DeriClient] [DEBUG]         "params": {
-[15:25:21.633485714] [DeriClient] [DEBUG]             "order_id": "38821701396",
-[15:25:21.633485714] [DeriClient] [DEBUG]             "amount": 20.000000,
-[15:25:21.633485714] [DeriClient] [DEBUG]             "price": 85000.000000,
-[15:25:21.633485714] [DeriClient] [DEBUG]             "post_only": true,
-[15:25:21.633485714] [DeriClient] [DEBUG]             "reject_post_only": false,
-[15:25:21.633485714] [DeriClient] [DEBUG]             "reduce_only": false,
-[15:25:21.633485714] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
-[15:25:21.633485714] [DeriClient] [DEBUG]             "max_show": 20.000000,
-[15:25:21.633485714] [DeriClient] [DEBUG]             "timestamp": 1742464521633,
-[15:25:21.633485714] [DeriClient] [DEBUG]             "signature": "5MrAGWMepLqZhO8-rJ0cBFsw1Y5X_w2J2HUKNX5xe-Nuw35Hp5Nxdusf30blfuVhwBv3l3aqaVOD__BXtnwkDw"
-[15:25:21.633485714] [DeriClient] [DEBUG]         }
-[15:25:21.633485714] [DeriClient] [DEBUG]     }
-[15:25:21.633533768] [DeriClient] [INFO] Modifying order 38821701397: new price 85000, new amount 20
-[15:25:21.633561478] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:21.633561478] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:21.633561478] [DeriClient] [DEBUG]         "id": 10,
-[15:25:21.633561478] [DeriClient] [DEBUG]         "method": "private/edit",
-[15:25:21.633561478] [DeriClient] [DEBUG]         "params": {
-[15:25:21.633561478] [DeriClient] [DEBUG]             "order_id": "38821701397",
-[15:25:21.633561478] [DeriClient] [DEBUG]             "amount": 20.000000,
-[15:25:21.633561478] [DeriClient] [DEBUG]             "price": 85000.000000,
-[15:25:21.633561478] [DeriClient] [DEBUG]             "post_only": true,
-[15:25:21.633561478] [DeriClient] [DEBUG]             "reject_post_only": false,
-[15:25:21.633561478] [DeriClient] [DEBUG]             "reduce_only": false,
-[15:25:21.633561478] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
-[15:25:21.633561478] [DeriClient] [DEBUG]             "max_show": 20.000000,
-[15:25:21.633561478] [DeriClient] [DEBUG]             "timestamp": 1742464521633,
-[15:25:21.633561478] [DeriClient] [DEBUG]             "signature": "bbQzw61VTo5mZ4tVUIXhPR-iqEZZfm9L_QuJZPPQOKo53s0jULVpjfz8ihQ5BK_tqyy3E8agXiofrILFrpP4DQ"
-[15:25:21.633561478] [DeriClient] [DEBUG]         }
-[15:25:21.633561478] [DeriClient] [DEBUG]     }
-[15:25:21.633616056] [DeriClient] [INFO] Modifying order 38821701398: new price 85000, new amount 20
-[15:25:21.633640335] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:21.633640335] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:21.633640335] [DeriClient] [DEBUG]         "id": 11,
-[15:25:21.633640335] [DeriClient] [DEBUG]         "method": "private/edit",
-[15:25:21.633640335] [DeriClient] [DEBUG]         "params": {
-[15:25:21.633640335] [DeriClient] [DEBUG]             "order_id": "38821701398",
-[15:25:21.633640335] [DeriClient] [DEBUG]             "amount": 20.000000,
-[15:25:21.633640335] [DeriClient] [DEBUG]             "price": 85000.000000,
-[15:25:21.633640335] [DeriClient] [DEBUG]             "post_only": true,
-[15:25:21.633640335] [DeriClient] [DEBUG]             "reject_post_only": false,
-[15:25:21.633640335] [DeriClient] [DEBUG]             "reduce_only": false,
-[15:25:21.633640335] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
-[15:25:21.633640335] [DeriClient] [DEBUG]             "max_show": 20.000000,
-[15:25:21.633640335] [DeriClient] [DEBUG]             "timestamp": 1742464521633,
-[15:25:21.633640335] [DeriClient] [DEBUG]             "signature": "dZrJhkZm-LPfh6XKAP_OjxCcTHmDIWVCtWSqzYMmbIeeg4E68kdvu-5nWD-gc8eEU_JsR381O_evfBRHcRjoCw"
-[15:25:21.633640335] [DeriClient] [DEBUG]         }
-[15:25:21.633640335] [DeriClient] [DEBUG]     }
-[15:25:21.633693002] [DeriClient] [INFO] Modifying order 38821701399: new price 85000, new amount 20
-[15:25:21.633717104] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:21.633717104] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:21.633717104] [DeriClient] [DEBUG]         "id": 12,
-[15:25:21.633717104] [DeriClient] [DEBUG]         "method": "private/edit",
-[15:25:21.633717104] [DeriClient] [DEBUG]         "params": {
-[15:25:21.633717104] [DeriClient] [DEBUG]             "order_id": "38821701399",
-[15:25:21.633717104] [DeriClient] [DEBUG]             "amount": 20.000000,
-[15:25:21.633717104] [DeriClient] [DEBUG]             "price": 85000.000000,
-[15:25:21.633717104] [DeriClient] [DEBUG]             "post_only": true,
-[15:25:21.633717104] [DeriClient] [DEBUG]             "reject_post_only": false,
-[15:25:21.633717104] [DeriClient] [DEBUG]             "reduce_only": false,
-[15:25:21.633717104] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
-[15:25:21.633717104] [DeriClient] [DEBUG]             "max_show": 20.000000,
-[15:25:21.633717104] [DeriClient] [DEBUG]             "timestamp": 1742464521633,
-[15:25:21.633717104] [DeriClient] [DEBUG]             "signature": "rnbDxKNGyHTwk9K44Nk4JJyncGw9YqayosLPYUFgDwiUn6p76fI0elu2Qck5IMTDEhyykxPICCRkxcyunruPCg"
-[15:25:21.633717104] [DeriClient] [DEBUG]         }
-[15:25:21.633717104] [DeriClient] [DEBUG]     }
-[15:25:21.633770371] [DeriClient] [INFO] Modifying order 38821701400: new price 85000, new amount 20
-[15:25:21.633791302] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:21.633791302] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:21.633791302] [DeriClient] [DEBUG]         "id": 13,
-[15:25:21.633791302] [DeriClient] [DEBUG]         "method": "private/edit",
-[15:25:21.633791302] [DeriClient] [DEBUG]         "params": {
-[15:25:21.633791302] [DeriClient] [DEBUG]             "order_id": "38821701400",
-[15:25:21.633791302] [DeriClient] [DEBUG]             "amount": 20.000000,
-[15:25:21.633791302] [DeriClient] [DEBUG]             "price": 85000.000000,
-[15:25:21.633791302] [DeriClient] [DEBUG]             "post_only": true,
-[15:25:21.633791302] [DeriClient] [DEBUG]             "reject_post_only": false,
-[15:25:21.633791302] [DeriClient] [DEBUG]             "reduce_only": false,
-[15:25:21.633791302] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
-[15:25:21.633791302] [DeriClient] [DEBUG]             "max_show": 20.000000,
-[15:25:21.633791302] [DeriClient] [DEBUG]             "timestamp": 1742464521633,
-[15:25:21.633791302] [DeriClient] [DEBUG]             "signature": "eCa-X0j1wuHUeyPno08GdGAi45Gy0Go6IXb5_T96nbBM12DcPrChDzLcC7LBs7SWWNBzFfs2Mib4tOo0hcDXBA"
-[15:25:21.633791302] [DeriClient] [DEBUG]         }
-[15:25:21.633791302] [DeriClient] [DEBUG]     }
-[15:25:21.633845026] [DeriClient] [INFO] Modifying order 38821701401: new price 85000, new amount 20
-[15:25:21.633865993] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:21.633865993] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:21.633865993] [DeriClient] [DEBUG]         "id": 14,
-[15:25:21.633865993] [DeriClient] [DEBUG]         "method": "private/edit",
-[15:25:21.633865993] [DeriClient] [DEBUG]         "params": {
-[15:25:21.633865993] [DeriClient] [DEBUG]             "order_id": "38821701401",
-[15:25:21.633865993] [DeriClient] [DEBUG]             "amount": 20.000000,
-[15:25:21.633865993] [DeriClient] [DEBUG]             "price": 85000.000000,
-[15:25:21.633865993] [DeriClient] [DEBUG]             "post_only": true,
-[15:25:21.633865993] [DeriClient] [DEBUG]             "reject_post_only": false,
-[15:25:21.633865993] [DeriClient] [DEBUG]             "reduce_only": false,
-[15:25:21.633865993] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
-[15:25:21.633865993] [DeriClient] [DEBUG]             "max_show": 20.000000,
-[15:25:21.633865993] [DeriClient] [DEBUG]             "timestamp": 1742464521633,
-[15:25:21.633865993] [DeriClient] [DEBUG]             "signature": "LOhgTa35r3iXPZpn4GvCXUeP9yYvDVo22UKonTBc6iNY4mAgKff01amRcUz3lM-LsrB4fRGNJ928RRJwBF1fDA"
-[15:25:21.633865993] [DeriClient] [DEBUG]         }
-[15:25:21.633865993] [DeriClient] [DEBUG]     }
-[15:25:21.633923461] [DeriClient] [INFO] Modifying order BTC_USDC-111308487: new price 85000, new amount 20
-[15:25:21.633946260] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:21.633946260] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:21.633946260] [DeriClient] [DEBUG]         "id": 15,
-[15:25:21.633946260] [DeriClient] [DEBUG]         "method": "private/edit",
-[15:25:21.633946260] [DeriClient] [DEBUG]         "params": {
-[15:25:21.633946260] [DeriClient] [DEBUG]             "order_id": "BTC_USDC-111308487",
-[15:25:21.633946260] [DeriClient] [DEBUG]             "amount": 20.000000,
-[15:25:21.633946260] [DeriClient] [DEBUG]             "price": 85000.000000,
-[15:25:21.633946260] [DeriClient] [DEBUG]             "post_only": true,
-[15:25:21.633946260] [DeriClient] [DEBUG]             "reject_post_only": false,
-[15:25:21.633946260] [DeriClient] [DEBUG]             "reduce_only": false,
-[15:25:21.633946260] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
-[15:25:21.633946260] [DeriClient] [DEBUG]             "max_show": 20.000000,
-[15:25:21.633946260] [DeriClient] [DEBUG]             "timestamp": 1742464521633,
-[15:25:21.633946260] [DeriClient] [DEBUG]             "signature": "aN531XULn--pf0aB7nX8_bfcRlnk9iveXOT_qQ5gVLtb4iWVdebYzNlTeVnaqFmJ8r39OlvpMMXlVpSuV1pQBA"
-[15:25:21.633946260] [DeriClient] [DEBUG]         }
-[15:25:21.633946260] [DeriClient] [DEBUG]     }
-[15:25:21.803538713] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":10,"error":{"code":11044,"message":"not_open_order"},"usIn":1742464521750525,"usOut":1742464521750593,"usDiff":68,"testnet":true}
-[15:25:21.803541393] [DeriClient] [INFO] Received response for request ID 10.
-[15:25:21.803545738] [DeriClient] [ERROR] Request failed for request ID 10. Error code: 11044, message: not_open_order. Latency: 170066163 ns
-[15:25:21.803840853] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":11,"error":{"code":11044,"message":"not_open_order"},"usIn":1742464521750678,"usOut":1742464521750752,"usDiff":74,"testnet":true}
-[15:25:21.803841603] [DeriClient] [INFO] Received response for request ID 11.
-[15:25:21.803843066] [DeriClient] [ERROR] Request failed for request ID 11. Error code: 11044, message: not_open_order. Latency: 170272742 ns
-[15:25:21.803858486] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":12,"error":{"code":11044,"message":"not_open_order"},"usIn":1742464521750826,"usOut":1742464521750975,"usDiff":149,"testnet":true}
-[15:25:21.803858970] [DeriClient] [INFO] Received response for request ID 12.
-[15:25:21.803860072] [DeriClient] [ERROR] Request failed for request ID 12. Error code: 11044, message: not_open_order. Latency: 170211906 ns
-[15:25:21.803874950] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":13,"error":{"code":11044,"message":"not_open_order"},"usIn":1742464521751077,"usOut":1742464521751159,"usDiff":82,"testnet":true}
-[15:25:21.803875692] [DeriClient] [INFO] Received response for request ID 13.
-[15:25:21.803877440] [DeriClient] [ERROR] Request failed for request ID 13. Error code: 11044, message: not_open_order. Latency: 170150854 ns
-[15:25:21.810402749] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":9,"result":{"order":{"label":"test","price":8.5e4,"direction":"buy","time_in_force":"good_til_cancelled","max_show":20.0,"instrument_name":"BTC-PERPETUAL","api":true,"web":false,"amount":20.0,"order_id":"38821701396","creation_timestamp":1742464516730,"mmp":false,"replaced":true,"post_only":true,"reduce_only":false,"filled_amount":0.0,"last_update_timestamp":1742464521734,"average_price":0.0,"contracts":2.0,"reject_post_only":false,"order_state":"open","order_type":"limit","is_liquidation":false,"risk_reducing":false},"trades":[]},"usIn":1742464521750297,"usOut":1742464521757551,"usDiff":7254,"testnet":true}
-[15:25:21.810405251] [DeriClient] [INFO] Received response for request ID 9.
-[15:25:21.810414772] [DeriClient] [INFO] Order 38821701396 modified successfully. New price: 85000, New amount: 20. Latency: 177139488 ns
-[15:25:21.813486669] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":14,"error":{"code":10007,"message":"price_too_high 1.0"},"usIn":1742464521751233,"usOut":1742464521760822,"usDiff":9589,"testnet":true}
-[15:25:21.813487727] [DeriClient] [INFO] Received response for request ID 14.
-[15:25:21.813490089] [DeriClient] [ERROR] Request failed for request ID 14. Error code: 10007, message: price_too_high 1.0. Latency: 179688457 ns
-[15:25:21.814062365] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":15,"result":{"order":{"label":"test","price":8.5e4,"direction":"sell","time_in_force":"good_til_cancelled","max_show":20.0,"instrument_name":"BTC_USDC","api":true,"web":false,"amount":20.0,"order_id":"BTC_USDC-111308487","creation_timestamp":1742464516737,"mmp":false,"replaced":true,"post_only":true,"filled_amount":0.0,"last_update_timestamp":1742464521738,"average_price":0.0,"contracts":2.0e5,"original_order_type":"market","reject_post_only":false,"order_state":"open","order_type":"limit","is_rebalance":false,"risk_reducing":false},"trades":[]},"usIn":1742464521751362,"usOut":1742464521761351,"usDiff":9989,"testnet":true}
-[15:25:21.814063225] [DeriClient] [INFO] Received response for request ID 15.
-[15:25:21.814068452] [DeriClient] [INFO] Order BTC_USDC-111308487 modified successfully. New price: 85000, New amount: 20. Latency: 180189051 ns
-[15:25:26.634159014] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:26.634159014] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:26.634159014] [DeriClient] [DEBUG]         "id": 16,
-[15:25:26.634159014] [DeriClient] [DEBUG]         "method": "private/cancel",
-[15:25:26.634159014] [DeriClient] [DEBUG]         "params": {
-[15:25:26.634159014] [DeriClient] [DEBUG]             "order_id": "38821701396"
-[15:25:26.634159014] [DeriClient] [DEBUG]         }
-[15:25:26.634159014] [DeriClient] [DEBUG]     }
-[15:25:26.634203972] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:26.634203972] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:26.634203972] [DeriClient] [DEBUG]         "id": 17,
-[15:25:26.634203972] [DeriClient] [DEBUG]         "method": "private/cancel",
-[15:25:26.634203972] [DeriClient] [DEBUG]         "params": {
-[15:25:26.634203972] [DeriClient] [DEBUG]             "order_id": "38821701397"
-[15:25:26.634203972] [DeriClient] [DEBUG]         }
-[15:25:26.634203972] [DeriClient] [DEBUG]     }
-[15:25:26.634224376] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:26.634224376] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:26.634224376] [DeriClient] [DEBUG]         "id": 18,
-[15:25:26.634224376] [DeriClient] [DEBUG]         "method": "private/cancel",
-[15:25:26.634224376] [DeriClient] [DEBUG]         "params": {
-[15:25:26.634224376] [DeriClient] [DEBUG]             "order_id": "38821701398"
-[15:25:26.634224376] [DeriClient] [DEBUG]         }
-[15:25:26.634224376] [DeriClient] [DEBUG]     }
-[15:25:26.634243307] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:26.634243307] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:26.634243307] [DeriClient] [DEBUG]         "id": 19,
-[15:25:26.634243307] [DeriClient] [DEBUG]         "method": "private/cancel",
-[15:25:26.634243307] [DeriClient] [DEBUG]         "params": {
-[15:25:26.634243307] [DeriClient] [DEBUG]             "order_id": "38821701399"
-[15:25:26.634243307] [DeriClient] [DEBUG]         }
-[15:25:26.634243307] [DeriClient] [DEBUG]     }
-[15:25:26.634255084] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:26.634255084] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:26.634255084] [DeriClient] [DEBUG]         "id": 20,
-[15:25:26.634255084] [DeriClient] [DEBUG]         "method": "private/cancel",
-[15:25:26.634255084] [DeriClient] [DEBUG]         "params": {
-[15:25:26.634255084] [DeriClient] [DEBUG]             "order_id": "38821701400"
-[15:25:26.634255084] [DeriClient] [DEBUG]         }
-[15:25:26.634255084] [DeriClient] [DEBUG]     }
-[15:25:26.634279380] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:26.634279380] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:26.634279380] [DeriClient] [DEBUG]         "id": 21,
-[15:25:26.634279380] [DeriClient] [DEBUG]         "method": "private/cancel",
-[15:25:26.634279380] [DeriClient] [DEBUG]         "params": {
-[15:25:26.634279380] [DeriClient] [DEBUG]             "order_id": "38821701401"
-[15:25:26.634279380] [DeriClient] [DEBUG]         }
-[15:25:26.634279380] [DeriClient] [DEBUG]     }
-[15:25:26.634297749] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:26.634297749] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:26.634297749] [DeriClient] [DEBUG]         "id": 22,
-[15:25:26.634297749] [DeriClient] [DEBUG]         "method": "private/cancel",
-[15:25:26.634297749] [DeriClient] [DEBUG]         "params": {
-[15:25:26.634297749] [DeriClient] [DEBUG]             "order_id": "BTC_USDC-111308487"
-[15:25:26.634297749] [DeriClient] [DEBUG]         }
-[15:25:26.634297749] [DeriClient] [DEBUG]     }
-[15:25:26.634316829] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:26.634316829] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:26.634316829] [DeriClient] [DEBUG]         "id": 23,
-[15:25:26.634316829] [DeriClient] [DEBUG]         "method": "private/get_positions",
-[15:25:26.634316829] [DeriClient] [DEBUG]         "params": {
-[15:25:26.634316829] [DeriClient] [DEBUG]         }
-[15:25:26.634316829] [DeriClient] [DEBUG]     }
-[15:25:26.634334673] [DeriClient] [DEBUG] Successfully Sent request : {
-[15:25:26.634334673] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
-[15:25:26.634334673] [DeriClient] [DEBUG]         "id": 24,
-[15:25:26.634334673] [DeriClient] [DEBUG]         "method": "public/get_order_book",
-[15:25:26.634334673] [DeriClient] [DEBUG]         "params": {
-[15:25:26.634334673] [DeriClient] [DEBUG]             "instrument_name": "BTC-PERPETUAL",
-[15:25:26.634334673] [DeriClient] [DEBUG]             "depth": 10
-[15:25:26.634334673] [DeriClient] [DEBUG]         }
-[15:25:26.634334673] [DeriClient] [DEBUG]     }
-[15:25:26.804570894] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":17,"error":{"code":11044,"message":"not_open_order"},"usIn":1742464526751121,"usOut":1742464526751176,"usDiff":55,"testnet":true}
-[15:25:26.804574025] [DeriClient] [INFO] Received response for request ID 17.
-[15:25:26.804578596] [DeriClient] [ERROR] Request failed for request ID 17. Error code: 11044, message: not_open_order. Latency: 170442167 ns
-[15:25:26.804740692] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":18,"error":{"code":11044,"message":"not_open_order"},"usIn":1742464526751268,"usOut":1742464526751420,"usDiff":152,"testnet":true}
-[15:25:26.804742058] [DeriClient] [INFO] Received response for request ID 18.
-[15:25:26.804747005] [DeriClient] [ERROR] Request failed for request ID 18. Error code: 11044, message: not_open_order. Latency: 170605490 ns
-[15:25:26.804768140] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":19,"error":{"code":11044,"message":"not_open_order"},"usIn":1742464526751482,"usOut":1742464526751558,"usDiff":76,"testnet":true}
-[15:25:26.804768656] [DeriClient] [INFO] Received response for request ID 19.
-[15:25:26.804769840] [DeriClient] [ERROR] Request failed for request ID 19. Error code: 11044, message: not_open_order. Latency: 170629523 ns
-[15:25:26.807356262] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":20,"error":{"code":11044,"message":"not_open_order"},"usIn":1742464526751609,"usOut":1742464526751718,"usDiff":109,"testnet":true}
-[15:25:26.807358297] [DeriClient] [INFO] Received response for request ID 20.
-[15:25:26.807361701] [DeriClient] [ERROR] Request failed for request ID 20. Error code: 11044, message: not_open_order. Latency: 173218645 ns
-[15:25:26.807385588] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":16,"result":{"label":"test","price":8.5e4,"direction":"buy","time_in_force":"good_til_cancelled","max_show":20.0,"instrument_name":"BTC-PERPETUAL","api":true,"web":false,"amount":20.0,"order_id":"38821701396","creation_timestamp":1742464516730,"cancel_reason":"user_request","mmp":false,"replaced":true,"post_only":true,"reduce_only":false,"filled_amount":0.0,"last_update_timestamp":1742464526729,"average_price":0.0,"contracts":2.0,"reject_post_only":false,"order_state":"cancelled","order_type":"limit","is_liquidation":false,"risk_reducing":false},"usIn":1742464526750930,"usOut":1742464526752270,"usDiff":1340,"testnet":true}
-[15:25:26.807386158] [DeriClient] [INFO] Received response for request ID 16.
-[15:25:26.807390293] [DeriClient] [INFO] Order cancelled successfully. Latency: 173368460 ns
-[15:25:26.807406966] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":24,"result":{"timestamp":1742464526729,"state":"open","stats":{"high":90647.5,"low":81404.0,"price_change":2.8851,"volume":31719.89259034,"volume_usd":2672063380.0,"volume_notional":2672063380.0},"change_id":38821717611,"index_price":85873.39,"instrument_name":"BTC-PERPETUAL","bids":[[85925.5,200.0],[85917.0,100.0],[85848.0,200.0],[85845.5,6828760.0],[85676.5,8.0085e6],[85504.5,200.0],[85424.0,91860.0],[85418.5,200.0],[85332.5,200.0],[85308.0,92430.0]],"asks":[[85943.0,200.0],[85951.5,100.0],[86020.5,200.0],[86236.5,490880.0],[86237.0,1.11e4],[86238.5,3.1e4],[86239.0,2.0e4],[86240.5,990.0],[86241.5,3190.0],[86242.5,88080.0]],"last_price":85925.5,"settlement_price":86366.95,"min_price":83419.5,"max_price":88580.0,"open_interest":10120787350,"mark_price":85999.64,"interest_value":0.12427981220120032,"best_ask_price":85943.0,"best_bid_price":85925.5,"estimated_delivery_price":85873.39,"best_ask_amount":200.0,"best_bid_amount":200.0,"current_funding":9.7019e-4,"funding_8h":0.00204676},"usIn":1742464526752141,"usOut":1742464526752443,"usDiff":302,"testnet":true}
-[15:25:26.807407488] [DeriClient] [INFO] Received response for request ID 24.
-[15:25:26.807477317] [DeriClient] [INFO] Received orderbook for BTC-PERPETUAL. Latency: 173256565 ns
-[15:25:26.807477317] [DeriClient] [INFO] 
-[15:25:26.807477317] [DeriClient] [INFO] === ORDER BOOK FOR BTC-PERPETUAL ===
-[15:25:26.807477317] [DeriClient] [INFO] 
-[15:25:26.807477317] [DeriClient] [INFO] ASKS:
-[15:25:26.807477317] [DeriClient] [INFO] +-----------------+-----------------+
-[15:25:26.807477317] [DeriClient] [INFO] | Price           | Size            |
-[15:25:26.807477317] [DeriClient] [INFO] +-----------------+-----------------+
-[15:25:26.807477317] [DeriClient] [INFO] | 86242.5         | 88080           |
-[15:25:26.807477317] [DeriClient] [INFO] | 86241.5         | 3190            |
-[15:25:26.807477317] [DeriClient] [INFO] | 86240.5         | 990             |
-[15:25:26.807477317] [DeriClient] [INFO] | 86239           | 20000           |
-[15:25:26.807477317] [DeriClient] [INFO] | 86238.5         | 31000           |
-[15:25:26.807477317] [DeriClient] [INFO] | 86237           | 11100           |
-[15:25:26.807477317] [DeriClient] [INFO] | 86236.5         | 490880          |
-[15:25:26.807477317] [DeriClient] [INFO] | 86020.5         | 200             |
-[15:25:26.807477317] [DeriClient] [INFO] | 85951.5         | 100             |
-[15:25:26.807477317] [DeriClient] [INFO] | 85943           | 200             |
-[15:25:26.807477317] [DeriClient] [INFO] +-----------------+-----------------+
-[15:25:26.807477317] [DeriClient] [INFO] 
-[15:25:26.807477317] [DeriClient] [INFO] BIDS:
-[15:25:26.807477317] [DeriClient] [INFO] +-----------------+-----------------+
-[15:25:26.807477317] [DeriClient] [INFO] | Price           | Size            |
-[15:25:26.807477317] [DeriClient] [INFO] +-----------------+-----------------+
-[15:25:26.807477317] [DeriClient] [INFO] | 85925.5         | 200             |
-[15:25:26.807477317] [DeriClient] [INFO] | 85917           | 100             |
-[15:25:26.807477317] [DeriClient] [INFO] | 85848           | 200             |
-[15:25:26.807477317] [DeriClient] [INFO] | 85845.5         | 6.82876e+06     |
-[15:25:26.807477317] [DeriClient] [INFO] | 85676.5         | 8.0085e+06      |
-[15:25:26.807477317] [DeriClient] [INFO] | 85504.5         | 200             |
-[15:25:26.807477317] [DeriClient] [INFO] | 85424           | 91860           |
-[15:25:26.807477317] [DeriClient] [INFO] | 85418.5         | 200             |
-[15:25:26.807477317] [DeriClient] [INFO] | 85332.5         | 200             |
-[15:25:26.807477317] [DeriClient] [INFO] | 85308           | 92430           |
-[15:25:26.807477317] [DeriClient] [INFO] +-----------------+-----------------+
-[15:25:26.807477317] [DeriClient] [INFO] 
-[15:25:26.807477317] [DeriClient] [INFO] Spread: 17.5 (0.0204%)
-[15:25:26.807502637] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":21,"result":{"label":"test","price":1.0,"direction":"sell","time_in_force":"good_til_cancelled","max_show":2.0,"instrument_name":"BTC-28MAR25-60000-C","api":true,"web":false,"amount":2.0,"order_id":"38821701401","creation_timestamp":1742464516734,"cancel_reason":"user_request","mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":0.0,"last_update_timestamp":1742464526730,"average_price":0.0,"contracts":2.0,"order_state":"cancelled","order_type":"limit","is_liquidation":false,"risk_reducing":false},"usIn":1742464526751774,"usOut":1742464526753075,"usDiff":1301,"testnet":true}
-[15:25:26.807503241] [DeriClient] [INFO] Received response for request ID 21.
-[15:25:26.807506700] [DeriClient] [INFO] Order cancelled successfully. Latency: 173361683 ns
-[15:25:26.818985131] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":22,"result":{"label":"test","price":8.5e4,"direction":"sell","time_in_force":"good_til_cancelled","max_show":20.0,"instrument_name":"BTC_USDC","api":true,"web":false,"amount":20.0,"order_id":"BTC_USDC-111308487","creation_timestamp":1742464516737,"cancel_reason":"user_request","mmp":false,"replaced":true,"post_only":true,"filled_amount":0.0,"last_update_timestamp":1742464526733,"average_price":0.0,"contracts":2.0e5,"original_order_type":"market","reject_post_only":false,"order_state":"cancelled","order_type":"limit","is_rebalance":false,"risk_reducing":false},"usIn":1742464526751871,"usOut":1742464526761366,"usDiff":9495,"testnet":true}
-[15:25:26.818987708] [DeriClient] [INFO] Received response for request ID 22.
-[15:25:26.818995302] [DeriClient] [INFO] Order cancelled successfully. Latency: 184846626 ns
-[15:25:26.822188791] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":23,"result":[{"size":10.0,"kind":"option","maintenance_margin":0.0,"initial_margin":0.0,"direction":"buy","index_price":85873.39,"instrument_name":"BTC-11APR25-100000-C","settlement_price":0.02683811,"mark_price":0.00923501,"delta":1.45589,"gamma":0.0002,"vega":483.83898,"theta":-587.92338,"average_price":0.058,"floating_profit_loss":-0.17603107,"realized_profit_loss":0.0,"total_profit_loss":-0.487649934,"average_price_usd":4878.09232,"floating_profit_loss_usd":-40850.50996586},{"size":50.0,"kind":"future","maintenance_margin":1.1592e-5,"initial_margin":2.3183e-5,"open_orders_margin":0.0,"direction":"buy","index_price":85873.39,"instrument_name":"BTC-28MAR25","settlement_price":87842.48,"mark_price":86268.43,"delta":5.79586e-4,"average_price":87531.8,"leverage":25,"floating_profit_loss":-8.364e-6,"realized_profit_loss":-3.596e-6,"total_profit_loss":-8.365e-6,"size_currency":5.79586e-4,"estimated_liquidation_price":null},{"size":34.0,"kind":"option","maintenance_margin":0.0,"initial_margin":0.0,"direction":"buy","index_price":85873.39,"instrument_name":"BTC-28MAR25-60000-C","settlement_price":0.31712905,"mark_price":0.30482118,"delta":33.78233,"gamma":5.0e-5,"vega":77.8082,"theta":-501.60148,"average_price":0.31676471,"floating_profit_loss":-0.402951461,"realized_profit_loss":0.0,"total_profit_loss":-0.406079971,"average_price_usd":27157.38092382,"floating_profit_loss_usd":-33366.00448739},{"size":-200.0,"kind":"future","maintenance_margin":2.3256e-5,"initial_margin":4.6512e-5,"open_orders_margin":0.0,"direction":"sell","index_price":85873.39,"instrument_name":"BTC-PERPETUAL","settlement_price":86366.95,"mark_price":85999.64,"interest_value":0.12427981220120032,"delta":-0.002325591,"average_price":85937.02,"leverage":50,"floating_profit_loss":1.0684e-5,"realized_profit_loss":6.79e-7,"total_profit_loss":-1.695e-6,"realized_funding":6.8e-7,"size_currency":-0.002325591,"estimated_liquidation_price":null}],"usIn":1742464526751957,"usOut":1742464526766570,"usDiff":14613,"testnet":true}
-[15:25:26.822191130] [DeriClient] [INFO] Received response for request ID 23.
-[15:25:26.822200358] [DeriClient] [INFO] Retrieved 4 positions with total delta: 35.236473995. Latency: 188044085 ns
-[15:25:26.822203737] [DeriClient] [INFO] Position: buy BTC-11APR25-100000-C 10 contracts at avg price 0.058. Unrealized P&L: -0.17603107
-[15:25:26.822206539] [DeriClient] [INFO] Position: buy BTC-28MAR25 50 contracts at avg price 87531.8. Unrealized P&L: -8.364e-06
-[15:25:26.822209205] [DeriClient] [INFO] Position: buy BTC-28MAR25-60000-C 34 contracts at avg price 0.31676471. Unrealized P&L: -0.402951461
-[15:25:26.822211871] [DeriClient] [INFO] Position: sell BTC-PERPETUAL -200 contracts at avg price 85937.02. Unrealized P&L: 1.0684e-05
+[22:20:31.085610433] [DeriClient] [INFO] Private key loaded successfully.
+[22:20:31.750604198] [DeriClient] [INFO] Placing order for BTC-PERPETUAL: buy 10 @ 85000 nsD
+[22:20:31.750653909] [DeriClient] [INFO] Placing order for BTC-28MAR25: buy 10 @ 86000 nsD
+[22:20:31.750699496] [DeriClient] [INFO] Placing order for BTC-28MAR25-60000-C: buy 2 @ 0.344 nsD
+[22:20:31.750672339] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:31.750672339] [DeriClient] [DEBUG]             "jsonrpc": "2.0",
+[22:20:31.750672339] [DeriClient] [DEBUG]             "id": 0,
+[22:20:31.750672339] [DeriClient] [DEBUG]             "method": "public/auth",
+[22:20:31.750672339] [DeriClient] [DEBUG]             "params": {
+[22:20:31.750672339] [DeriClient] [DEBUG]                 "grant_type": "client_signature",
+[22:20:31.750672339] [DeriClient] [DEBUG]                 "client_id": "zavRq-oY",
+[22:20:31.750672339] [DeriClient] [DEBUG]                 "timestamp": 1742489431750,
+[22:20:31.750672339] [DeriClient] [DEBUG]                 "signature": "7AaJWD0yavvDfBjftuXmpBZAXeepkQH-yLXybZrXeBG8jeGGrVKHTiyPsGovhmCy3l4Tf4kjV60LnAjcWXYcDQ",
+[22:20:31.750672339] [DeriClient] [DEBUG]                 "nonce": "cjlTrQlCSrWLDPN2",
+[22:20:31.750672339] [DeriClient] [DEBUG]                 "data": ""
+[22:20:31.750672339] [DeriClient] [DEBUG]             }
+[22:20:31.750672339] [DeriClient] [DEBUG]         }
+[22:20:31.750761550] [DeriClient] [INFO] Placing order for BTC_USDC: buy 0.1 @ 85000 nsD
+[22:20:31.750764539] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:31.750764539] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:31.750764539] [DeriClient] [DEBUG]         "id": 1,
+[22:20:31.750764539] [DeriClient] [DEBUG]         "method": "private/buy",
+[22:20:31.750764539] [DeriClient] [DEBUG]         "params": {
+[22:20:31.750764539] [DeriClient] [DEBUG]         "instrument_name": "BTC-PERPETUAL",
+[22:20:31.750764539] [DeriClient] [DEBUG]         "amount": 10.000000,
+[22:20:31.750764539] [DeriClient] [DEBUG]         "price": 85000.000000,
+[22:20:31.750764539] [DeriClient] [DEBUG]         "type": "limit",
+[22:20:31.750764539] [DeriClient] [DEBUG]         "label": "test",
+[22:20:31.750764539] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled","max_show": 10.000000,
+[22:20:31.750764539] [DeriClient] [DEBUG]         "timestamp": 1742489431750,
+[22:20:31.750764539] [DeriClient] [DEBUG]         "signature": "06_y947W5tgOZVSpzsoqbW-Uq-583VPZjoHLy215w-QqLEbIvEY5y6rZhn3FIY-AKtXD8jpVouKwb-qg0KsaBg"
+[22:20:31.750764539] [DeriClient] [DEBUG]         }
+[22:20:31.750764539] [DeriClient] [DEBUG]         }
+[22:20:31.750800390] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:31.750800390] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:31.750800390] [DeriClient] [DEBUG]         "id": 2,
+[22:20:31.750800390] [DeriClient] [DEBUG]         "method": "private/buy",
+[22:20:31.750800390] [DeriClient] [DEBUG]         "params": {
+[22:20:31.750800390] [DeriClient] [DEBUG]         "instrument_name": "BTC-28MAR25",
+[22:20:31.750800390] [DeriClient] [DEBUG]         "amount": 10.000000,
+[22:20:31.750800390] [DeriClient] [DEBUG]         "price": 86000.000000,
+[22:20:31.750800390] [DeriClient] [DEBUG]         "type": "market",
+[22:20:31.750800390] [DeriClient] [DEBUG]         "label": "test",
+[22:20:31.750800390] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled",
+[22:20:31.750800390] [DeriClient] [DEBUG]         "timestamp": 1742489431750,
+[22:20:31.750800390] [DeriClient] [DEBUG]         "signature": "bp6sme4i26YRY4iKuEHIlHzctQraSLj9FN_caAa0yuH-dsrav0IssJvTAQVYawptNAdf0_Q0j65y2LobT0MWBQ"
+[22:20:31.750800390] [DeriClient] [DEBUG]         }
+[22:20:31.750800390] [DeriClient] [DEBUG]         }
+[22:20:31.750804887] [DeriClient] [INFO] Placing order for BTC-PERPETUAL: sell 10 @ 85000 nsD
+[22:20:31.750806439] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:31.750806439] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:31.750806439] [DeriClient] [DEBUG]         "id": 3,
+[22:20:31.750806439] [DeriClient] [DEBUG]         "method": "private/buy",
+[22:20:31.750806439] [DeriClient] [DEBUG]         "params": {
+[22:20:31.750806439] [DeriClient] [DEBUG]         "instrument_name": "BTC-28MAR25-60000-C",
+[22:20:31.750806439] [DeriClient] [DEBUG]         "amount": 2.000000,
+[22:20:31.750806439] [DeriClient] [DEBUG]         "price": 0.344000,
+[22:20:31.750806439] [DeriClient] [DEBUG]         "type": "market",
+[22:20:31.750806439] [DeriClient] [DEBUG]         "label": "test",
+[22:20:31.750806439] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled","max_show": 2.000000,
+[22:20:31.750806439] [DeriClient] [DEBUG]         "timestamp": 1742489431750,
+[22:20:31.750806439] [DeriClient] [DEBUG]         "signature": "gmzWiPFKJCXl6twXOUTgmk6S21cFdn_cYFL7vp08l8crgOcoQV4RyJJ71hiZTDb7psBCizdH8_MTenPzCYWUAA"
+[22:20:31.750806439] [DeriClient] [DEBUG]         }
+[22:20:31.750806439] [DeriClient] [DEBUG]         }
+[22:20:31.750812468] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:31.750812468] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:31.750812468] [DeriClient] [DEBUG]         "id": 4,
+[22:20:31.750812468] [DeriClient] [DEBUG]         "method": "private/buy",
+[22:20:31.750812468] [DeriClient] [DEBUG]         "params": {
+[22:20:31.750812468] [DeriClient] [DEBUG]         "instrument_name": "BTC_USDC",
+[22:20:31.750812468] [DeriClient] [DEBUG]         "amount": 0.100000,
+[22:20:31.750812468] [DeriClient] [DEBUG]         "price": 85000.000000,
+[22:20:31.750812468] [DeriClient] [DEBUG]         "type": "limit",
+[22:20:31.750812468] [DeriClient] [DEBUG]         "label": "test",
+[22:20:31.750812468] [DeriClient] [DEBUG]         "timestamp": 1742489431750,
+[22:20:31.750812468] [DeriClient] [DEBUG]         "signature": "UwuxMi5MnskpnCHUQ8e6jcJw4vUz1cJRko2D_5lgFnMToc-UWqqNg_ETd7ZugFSL4LJD6yURkNQaMlfuyhVQDw"
+[22:20:31.750812468] [DeriClient] [DEBUG]         }
+[22:20:31.750812468] [DeriClient] [DEBUG]         }
+[22:20:31.750814869] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:31.750814869] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:31.750814869] [DeriClient] [DEBUG]         "id": 5,
+[22:20:31.750814869] [DeriClient] [DEBUG]         "method": "private/sell",
+[22:20:31.750814869] [DeriClient] [DEBUG]         "params": {
+[22:20:31.750814869] [DeriClient] [DEBUG]         "instrument_name": "BTC-PERPETUAL",
+[22:20:31.750814869] [DeriClient] [DEBUG]         "amount": 10.000000,
+[22:20:31.750814869] [DeriClient] [DEBUG]         "price": 85000.000000,
+[22:20:31.750814869] [DeriClient] [DEBUG]         "type": "limit",
+[22:20:31.750814869] [DeriClient] [DEBUG]         "label": "test",
+[22:20:31.750814869] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled","max_show": 10.000000,
+[22:20:31.750814869] [DeriClient] [DEBUG]         "timestamp": 1742489431750,
+[22:20:31.750814869] [DeriClient] [DEBUG]         "signature": "WHHcxI0ZsHwcJEuRZVHfNcm5I_5na9Q1DkpPf6VIgbliJStRVqoBYc3mRYMKNaDyECPMe30cvbtmK7SjCVwpAQ"
+[22:20:31.750814869] [DeriClient] [DEBUG]         }
+[22:20:31.750814869] [DeriClient] [DEBUG]         }
+[22:20:31.750877928] [DeriClient] [INFO] Placing order for BTC-28MAR25: sell 10 @ 86000 nsD
+[22:20:31.750891656] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:31.750891656] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:31.750891656] [DeriClient] [DEBUG]         "id": 6,
+[22:20:31.750891656] [DeriClient] [DEBUG]         "method": "private/sell",
+[22:20:31.750891656] [DeriClient] [DEBUG]         "params": {
+[22:20:31.750891656] [DeriClient] [DEBUG]         "instrument_name": "BTC-28MAR25",
+[22:20:31.750891656] [DeriClient] [DEBUG]         "amount": 10.000000,
+[22:20:31.750891656] [DeriClient] [DEBUG]         "price": 86000.000000,
+[22:20:31.750891656] [DeriClient] [DEBUG]         "type": "market",
+[22:20:31.750891656] [DeriClient] [DEBUG]         "label": "test",
+[22:20:31.750891656] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled",
+[22:20:31.750891656] [DeriClient] [DEBUG]         "timestamp": 1742489431750,
+[22:20:31.750891656] [DeriClient] [DEBUG]         "signature": "fezYyQDg3ZsezzgEBK98dauSmv8T7JeqO4LyUyrj95GT0__j6wHjdj3mYFrgzyW8ZUv-GqvFouUZVDCZNaLaDQ"
+[22:20:31.750891656] [DeriClient] [DEBUG]         }
+[22:20:31.750891656] [DeriClient] [DEBUG]         }
+[22:20:31.750942191] [DeriClient] [INFO] Placing order for BTC-28MAR25-60000-C: sell 2 @ 1 nsD
+[22:20:31.750998570] [DeriClient] [INFO] Placing order for BTC_USDC: sell 0.1 @ 85000 nsD
+[22:20:31.751024080] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:31.751024080] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:31.751024080] [DeriClient] [DEBUG]         "id": 7,
+[22:20:31.751024080] [DeriClient] [DEBUG]         "method": "private/sell",
+[22:20:31.751024080] [DeriClient] [DEBUG]         "params": {
+[22:20:31.751024080] [DeriClient] [DEBUG]         "instrument_name": "BTC-28MAR25-60000-C",
+[22:20:31.751024080] [DeriClient] [DEBUG]         "amount": 2.000000,
+[22:20:31.751024080] [DeriClient] [DEBUG]         "price": 1.000000,
+[22:20:31.751024080] [DeriClient] [DEBUG]         "type": "limit",
+[22:20:31.751024080] [DeriClient] [DEBUG]         "label": "test",
+[22:20:31.751024080] [DeriClient] [DEBUG]         "time_in_force": "good_til_cancelled","max_show": 2.000000,
+[22:20:31.751024080] [DeriClient] [DEBUG]         "timestamp": 1742489431750,
+[22:20:31.751024080] [DeriClient] [DEBUG]         "signature": "hqh80cLMHaVURtTN0Wo5ciV8tnvKfeHM-8s_ycpprujyJCfP0AJLP69KkmrzpZwedvWYZyIHDr7K8KEdfrcNDQ"
+[22:20:31.751024080] [DeriClient] [DEBUG]         }
+[22:20:31.751024080] [DeriClient] [DEBUG]         }
+[22:20:31.751044914] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:31.751044914] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:31.751044914] [DeriClient] [DEBUG]         "id": 8,
+[22:20:31.751044914] [DeriClient] [DEBUG]         "method": "private/sell",
+[22:20:31.751044914] [DeriClient] [DEBUG]         "params": {
+[22:20:31.751044914] [DeriClient] [DEBUG]         "instrument_name": "BTC_USDC",
+[22:20:31.751044914] [DeriClient] [DEBUG]         "amount": 0.100000,
+[22:20:31.751044914] [DeriClient] [DEBUG]         "price": 85000.000000,
+[22:20:31.751044914] [DeriClient] [DEBUG]         "type": "market",
+[22:20:31.751044914] [DeriClient] [DEBUG]         "label": "test",
+[22:20:31.751044914] [DeriClient] [DEBUG]         "timestamp": 1742489431750,
+[22:20:31.751044914] [DeriClient] [DEBUG]         "signature": "skE9KZHoPtFzrN7EnAFOeV4eDsbQ6I7YBXJn0OIFGZkc0H4uWoZrWH1LmZ_ihnXQiQAFN3MzhJWwqYZjINJACw"
+[22:20:31.751044914] [DeriClient] [DEBUG]         }
+[22:20:31.751044914] [DeriClient] [DEBUG]         }
+[22:20:31.913654842] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":0,"result":{"enabled_features":["block_trade_approval"],"access_token":"1774025431854.1VUE2F9S.RjaNW4O4wdk2tbzW8MBelk575hg38Fys8IkzFwScg6bflW6GlMwGTTbPvjzz4fbZFYzJRM1RSDipcgTNVhVXYdPu5GDAEmybYTl1bBnW4HyeEwpLvenVH7COlgoAgfRC8weKiy9k3r_0L5JRv-1I6BC5OKBBjVK5UkGcoMYIyZD5BNeN9Bsedn8-9p-C8rEThfCQV-EZStNBbNUjcRtyc_HxCpoyij6dwvemsOa5dgaQXbBJZCJNxlEjVFNLFi0c3V1POWkTiCx-RnBc5mA5S-E51gsBQDVE1Ib_jIIlMSEHH7ZyAQpsABStD-elts7vwruDMK23IaOx-hb3KmbuZQzNGWn3d7loTXllhJCmUyEhEUJ2gMMKP6xmI3wXblNX5Yb8qAg","expires_in":31536000,"refresh_token":"1774025431854.1cpfNSZ0.Pp-dBm0L2rjXJ5Aw5EW29eYGIj6hgjIsRtqxp7ghI9WDab3uhUQ0wEo5oQezsWCEa0U02QVQs4C_-PDOf4VbiV9LE6PIIJM7dhgquRGCJSdsz0trK9G46bZqdgrBRuXzfcKvMqde3-tyACNtMKwzc93shfddbc0qx6oIpvc5TGRCMJK599xPLN6sUyLw9uYufMeWkIcXsrlZLxAt-UNNZtxossS4JbazjFEBt0gTlwB0dVuvDcTrRUcdDPuqxiOg4kfMonQackV12pZhPYTe3VNqquEeS-nCTGzLgtnStrLuCAddb3ablRNc97LQFliOzufkafa-JBRr0Fz0bLAPS7bQba0cASF1Xg8PHHGit-1Sfzhg-uitdog8RZYT1UeGvhwpVA","scope":"name:go_assymetric block_rfq:read_write block_trade:read_write connection trade:read_write custody:read_write account:read_write wallet:read_write mainaccount","token_type":"bearer"},"usIn":1742489431853699,"usOut":1742489431854330,"usDiff":631,"testnet":true}
+[22:20:31.913655641] [DeriClient] [INFO] Received response for request ID 0.
+[22:20:31.914807229] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":4,"error":{"code":10039,"data":{"currency":"USDC"},"message":"not_enough_funds_in_currency"},"usIn":1742489431854978,"usOut":1742489431855389,"usDiff":411,"testnet":true}
+[22:20:31.914807519] [DeriClient] [INFO] Received response for request ID 4.
+[22:20:31.914808532] [DeriClient] [ERROR] Request failed for request ID 4. Error code: 10039, message: not_enough_funds_in_currency. Latency: 164091364 ns
+[22:20:31.916501410] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":1,"result":{"order":{"label":"test","price":8.5e4,"direction":"buy","time_in_force":"good_til_cancelled","max_show":10.0,"instrument_name":"BTC-PERPETUAL","api":true,"web":false,"amount":10.0,"order_id":"38864817162","creation_timestamp":1742489431832,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":10.0,"last_update_timestamp":1742489431832,"average_price":83726.0,"contracts":1.0,"order_state":"filled","order_type":"limit","is_liquidation":false,"risk_reducing":false},"trades":[{"label":"test","timestamp":1742489431832,"state":"filled","price":83726.0,"direction":"buy","index_price":83717.62,"instrument_name":"BTC-PERPETUAL","trade_seq":115390878,"api":true,"amount":10.0,"mark_price":83691.01,"order_id":"38864817162","matching_id":null,"tick_direction":2,"fee":6.0e-8,"profit_loss":3.47e-6,"mmp":false,"post_only":false,"self_trade":false,"reduce_only":false,"contracts":1.0,"trade_id":"195271324","fee_currency":"BTC","order_type":"limit","risk_reducing":false,"liquidity":"T"}]},"usIn":1742489431854446,"usOut":1742489431856915,"usDiff":2469,"testnet":true}
+[22:20:31.916501705] [DeriClient] [INFO] Received response for request ID 1.
+[22:20:31.916504188] [DeriClient] [INFO] Order placed successfully: buy 10 BTC-PERPETUAL @ 85000 nsD. Order ID: 38864817162. Latency: 165957954 ns
+[22:20:31.916870044] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":2,"result":{"order":{"label":"test","price":102272.5,"direction":"buy","time_in_force":"good_til_cancelled","max_show":10.0,"instrument_name":"BTC-28MAR25","api":true,"web":false,"amount":10.0,"order_id":"38864817163","creation_timestamp":1742489431833,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":10.0,"last_update_timestamp":1742489431833,"average_price":85252.5,"contracts":1.0,"order_state":"filled","order_type":"market","is_liquidation":false,"risk_reducing":false},"trades":[{"label":"test","timestamp":1742489431833,"state":"filled","price":85252.5,"direction":"buy","index_price":83717.62,"instrument_name":"BTC-28MAR25","trade_seq":243127,"api":true,"amount":10.0,"mark_price":85226.26,"order_id":"38864817163","matching_id":null,"tick_direction":0,"fee":6.0e-8,"profit_loss":0.0,"mmp":false,"post_only":false,"self_trade":false,"reduce_only":false,"contracts":1.0,"trade_id":"195271325","fee_currency":"BTC","order_type":"market","risk_reducing":false,"liquidity":"T"}]},"usIn":1742489431854685,"usOut":1742489431857572,"usDiff":2887,"testnet":true}
+[22:20:31.916870331] [DeriClient] [INFO] Received response for request ID 2.
+[22:20:31.916871933] [DeriClient] [INFO] Order placed successfully: buy 10 BTC-28MAR25 @ 102272.5 nsD. Order ID: 38864817163. Latency: 166261357 ns
+[22:20:31.919998012] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":3,"result":{"order":{"label":"test","price":0.328,"direction":"buy","time_in_force":"good_til_cancelled","max_show":2.0,"instrument_name":"BTC-28MAR25-60000-C","api":true,"web":false,"amount":2.0,"order_id":"38864817164","creation_timestamp":1742489431834,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":2.0,"last_update_timestamp":1742489431834,"average_price":0.298,"contracts":2.0,"order_state":"filled","order_type":"market","is_liquidation":false,"risk_reducing":false},"trades":[{"label":"test","timestamp":1742489431834,"state":"filled","iv":131.29,"price":0.298,"direction":"buy","index_price":83717.62,"instrument_name":"BTC-28MAR25-60000-C","trade_seq":879,"api":true,"amount":2.0,"mark_price":0.29624418,"order_id":"38864817164","matching_id":null,"tick_direction":0,"fee":0.0006,"profit_loss":0.0,"mmp":false,"post_only":false,"self_trade":false,"reduce_only":false,"underlying_price":85227.01,"contracts":2.0,"trade_id":"195271326","fee_currency":"BTC","order_type":"market","risk_reducing":false,"liquidity":"T"}]},"usIn":1742489431854854,"usOut":1742489431860526,"usDiff":5672,"testnet":true}
+[22:20:31.919998616] [DeriClient] [INFO] Received response for request ID 3.
+[22:20:31.920001668] [DeriClient] [INFO] Order placed successfully: buy 2 BTC-28MAR25-60000-C @ 0.328 nsD. Order ID: 38864817164. Latency: 169341274 ns
+[22:20:31.922122073] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":5,"result":{"order":{"label":"test","price":8.5e4,"direction":"sell","time_in_force":"good_til_cancelled","max_show":10.0,"instrument_name":"BTC-PERPETUAL","api":true,"web":false,"amount":10.0,"order_id":"38864817165","creation_timestamp":1742489431835,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":0.0,"last_update_timestamp":1742489431835,"average_price":0.0,"contracts":1.0,"order_state":"open","order_type":"limit","is_liquidation":false,"risk_reducing":false},"trades":[]},"usIn":1742489431855085,"usOut":1742489431862328,"usDiff":7243,"testnet":true}
+[22:20:31.922122413] [DeriClient] [INFO] Received response for request ID 5.
+[22:20:31.922124303] [DeriClient] [INFO] Order placed successfully: sell 10 BTC-PERPETUAL @ 85000 nsD. Order ID: 38864817165. Latency: 171356790 ns
+[22:20:31.925086080] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":6,"result":{"order":{"label":"test","price":68180.0,"direction":"sell","time_in_force":"good_til_cancelled","max_show":10.0,"instrument_name":"BTC-28MAR25","api":true,"web":false,"amount":10.0,"order_id":"38864817166","creation_timestamp":1742489431839,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":10.0,"last_update_timestamp":1742489431839,"average_price":85220.0,"contracts":1.0,"order_state":"filled","order_type":"market","is_liquidation":false,"risk_reducing":false},"trades":[{"label":"test","timestamp":1742489431839,"state":"filled","price":85220.0,"direction":"sell","index_price":83717.62,"instrument_name":"BTC-28MAR25","trade_seq":243128,"api":true,"amount":10.0,"mark_price":85226.26,"order_id":"38864817166","matching_id":null,"tick_direction":2,"fee":6.0e-8,"profit_loss":-3.8e-7,"mmp":false,"post_only":false,"self_trade":false,"reduce_only":false,"contracts":1.0,"trade_id":"195271327","fee_currency":"BTC","order_type":"market","risk_reducing":false,"liquidity":"T"}]},"usIn":1742489431855185,"usOut":1742489431863168,"usDiff":7983,"testnet":true}
+[22:20:31.925086568] [DeriClient] [INFO] Received response for request ID 6.
+[22:20:31.925089299] [DeriClient] [INFO] Order placed successfully: sell 10 BTC-28MAR25 @ 68180 nsD. Order ID: 38864817166. Latency: 174277695 ns
+[22:20:31.929182135] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":7,"result":{"order":{"label":"test","price":1.0,"direction":"sell","time_in_force":"good_til_cancelled","max_show":2.0,"instrument_name":"BTC-28MAR25-60000-C","api":true,"web":false,"amount":2.0,"order_id":"38864817167","creation_timestamp":1742489431839,"mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":0.0,"last_update_timestamp":1742489431839,"average_price":0.0,"contracts":2.0,"order_state":"open","order_type":"limit","is_liquidation":false,"risk_reducing":false},"trades":[]},"usIn":1742489431855267,"usOut":1742489431865801,"usDiff":10534,"testnet":true}
+[22:20:31.929182758] [DeriClient] [INFO] Received response for request ID 7.
+[22:20:31.929185524] [DeriClient] [INFO] Order placed successfully: sell 2 BTC-28MAR25-60000-C @ 1 nsD. Order ID: 38864817167. Latency: 178290050 ns
+[22:20:31.929193795] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":8,"result":{"order":{"label":"test","price":54413.0,"direction":"sell","time_in_force":"good_til_cancelled","max_show":0.1,"instrument_name":"BTC_USDC","api":true,"web":false,"amount":0.1,"order_id":"BTC_USDC-111324905","creation_timestamp":1742489431842,"mmp":false,"replaced":false,"post_only":false,"filled_amount":0.0,"last_update_timestamp":1742489431842,"average_price":0.0,"contracts":1.0e3,"original_order_type":"market","order_state":"open","order_type":"limit","is_rebalance":false,"risk_reducing":false},"trades":[]},"usIn":1742489431855483,"usOut":1742489431866307,"usDiff":10824,"testnet":true}
+[22:20:31.929193908] [DeriClient] [INFO] Received response for request ID 8.
+[22:20:31.929194458] [DeriClient] [INFO] Order placed successfully: sell 0.1 BTC_USDC @ 54413 nsD. Order ID: BTC_USDC-111324905. Latency: 178239970 ns
+[22:20:36.751183436] [DeriClient] [INFO] Modifying order 38864817162: new price 85000, new amount 20
+[22:20:36.751306751] [DeriClient] [INFO] Modifying order 38864817163: new price 85000, new amount 20
+[22:20:36.751331621] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:36.751331621] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:36.751331621] [DeriClient] [DEBUG]         "id": 9,
+[22:20:36.751331621] [DeriClient] [DEBUG]         "method": "private/edit",
+[22:20:36.751331621] [DeriClient] [DEBUG]         "params": {
+[22:20:36.751331621] [DeriClient] [DEBUG]             "order_id": "38864817162",
+[22:20:36.751331621] [DeriClient] [DEBUG]             "amount": 20.000000,
+[22:20:36.751331621] [DeriClient] [DEBUG]             "price": 85000.000000,
+[22:20:36.751331621] [DeriClient] [DEBUG]             "post_only": true,
+[22:20:36.751331621] [DeriClient] [DEBUG]             "reject_post_only": false,
+[22:20:36.751331621] [DeriClient] [DEBUG]             "reduce_only": false,
+[22:20:36.751331621] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
+[22:20:36.751331621] [DeriClient] [DEBUG]             "max_show": 20.000000,
+[22:20:36.751331621] [DeriClient] [DEBUG]             "timestamp": 1742489436751,
+[22:20:36.751331621] [DeriClient] [DEBUG]             "signature": "581EudU42r-sUJb6g51Qw3AF-V65kLNbsgrI7OoqwVUW2pUIacVR62dyAOGgilBxDU-y9vj2YwUuPUstRxBPAA"
+[22:20:36.751331621] [DeriClient] [DEBUG]         }
+[22:20:36.751331621] [DeriClient] [DEBUG]     }
+[22:20:36.751350684] [DeriClient] [INFO] Modifying order 38864817164: new price 85000, new amount 20
+[22:20:36.751362448] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:36.751362448] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:36.751362448] [DeriClient] [DEBUG]         "id": 10,
+[22:20:36.751362448] [DeriClient] [DEBUG]         "method": "private/edit",
+[22:20:36.751362448] [DeriClient] [DEBUG]         "params": {
+[22:20:36.751362448] [DeriClient] [DEBUG]             "order_id": "38864817163",
+[22:20:36.751362448] [DeriClient] [DEBUG]             "amount": 20.000000,
+[22:20:36.751362448] [DeriClient] [DEBUG]             "price": 85000.000000,
+[22:20:36.751362448] [DeriClient] [DEBUG]             "post_only": true,
+[22:20:36.751362448] [DeriClient] [DEBUG]             "reject_post_only": false,
+[22:20:36.751362448] [DeriClient] [DEBUG]             "reduce_only": false,
+[22:20:36.751362448] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
+[22:20:36.751362448] [DeriClient] [DEBUG]             "max_show": 20.000000,
+[22:20:36.751362448] [DeriClient] [DEBUG]             "timestamp": 1742489436751,
+[22:20:36.751362448] [DeriClient] [DEBUG]             "signature": "stHj-UGtK5ixujThfkoZeSczWImEU83AZ5La8qZRwuNwAE_zghUaRHvxJwsWfhU-scemFNU_hZdFegUH_RB_BQ"
+[22:20:36.751362448] [DeriClient] [DEBUG]         }
+[22:20:36.751362448] [DeriClient] [DEBUG]     }
+[22:20:36.751368817] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:36.751368817] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:36.751368817] [DeriClient] [DEBUG]         "id": 11,
+[22:20:36.751368817] [DeriClient] [DEBUG]         "method": "private/edit",
+[22:20:36.751368817] [DeriClient] [DEBUG]         "params": {
+[22:20:36.751368817] [DeriClient] [DEBUG]             "order_id": "38864817164",
+[22:20:36.751368817] [DeriClient] [DEBUG]             "amount": 20.000000,
+[22:20:36.751368817] [DeriClient] [DEBUG]             "price": 85000.000000,
+[22:20:36.751368817] [DeriClient] [DEBUG]             "post_only": true,
+[22:20:36.751368817] [DeriClient] [DEBUG]             "reject_post_only": false,
+[22:20:36.751368817] [DeriClient] [DEBUG]             "reduce_only": false,
+[22:20:36.751368817] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
+[22:20:36.751368817] [DeriClient] [DEBUG]             "max_show": 20.000000,
+[22:20:36.751368817] [DeriClient] [DEBUG]             "timestamp": 1742489436751,
+[22:20:36.751368817] [DeriClient] [DEBUG]             "signature": "lzHIrKEhaCvYNmJOQlV0mlPFecKQSmx0pSLiMilgoAn3SvJk38bQCg9TsWBZAAH-vCKJJXaQp97cXUHVESZxDQ"
+[22:20:36.751368817] [DeriClient] [DEBUG]         }
+[22:20:36.751368817] [DeriClient] [DEBUG]     }
+[22:20:36.751400137] [DeriClient] [INFO] Modifying order 38864817165: new price 85000, new amount 20
+[22:20:36.751458036] [DeriClient] [INFO] Modifying order 38864817166: new price 85000, new amount 20
+[22:20:36.751468575] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:36.751468575] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:36.751468575] [DeriClient] [DEBUG]         "id": 12,
+[22:20:36.751468575] [DeriClient] [DEBUG]         "method": "private/edit",
+[22:20:36.751468575] [DeriClient] [DEBUG]         "params": {
+[22:20:36.751468575] [DeriClient] [DEBUG]             "order_id": "38864817165",
+[22:20:36.751468575] [DeriClient] [DEBUG]             "amount": 20.000000,
+[22:20:36.751468575] [DeriClient] [DEBUG]             "price": 85000.000000,
+[22:20:36.751468575] [DeriClient] [DEBUG]             "post_only": true,
+[22:20:36.751468575] [DeriClient] [DEBUG]             "reject_post_only": false,
+[22:20:36.751468575] [DeriClient] [DEBUG]             "reduce_only": false,
+[22:20:36.751468575] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
+[22:20:36.751468575] [DeriClient] [DEBUG]             "max_show": 20.000000,
+[22:20:36.751468575] [DeriClient] [DEBUG]             "timestamp": 1742489436751,
+[22:20:36.751468575] [DeriClient] [DEBUG]             "signature": "w5ElAHaVB3Z2RQob-1UOKld8-nzKQByqashENZW0Kcp2D21jUwXclbOZrbJ_IIuqnPTGNgS7apdBnNxHY7MBBA"
+[22:20:36.751468575] [DeriClient] [DEBUG]         }
+[22:20:36.751468575] [DeriClient] [DEBUG]     }
+[22:20:36.751488577] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:36.751488577] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:36.751488577] [DeriClient] [DEBUG]         "id": 13,
+[22:20:36.751488577] [DeriClient] [DEBUG]         "method": "private/edit",
+[22:20:36.751488577] [DeriClient] [DEBUG]         "params": {
+[22:20:36.751488577] [DeriClient] [DEBUG]             "order_id": "38864817166",
+[22:20:36.751488577] [DeriClient] [DEBUG]             "amount": 20.000000,
+[22:20:36.751488577] [DeriClient] [DEBUG]             "price": 85000.000000,
+[22:20:36.751488577] [DeriClient] [DEBUG]             "post_only": true,
+[22:20:36.751488577] [DeriClient] [DEBUG]             "reject_post_only": false,
+[22:20:36.751488577] [DeriClient] [DEBUG]             "reduce_only": false,
+[22:20:36.751488577] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
+[22:20:36.751488577] [DeriClient] [DEBUG]             "max_show": 20.000000,
+[22:20:36.751488577] [DeriClient] [DEBUG]             "timestamp": 1742489436751,
+[22:20:36.751488577] [DeriClient] [DEBUG]             "signature": "VmXpK19OHf1YDThMoH5BSXKJSskAFsmCvxdAeILaZ7LvJrZaRidZinL2nNxvOVQWY1RQzU30-xcnKKVAAtj-BA"
+[22:20:36.751488577] [DeriClient] [DEBUG]         }
+[22:20:36.751488577] [DeriClient] [DEBUG]     }
+[22:20:36.751500954] [DeriClient] [INFO] Modifying order 38864817167: new price 85000, new amount 20
+[22:20:36.751557070] [DeriClient] [INFO] Modifying order BTC_USDC-111324905: new price 85000, new amount 20
+[22:20:36.751574728] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:36.751574728] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:36.751574728] [DeriClient] [DEBUG]         "id": 14,
+[22:20:36.751574728] [DeriClient] [DEBUG]         "method": "private/edit",
+[22:20:36.751574728] [DeriClient] [DEBUG]         "params": {
+[22:20:36.751574728] [DeriClient] [DEBUG]             "order_id": "38864817167",
+[22:20:36.751574728] [DeriClient] [DEBUG]             "amount": 20.000000,
+[22:20:36.751574728] [DeriClient] [DEBUG]             "price": 85000.000000,
+[22:20:36.751574728] [DeriClient] [DEBUG]             "post_only": true,
+[22:20:36.751574728] [DeriClient] [DEBUG]             "reject_post_only": false,
+[22:20:36.751574728] [DeriClient] [DEBUG]             "reduce_only": false,
+[22:20:36.751574728] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
+[22:20:36.751574728] [DeriClient] [DEBUG]             "max_show": 20.000000,
+[22:20:36.751574728] [DeriClient] [DEBUG]             "timestamp": 1742489436751,
+[22:20:36.751574728] [DeriClient] [DEBUG]             "signature": "Rso3wV4kPMoLyWbAVlkvb70-Ee37Z_63KksUdxK6POPFRU5yQ008lajszjQNZgMiPBOZCpcLBht2f4_0_bM4CQ"
+[22:20:36.751574728] [DeriClient] [DEBUG]         }
+[22:20:36.751574728] [DeriClient] [DEBUG]     }
+[22:20:36.751594851] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:36.751594851] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:36.751594851] [DeriClient] [DEBUG]         "id": 15,
+[22:20:36.751594851] [DeriClient] [DEBUG]         "method": "private/edit",
+[22:20:36.751594851] [DeriClient] [DEBUG]         "params": {
+[22:20:36.751594851] [DeriClient] [DEBUG]             "order_id": "BTC_USDC-111324905",
+[22:20:36.751594851] [DeriClient] [DEBUG]             "amount": 20.000000,
+[22:20:36.751594851] [DeriClient] [DEBUG]             "price": 85000.000000,
+[22:20:36.751594851] [DeriClient] [DEBUG]             "post_only": true,
+[22:20:36.751594851] [DeriClient] [DEBUG]             "reject_post_only": false,
+[22:20:36.751594851] [DeriClient] [DEBUG]             "reduce_only": false,
+[22:20:36.751594851] [DeriClient] [DEBUG]             "time_in_force": "good_til_cancelled",
+[22:20:36.751594851] [DeriClient] [DEBUG]             "max_show": 20.000000,
+[22:20:36.751594851] [DeriClient] [DEBUG]             "timestamp": 1742489436751,
+[22:20:36.751594851] [DeriClient] [DEBUG]             "signature": "nWDkWXEu0HpYOFfwxMIJ9oSXLV2GPnpC9k_oReSCNsxGpx0tYgEEyA2ayrRXlfb_xV_CtpeIqL_T9w3eZxqUBQ"
+[22:20:36.751594851] [DeriClient] [DEBUG]         }
+[22:20:36.751594851] [DeriClient] [DEBUG]     }
+[22:20:36.913516760] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":9,"error":{"code":11044,"message":"not_open_order"},"usIn":1742489436854192,"usOut":1742489436854374,"usDiff":182,"testnet":true}
+[22:20:36.913517459] [DeriClient] [INFO] Received response for request ID 9.
+[22:20:36.913519401] [DeriClient] [ERROR] Request failed for request ID 9. Error code: 11044, message: not_open_order. Latency: 162450366 ns
+[22:20:36.914008130] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":10,"error":{"code":11044,"message":"not_open_order"},"usIn":1742489436854443,"usOut":1742489436854525,"usDiff":82,"testnet":true}
+[22:20:36.914008397] [DeriClient] [INFO] Received response for request ID 10.
+[22:20:36.914008902] [DeriClient] [ERROR] Request failed for request ID 10. Error code: 11044, message: not_open_order. Latency: 162756295 ns
+[22:20:36.914013383] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":11,"error":{"code":11044,"message":"not_open_order"},"usIn":1742489436854585,"usOut":1742489436854654,"usDiff":69,"testnet":true}
+[22:20:36.914013433] [DeriClient] [INFO] Received response for request ID 11.
+[22:20:36.914013634] [DeriClient] [ERROR] Request failed for request ID 11. Error code: 11044, message: not_open_order. Latency: 162702328 ns
+[22:20:36.915300296] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":13,"error":{"code":11044,"message":"not_open_order"},"usIn":1742489436854915,"usOut":1742489436854999,"usDiff":84,"testnet":true}
+[22:20:36.915300536] [DeriClient] [INFO] Received response for request ID 13.
+[22:20:36.915301247] [DeriClient] [ERROR] Request failed for request ID 13. Error code: 11044, message: not_open_order. Latency: 163885468 ns
+[22:20:36.916265543] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":12,"result":{"order":{"label":"test","price":8.5e4,"direction":"sell","time_in_force":"good_til_cancelled","max_show":20.0,"instrument_name":"BTC-PERPETUAL","api":true,"web":false,"amount":20.0,"order_id":"38864817165","creation_timestamp":1742489431835,"mmp":false,"replaced":true,"post_only":true,"reduce_only":false,"filled_amount":0.0,"last_update_timestamp":1742489436833,"average_price":0.0,"contracts":2.0,"reject_post_only":false,"order_state":"open","order_type":"limit","is_liquidation":false,"risk_reducing":false},"trades":[]},"usIn":1742489436854712,"usOut":1742489436857102,"usDiff":2390,"testnet":true}
+[22:20:36.916265824] [DeriClient] [INFO] Received response for request ID 12.
+[22:20:36.916267767] [DeriClient] [INFO] Order 38864817165 modified successfully. New price: 85000, New amount: 20. Latency: 164911057 ns
+[22:20:36.919202770] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":14,"error":{"code":10007,"message":"price_too_high 1.0"},"usIn":1742489436855086,"usOut":1742489436860064,"usDiff":4978,"testnet":true}
+[22:20:36.919203012] [DeriClient] [INFO] Received response for request ID 14.
+[22:20:36.919203755] [DeriClient] [ERROR] Request failed for request ID 14. Error code: 10007, message: price_too_high 1.0. Latency: 167740951 ns
+[22:20:36.919767817] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":15,"result":{"order":{"label":"test","price":8.5e4,"direction":"sell","time_in_force":"good_til_cancelled","max_show":20.0,"instrument_name":"BTC_USDC","api":true,"web":false,"amount":20.0,"order_id":"BTC_USDC-111324905","creation_timestamp":1742489431842,"mmp":false,"replaced":true,"post_only":true,"filled_amount":0.0,"last_update_timestamp":1742489436837,"average_price":0.0,"contracts":2.0e5,"original_order_type":"market","reject_post_only":false,"order_state":"open","order_type":"limit","is_rebalance":false,"risk_reducing":false},"trades":[]},"usIn":1742489436855264,"usOut":1742489436860545,"usDiff":5281,"testnet":true}
+[22:20:36.919767938] [DeriClient] [INFO] Received response for request ID 15.
+[22:20:36.919769421] [DeriClient] [INFO] Order BTC_USDC-111324905 modified successfully. New price: 85000, New amount: 20. Latency: 168254245 ns
+[22:20:41.751778342] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:41.751778342] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:41.751778342] [DeriClient] [DEBUG]         "id": 16,
+[22:20:41.751778342] [DeriClient] [DEBUG]         "method": "private/cancel",
+[22:20:41.751778342] [DeriClient] [DEBUG]         "params": {
+[22:20:41.751778342] [DeriClient] [DEBUG]             "order_id": "38864817162"
+[22:20:41.751778342] [DeriClient] [DEBUG]         }
+[22:20:41.751778342] [DeriClient] [DEBUG]     }
+[22:20:41.751806384] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:41.751806384] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:41.751806384] [DeriClient] [DEBUG]         "id": 17,
+[22:20:41.751806384] [DeriClient] [DEBUG]         "method": "private/cancel",
+[22:20:41.751806384] [DeriClient] [DEBUG]         "params": {
+[22:20:41.751806384] [DeriClient] [DEBUG]             "order_id": "38864817163"
+[22:20:41.751806384] [DeriClient] [DEBUG]         }
+[22:20:41.751806384] [DeriClient] [DEBUG]     }
+[22:20:41.751809918] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:41.751809918] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:41.751809918] [DeriClient] [DEBUG]         "id": 18,
+[22:20:41.751809918] [DeriClient] [DEBUG]         "method": "private/cancel",
+[22:20:41.751809918] [DeriClient] [DEBUG]         "params": {
+[22:20:41.751809918] [DeriClient] [DEBUG]             "order_id": "38864817164"
+[22:20:41.751809918] [DeriClient] [DEBUG]         }
+[22:20:41.751809918] [DeriClient] [DEBUG]     }
+[22:20:41.751815406] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:41.751815406] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:41.751815406] [DeriClient] [DEBUG]         "id": 19,
+[22:20:41.751815406] [DeriClient] [DEBUG]         "method": "private/cancel",
+[22:20:41.751815406] [DeriClient] [DEBUG]         "params": {
+[22:20:41.751815406] [DeriClient] [DEBUG]             "order_id": "38864817165"
+[22:20:41.751815406] [DeriClient] [DEBUG]         }
+[22:20:41.751815406] [DeriClient] [DEBUG]     }
+[22:20:41.751819731] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:41.751819731] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:41.751819731] [DeriClient] [DEBUG]         "id": 20,
+[22:20:41.751819731] [DeriClient] [DEBUG]         "method": "private/cancel",
+[22:20:41.751819731] [DeriClient] [DEBUG]         "params": {
+[22:20:41.751819731] [DeriClient] [DEBUG]             "order_id": "38864817166"
+[22:20:41.751819731] [DeriClient] [DEBUG]         }
+[22:20:41.751819731] [DeriClient] [DEBUG]     }
+[22:20:41.751833804] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:41.751833804] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:41.751833804] [DeriClient] [DEBUG]         "id": 21,
+[22:20:41.751833804] [DeriClient] [DEBUG]         "method": "private/cancel",
+[22:20:41.751833804] [DeriClient] [DEBUG]         "params": {
+[22:20:41.751833804] [DeriClient] [DEBUG]             "order_id": "38864817167"
+[22:20:41.751833804] [DeriClient] [DEBUG]         }
+[22:20:41.751833804] [DeriClient] [DEBUG]     }
+[22:20:41.751835994] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:41.751835994] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:41.751835994] [DeriClient] [DEBUG]         "id": 22,
+[22:20:41.751835994] [DeriClient] [DEBUG]         "method": "private/cancel",
+[22:20:41.751835994] [DeriClient] [DEBUG]         "params": {
+[22:20:41.751835994] [DeriClient] [DEBUG]             "order_id": "BTC_USDC-111324905"
+[22:20:41.751835994] [DeriClient] [DEBUG]         }
+[22:20:41.751835994] [DeriClient] [DEBUG]     }
+[22:20:41.751838442] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:41.751838442] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:41.751838442] [DeriClient] [DEBUG]         "id": 23,
+[22:20:41.751838442] [DeriClient] [DEBUG]         "method": "private/get_positions",
+[22:20:41.751838442] [DeriClient] [DEBUG]         "params": {
+[22:20:41.751838442] [DeriClient] [DEBUG]         }
+[22:20:41.751838442] [DeriClient] [DEBUG]     }
+[22:20:41.751840843] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:41.751840843] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:41.751840843] [DeriClient] [DEBUG]         "id": 24,
+[22:20:41.751840843] [DeriClient] [DEBUG]         "method": "public/get_order_book",
+[22:20:41.751840843] [DeriClient] [DEBUG]         "params": {
+[22:20:41.751840843] [DeriClient] [DEBUG]             "instrument_name": "BTC-PERPETUAL",
+[22:20:41.751840843] [DeriClient] [DEBUG]             "depth": 10
+[22:20:41.751840843] [DeriClient] [DEBUG]         }
+[22:20:41.751840843] [DeriClient] [DEBUG]     }
+[22:20:41.915671769] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":16,"error":{"code":11044,"message":"not_open_order"},"usIn":1742489441855831,"usOut":1742489441855969,"usDiff":138,"testnet":true}
+[22:20:41.915672769] [DeriClient] [INFO] Received response for request ID 16.
+[22:20:41.915674529] [DeriClient] [ERROR] Request failed for request ID 16. Error code: 11044, message: not_open_order. Latency: 163969434 ns
+[22:20:41.916151296] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":17,"error":{"code":11044,"message":"not_open_order"},"usIn":1742489441856031,"usOut":1742489441856123,"usDiff":92,"testnet":true}
+[22:20:41.916151819] [DeriClient] [INFO] Received response for request ID 17.
+[22:20:41.916152396] [DeriClient] [ERROR] Request failed for request ID 17. Error code: 11044, message: not_open_order. Latency: 164380170 ns
+[22:20:41.916296503] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":18,"error":{"code":11044,"message":"not_open_order"},"usIn":1742489441856483,"usOut":1742489441856621,"usDiff":138,"testnet":true}
+[22:20:41.916296790] [DeriClient] [INFO] Received response for request ID 18.
+[22:20:41.916297171] [DeriClient] [ERROR] Request failed for request ID 18. Error code: 11044, message: not_open_order. Latency: 164524749 ns
+[22:20:41.916302479] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":20,"error":{"code":11044,"message":"not_open_order"},"usIn":1742489441856774,"usOut":1742489441856825,"usDiff":51,"testnet":true}
+[22:20:41.916302576] [DeriClient] [INFO] Received response for request ID 20.
+[22:20:41.916302721] [DeriClient] [ERROR] Request failed for request ID 20. Error code: 11044, message: not_open_order. Latency: 164529259 ns
+[22:20:41.917704827] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":24,"result":{"timestamp":1742489441434,"state":"open","stats":{"high":90647.5,"low":81404.0,"price_change":-0.9768,"volume":14343.03172027,"volume_usd":1226310840.0,"volume_notional":1226310840.0},"change_id":38864825007,"index_price":83691.39,"instrument_name":"BTC-PERPETUAL","bids":[[83653.5,7.2939e6],[83650.5,10.0],[83525.5,10.0],[83490.5,8003110.0],[8.3e4,42270.0],[82958.5,10.0],[8.25e4,100.0],[80329.0,85180.0],[80226.0,7950.0],[80222.5,3780.0]],"asks":[[83737.0,7669940.0],[83755.0,10.0],[84556.5,10.0],[84872.0,20.0],[8.5e4,24210.0],[86018.0,30.0],[87164.5,60.0],[8.8e4,1.0e7],[88310.5,100.0],[89456.5,170.0]],"last_price":83737.0,"settlement_price":86366.95,"min_price":81157.0,"max_price":86177.5,"open_interest":10031054200,"mark_price":83667.35,"interest_value":0.44202122709980796,"best_ask_price":83737.0,"best_bid_price":83653.5,"estimated_delivery_price":83691.39,"best_ask_amount":7669940.0,"best_bid_amount":7.2939e6,"current_funding":0.0,"funding_8h":0.0011202},"usIn":1742489441857188,"usOut":1742489441857441,"usDiff":253,"testnet":true}
+[22:20:41.917705403] [DeriClient] [INFO] Received response for request ID 24.
+[22:20:41.917762335] [DeriClient] [INFO] Received orderbook for BTC-PERPETUAL. Latency: 165928687 ns
+[22:20:41.917762335] [DeriClient] [INFO] 
+[22:20:41.917762335] [DeriClient] [INFO] === ORDER BOOK FOR BTC-PERPETUAL ===
+[22:20:41.917762335] [DeriClient] [INFO] 
+[22:20:41.917762335] [DeriClient] [INFO] ASKS:
+[22:20:41.917762335] [DeriClient] [INFO] +-----------------+-----------------+
+[22:20:41.917762335] [DeriClient] [INFO] | Price           | Size            |
+[22:20:41.917762335] [DeriClient] [INFO] +-----------------+-----------------+
+[22:20:41.917762335] [DeriClient] [INFO] | 89456.5         | 170             |
+[22:20:41.917762335] [DeriClient] [INFO] | 88310.5         | 100             |
+[22:20:41.917762335] [DeriClient] [INFO] | 88000           | 1e+07           |
+[22:20:41.917762335] [DeriClient] [INFO] | 87164.5         | 60              |
+[22:20:41.917762335] [DeriClient] [INFO] | 86018           | 30              |
+[22:20:41.917762335] [DeriClient] [INFO] | 85000           | 24210           |
+[22:20:41.917762335] [DeriClient] [INFO] | 84872           | 20              |
+[22:20:41.917762335] [DeriClient] [INFO] | 84556.5         | 10              |
+[22:20:41.917762335] [DeriClient] [INFO] | 83755           | 10              |
+[22:20:41.917762335] [DeriClient] [INFO] | 83737           | 7.66994e+06     |
+[22:20:41.917762335] [DeriClient] [INFO] +-----------------+-----------------+
+[22:20:41.917762335] [DeriClient] [INFO] 
+[22:20:41.917762335] [DeriClient] [INFO] BIDS:
+[22:20:41.917762335] [DeriClient] [INFO] +-----------------+-----------------+
+[22:20:41.917762335] [DeriClient] [INFO] | Price           | Size            |
+[22:20:41.917762335] [DeriClient] [INFO] +-----------------+-----------------+
+[22:20:41.917762335] [DeriClient] [INFO] | 83653.5         | 7.2939e+06      |
+[22:20:41.917762335] [DeriClient] [INFO] | 83650.5         | 10              |
+[22:20:41.917762335] [DeriClient] [INFO] | 83525.5         | 10              |
+[22:20:41.917762335] [DeriClient] [INFO] | 83490.5         | 8.00311e+06     |
+[22:20:41.917762335] [DeriClient] [INFO] | 83000           | 42270           |
+[22:20:41.917762335] [DeriClient] [INFO] | 82958.5         | 10              |
+[22:20:41.917762335] [DeriClient] [INFO] | 82500           | 100             |
+[22:20:41.917762335] [DeriClient] [INFO] | 80329           | 85180           |
+[22:20:41.917762335] [DeriClient] [INFO] | 80226           | 7950            |
+[22:20:41.917762335] [DeriClient] [INFO] | 80222.5         | 3780            |
+[22:20:41.917762335] [DeriClient] [INFO] +-----------------+-----------------+
+[22:20:41.917762335] [DeriClient] [INFO] 
+[22:20:41.917762335] [DeriClient] [INFO] Spread: 83.5 (0.0998%)
+[22:20:41.917778481] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":19,"result":{"label":"test","price":8.5e4,"direction":"sell","time_in_force":"good_til_cancelled","max_show":20.0,"instrument_name":"BTC-PERPETUAL","api":true,"web":false,"amount":20.0,"order_id":"38864817165","creation_timestamp":1742489431835,"cancel_reason":"user_request","mmp":false,"replaced":true,"post_only":true,"reduce_only":false,"filled_amount":0.0,"last_update_timestamp":1742489441834,"average_price":0.0,"contracts":2.0,"reject_post_only":false,"order_state":"cancelled","order_type":"limit","is_liquidation":false,"risk_reducing":false},"usIn":1742489441856678,"usOut":1742489441858157,"usDiff":1479,"testnet":true}
+[22:20:41.917778589] [DeriClient] [INFO] Received response for request ID 19.
+[22:20:41.917779368] [DeriClient] [INFO] Order cancelled successfully. Latency: 166006061 ns
+[22:20:41.925168742] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":21,"result":{"label":"test","price":1.0,"direction":"sell","time_in_force":"good_til_cancelled","max_show":2.0,"instrument_name":"BTC-28MAR25-60000-C","api":true,"web":false,"amount":2.0,"order_id":"38864817167","creation_timestamp":1742489431839,"cancel_reason":"user_request","mmp":false,"replaced":false,"post_only":false,"reduce_only":false,"filled_amount":0.0,"last_update_timestamp":1742489441835,"average_price":0.0,"contracts":2.0,"order_state":"cancelled","order_type":"limit","is_liquidation":false,"risk_reducing":false},"usIn":1742489441856875,"usOut":1742489441859336,"usDiff":2461,"testnet":true}
+[22:20:41.925169539] [DeriClient] [INFO] Received response for request ID 21.
+[22:20:41.925172670] [DeriClient] [INFO] Order cancelled successfully. Latency: 173397163 ns
+[22:20:41.925183753] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":22,"result":{"label":"test","price":8.5e4,"direction":"sell","time_in_force":"good_til_cancelled","max_show":20.0,"instrument_name":"BTC_USDC","api":true,"web":false,"amount":20.0,"order_id":"BTC_USDC-111324905","creation_timestamp":1742489431842,"cancel_reason":"user_request","mmp":false,"replaced":true,"post_only":true,"filled_amount":0.0,"last_update_timestamp":1742489441839,"average_price":0.0,"contracts":2.0e5,"original_order_type":"market","reject_post_only":false,"order_state":"cancelled","order_type":"limit","is_rebalance":false,"risk_reducing":false},"usIn":1742489441856968,"usOut":1742489441862581,"usDiff":5613,"testnet":true}
+[22:20:41.925183846] [DeriClient] [INFO] Received response for request ID 22.
+[22:20:41.925184318] [DeriClient] [INFO] Order cancelled successfully. Latency: 173410017 ns
+[22:20:41.936643635] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":23,"result":[{"size":10.0,"kind":"option","maintenance_margin":0.0,"initial_margin":0.0,"direction":"buy","index_price":83691.39,"instrument_name":"BTC-11APR25-100000-C","settlement_price":0.02683811,"mark_price":0.00748844,"delta":1.2336,"gamma":1.8e-4,"vega":423.63555,"theta":-522.0383,"average_price":0.058,"floating_profit_loss":-0.193496696,"realized_profit_loss":0.0,"total_profit_loss":-0.50511556,"average_price_usd":4878.09232,"floating_profit_loss_usd":-42513.74032703},{"size":50.0,"kind":"future","maintenance_margin":1.1736e-5,"initial_margin":2.3473e-5,"open_orders_margin":0.0,"direction":"buy","index_price":83691.39,"instrument_name":"BTC-28MAR25","settlement_price":87842.48,"mark_price":85205.69,"delta":5.86815e-4,"average_price":85500.72,"leverage":25,"floating_profit_loss":-2.023e-6,"realized_profit_loss":-1.7612e-5,"total_profit_loss":-2.025e-6,"size_currency":5.86815e-4,"estimated_liquidation_price":null},{"size":55.1,"kind":"option","maintenance_margin":0.0,"initial_margin":0.0,"direction":"buy","index_price":83705.65,"instrument_name":"BTC-28MAR25-60000-C","settlement_price":0.31712905,"mark_price":0.29627484,"delta":54.8098,"gamma":7.0e-5,"vega":102.83589,"theta":-657.60403,"average_price":0.30960526,"floating_profit_loss":-0.731377796,"realized_profit_loss":0.0,"total_profit_loss":-0.734506319,"average_price_usd":26426.89549909,"floating_profit_loss_usd":-89648.66185188},{"size":-140.0,"kind":"future","maintenance_margin":1.6733e-5,"initial_margin":3.3466e-5,"open_orders_margin":3.2768e-5,"direction":"sell","index_price":83691.39,"instrument_name":"BTC-PERPETUAL","settlement_price":86366.95,"mark_price":83667.35,"interest_value":0.44202122709980796,"delta":-0.001673293,"average_price":85848.83,"leverage":50,"floating_profit_loss":4.974e-5,"realized_profit_loss":2.8698e-5,"total_profit_loss":4.252e-5,"realized_funding":3.01e-6,"size_currency":-0.001673293,"estimated_liquidation_price":null}],"usIn":1742489441857055,"usOut":1742489441865022,"usDiff":7967,"testnet":true}
+[22:20:41.936645165] [DeriClient] [INFO] Received response for request ID 23.
+[22:20:41.936649691] [DeriClient] [INFO] Retrieved 4 positions with total delta: 56.042313522. Latency: 184870702 ns
+[22:20:41.936650609] [DeriClient] [INFO] Position: buy BTC-11APR25-100000-C 10 contracts at avg price 0.058. Unrealized P&L: -0.193496696
+[22:20:41.936651004] [DeriClient] [INFO] Position: buy BTC-28MAR25 50 contracts at avg price 85500.72. Unrealized P&L: -2.023e-06
+[22:20:41.936651276] [DeriClient] [INFO] Position: buy BTC-28MAR25-60000-C 55.1 contracts at avg price 0.30960526. Unrealized P&L: -0.731377796
+[22:20:41.936651569] [DeriClient] [INFO] Position: sell BTC-PERPETUAL -140 contracts at avg price 85848.83. Unrealized P&L: 4.974e-05
+[22:20:53.975415672] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:20:53.975415672] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:20:53.975415672] [DeriClient] [DEBUG]         "id": 25,
+[22:20:53.975415672] [DeriClient] [DEBUG]         "method": "public/subscribe",
+[22:20:53.975415672] [DeriClient] [DEBUG]         "params": {
+[22:20:53.975415672] [DeriClient] [DEBUG]             "channels": ["book.BTC-PERPETUAL.100ms"]
+[22:20:53.975415672] [DeriClient] [DEBUG]         }
+[22:20:53.975415672] [DeriClient] [DEBUG]     }
+[22:20:54.137699999] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":25,"result":["book.BTC-PERPETUAL.100ms"],"usIn":1742489454078348,"usOut":1742489454078498,"usDiff":150,"testnet":true}
+[22:20:54.137700912] [DeriClient] [INFO] Received response for request ID 25.
+[22:20:54.137703577] [DeriClient] [INFO] Successfully subscribed to channel. Latency: 162348570 ns
+[22:20:54.183431348] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","method":"subscription","params":{"channel":"book.BTC-PERPETUAL.100ms","data":{"timestamp":1742489453518,"type":"snapshot","change_id":38864853078,"instrument_name":"BTC-PERPETUAL","bids":[["new",83636.5,7293910.0],["new",83525.5,10.0],["new",83473.5,8003110.0],["new",8.3e4,42270.0],["new",82958.5,10.0],["new",8.25e4,100.0],["new",80329.0,85180.0],["new",80226.0,7950.0],["new",80222.5,3780.0],["new",80216.5,2.2e3],["new",80190.0,1.2e3],["new",80165.0,8120.0],["new",80115.0,2.1e3],["new",80054.5,1320.0],["new",80046.5,1.43e4],["new",80024.5,4470.0],["new",8.0e4,115050.0],["new",7.85e4,10.0],["new",7.5e4,94170.0],["new",7.4e4,50.0],["new",7.0e4,100310.0],["new",69557.0,10.0],["new",69056.0,10.0],["new",6.8e4,200.0],["new",64483.5,90.0],["new",6.4e4,64080.0],["new",6.39e4,150.0],["new",63755.5,160.0],["new",63027.5,290.0],["new",62503.0,5.0e5],["new",62299.5,500.0],["new",6.21e4,6.0e4],["new",61279.5,5.0e5],["new",60686.0,50.0],["new",6.05e4,20.0],["new",6.0e4,513360.0],["new",5.9e4,5.0e5],["new",5.8e4,5.0e5],["new",5.7e4,1.425e5],["new",5.6e4,1.4e5],["new",5.5e4,280.0],["new",54224.5,5420.0],["new",52718.5,10.0],["new",52683.0,10.0],["new",52635.0,10.0],["new",52629.5,10.0],["new",52620.5,10.0],["new",52610.0,10.0],["new",52547.0,10.0],["new",52130.5,10.0],["new",5.2e4,10.0],["new",51567.5,20.0],["new",5.1e4,730.0],["new",5.0e4,11450.0],["new",49133.5,2.5e4],["new",4.9e4,200.0],["new",48978.0,100.0],["new",48001.5,10.0],["new",4.8e4,20.0],["new",47983.0,50.0],["new",47981.0,50.0],["new",46605.0,10.0],["new",46580.0,10.0],["new",45000.5,30.0],["new",4.5e4,270.0],["new",4.49e4,30.0],["new",40575.0,40.0],["new",4.05e4,20.0],["new",4.0e4,2770.0],["new",3.8e4,6.0e5],["new",3.7e4,4.0e4],["new",3.5e4,401860.0],["new",3.3e4,20.0],["new",3.2e4,20.0],["new",31313.0,10.0],["new",3.1e4,1.0e3],["new",3.0e4,1970.0],["new",2.5e4,310.0],["new",2.4e4,10.0],["new",22706.0,13850.0],["new",2.25e4,1.08e5],["new",22392.5,8.0e4],["new",22310.5,10.0],["new",22284.5,300.0],["new",22250.0,1.08e5],["new",22209.0,5.0e5],["new",2.2e4,10.0],["new",21795.0,300.0],["new",21375.0,5.0e5],["new",21305.5,300.0],["new",2.1e4,2.01e4],["new",20949.5,40.0],["new",20816.0,300.0],["new",20326.5,300.0],["new",2.02e4,1.0e3],["new",2.01e4,1.0e3],["new",2.0e4,2120.0],["new",19940.0,10.0],["new",19582.0,120.0],["new",1.95e4,40.0],["new",1.94e4,10.0],["new",19373.0,300.0],["new",19347.5,600.0],["new",19288.5,5.0e5],["new",19129.0,180.0],["new",1.9e4,10.0],["new",18368.5,600.0],["new",18328.0,5.0e5],["new",18274.5,40.0],["new",1.8e4,80.0],["new",17612.5,5.0e5],["new",17503.0,10.0],["new",17389.5,600.0],["new",1.7e4,150.0],["new",16926.0,5.0e5],["new",1.69e4,20.0],["new",16625.0,92610.0],["new",1.66e4,1.0e5],["new",16575.0,1.0e5],["new",16550.0,1.0e5],["new",16525.0,1.0e5],["new",16515.0,10.0],["new",16410.5,600.0],["new",16328.0,5.0e5],["new",16141.5,2890.0],["new",16134.0,1080.0],["new",16088.0,2890.0],["new",16080.5,1080.0],["new",16034.5,2890.0],["new",16026.5,1080.0],["new",1.6e4,230.0],["new",15973.0,1080.0],["new",15919.5,1080.0],["new",15866.0,1110.0],["new",15704.5,5.0e5],["new",15620.0,1.0e3],["new",1.55e4,3.1e5],["new",15444.0,100.0],["new",15431.5,600.0],["new",1.54e4,10050.0],["new",15285.0,270.0],["new",15263.0,110.0],["new",15165.0,1.0e4],["new",15162.5,1.0e4],["new",1.51e4,10.0],["new",15063.0,270.0],["new",15045.0,810.0],["new",1.5e4,1100910.0],["new",14899.0,200.0],["new",14888.0,148880.0],["new",14864.5,2430.0],["new",14823.5,270.0],["new",14823.0,810.0],["new",14681.0,4.8e3],["new",14565.0,2430.0],["new",1.45e4,10.0],["new",14343.0,2430.0],["new",1.42e4,14210.0],["new",14090.0,400.0],["new",1.4e4,330.0],["new",13964.0,1.5e5],["new",13835.0,13840.0],["new",1.37e4,100.0],["new",13360.0,100.0],["new",13078.5,9.8e4],["new",1.3e4,530.0],["new",12839.0,23040.0],["new",1.28e4,111360.0],["new",12510.5,1.5e5],["new",1.25e4,1.25e4],["new",12345.0,550.0],["new",12334.0,500.0],["new",12304.5,7290.0],["new",1.23e4,125880.0],["new",12232.5,30.0],["new",1.22e4,5.0e5],["new",12189.5,1220.0],["new",12104.0,2.0e3],["new",1.2e4,5580.0],["new",11937.5,2.0e3],["new",11937.0,120.0],["new",11867.5,2.0e3],["new",11797.5,2.0e3],["new",11728.0,2.0e3],["new",1.17e4,4120.0],["new",11659.0,2.0e3],["new",11522.0,2.0e3],["new",11454.0,2.0e3],["new",11450.5,20.0],["new",11420.5,30.0],["new",11360.5,90.0],["new",11240.5,270.0],["new",11230.0,200.0],["new",1.12e4,10.0],["new",11187.0,2.0e3],["new",11121.0,2.0e3],["new",1.11e4,10.0],["new",11055.5,2.0e3],["new",11000.5,810.0],["new",1.1e4,5.003e5],["new",10990.5,2.0e3],["new",10926.0,2.0e3],["new",10861.5,2.0e3],["new",10797.5,2.0e3],["new",10734.0,2.0e3],["new",10682.5,2430.0],["new",10682.0,2430.0],["new",10520.5,2430.0],["new",10399.0,10.0],["new",1.02e4,130.0],["new",10179.0,50.0],["new",10172.5,810.0],["new",10164.5,2430.0],["new",10142.0,1.0e5],["new",10027.5,90.0],["new",10026.0,810.0],["new",10022.0,26730.0],["new",10009.5,150.0],["new",1.0e4,2098750.0],["new",9951.5,2.2e3],["new",9876.0,2430.0],["new",9874.0,2430.0],["new",9866.0,1.0e5],["new",9811.5,2430.0],["new",9785.5,7290.0],["new",9775.5,2430.0],["new",9743.5,2430.0],["new",9693.5,2430.0],["new",9692.5,2430.0],["new",9687.5,2430.0],["new",9687.0,2.43e4],["new",9674.0,3660.0],["new",9657.5,100.0],["new",9650.0,2430.0],["new",9640.5,7290.0],["new",9632.5,1.0e3],["new",9607.5,1.0e4],["new",9597.0,2430.0],["new",9595.5,2430.0],["new",9582.5,9.7e4],["new",9546.0,2430.0],["new",9524.5,7290.0],["new",9.5e3,9.5e4],["new",9411.0,8560.0],["new",9362.0,43740.0],["new",9326.5,1.5e5],["new",9317.5,890.0],["new",9274.0,1.0e5],["new",9250.5,7290.0],["new",9250.0,167450.0],["new",9234.0,7290.0],["new",9210.0,7.368e5],["new",9155.5,5.5e5],["new",9142.5,40.0],["new",9127.0,330.0],["new",9103.5,7290.0],["new",9102.5,160.0],["new",9.1e3,2.73e5],["new",9053.5,7290.0],["new",9047.5,7290.0],["new",9022.5,640.0],["new",9010.0,7290.0],["new",9.0e3,1220.0],["new",8957.0,7290.0],["new",8.9e3,100.0],["new",8878.0,2560.0],["new",8862.5,2560.0],["new",8854.0,1.5e5],["new",8839.0,600.0],["new",8802.0,2560.0],["new",8.8e3,100.0],["new",8785.0,9740.0],["new",8761.5,1040.0],["new",8760.0,1.0e5],["new",8735.0,9.0e3],["new",8.7e3,100.0],["new",8685.0,9.0e3],["new",8651.5,1560.0],["new",8638.5,10.0],["new",8635.0,9.0e3],["new",8.6e3,100.0],["new",8599.0,720.0],["new",8585.0,9.0e3],["new",8571.0,1250.0],["new",8546.0,2430.0],["new",8535.0,9.0e3],["new",8.5e3,8.93e4],["new",8485.0,9.0e3],["new",8450.0,2110.0],["new",8435.0,9.0e3],["new",8.4e3,110.0],["new",8393.0,14630.0],["new",8385.0,9.0e3],["new",8350.0,2090.0],["new",8338.5,320.0],["new",8335.0,9.0e3],["new",8.3e3,100.0],["new",8290.0,1.6e3],["new",8285.0,9.0e3],["new",8241.5,4120.0],["new",8235.0,9.0e3],["new",8218.0,8.1e3],["new",8.2e3,100.0],["new",8185.0,9.0e3],["new",8135.0,9.0e3],["new",8.1e3,100.0],["new",8085.0,9.0e3],["new",8066.5,17120.0],["new",8035.0,9.0e3],["new",8.0e3,1220.0],["new",7987.5,900.0],["new",7985.0,9.0e3],["new",7973.0,29260.0],["new",7.9e3,100.0],["new",7892.0,7.0e5],["new",7890.5,640.0],["new",7876.0,58520.0],["new",7809.0,5.0e5],["new",7.8e3,1.01e4],["new",7777.0,10.0],["new",7.7e3,100.0],["new",7672.0,150.0],["new",7659.5,150.0],["new",7.6e3,100.0],["new",7555.5,10.0],["new",7523.5,40.0],["new",7.5e3,2250.0],["new",7472.0,160.0],["new",7447.0,450.0],["new",7434.5,450.0],["new",7420.5,10.0],["new",7.4e3,100.0],["new",7390.0,640.0],["new",7353.0,1280.0],["new",7.3e3,100.0],["new",7.2e3,1.1e3],["new",7190.0,450.0],["new",7170.5,500.0],["new",7160.0,7160.0],["new",7.1e3,1.001e5],["new",7048.5,10240.0],["new",7005.5,3.2e4],["new",7.0e3,1110.0],["new",6931.0,5.0e3],["new",6.9e3,100.0],["new",6.8e3,100.0],["new",6735.5,1.28e5],["new",6708.0,2560.0],["new",6.7e3,100.0],["new",6.6e3,100.0],["new",6590.0,8620.0],["new",6589.0,6470.0],["new",6588.0,28390.0],["new",6587.0,24480.0],["new",6551.0,20.0],["new",6550.0,20.0],["new",6512.0,35850.0],["new",6511.0,69260.0],["new",6510.0,221750.0],["new",6509.0,35860.0],["new",6.5e3,1.6e3],["new",6418.5,10.0],["new",6.4e3,100.0],["new",6395.0,64660.0],["new",6394.0,92760.0],["new",6393.0,217970.0],["new",6392.0,66110.0],["new",6390.5,10.0],["new",6.3e3,100.0],["new",6295.0,100.0],["new",6286.5,1.383e5],["new",6285.5,286720.0],["new",6284.5,211380.0],["new",6283.5,246610.0],["new",6259.5,750.0],["new",6.2e3,100.0],["new",6186.5,73690.0],["new",6185.5,340510.0],["new",6184.5,21880.0],["new",6183.5,186350.0],["new",6169.5,450.0],["new",6.1e3,100.0],["new",6050.0,40.0],["new",6.0e3,4140.0],["new",5999.0,5.0e3],["new",5934.0,5120.0],["new",5925.5,5.12e5],["new",5.9e3,210.0],["new",5.8e3,100.0],["new",5.7e3,100.0],["new",5.6e3,100.0],["new",5.5e3,2.1e3],["new",5.4e3,100.0],["new",5359.5,2250.0],["new",5346.0,7290.0],["new",5309.0,50.0],["new",5.3e3,100.0],["new",5.2e3,100.0],["new",5118.0,2560.0],["new",5.1e3,100.0],["new",5050.5,450.0],["new",5044.5,150.0],["new",5005.0,10240.0],["new",5.0e3,1.01e4],["new",4999.0,20520.0],["new",4964.0,10.0],["new",4922.0,450.0],["new",4757.5,200.0],["new",4690.0,1.0e3],["new",4610.0,1.0e4],["new",4.6e3,2.0e3],["new",4597.0,1.6e3],["new",4594.5,450.0],["new",4514.5,1.0e6],["new",4.5e3,800.0],["new",4414.0,46280.0],["new",4003.0,40.0],["new",4001.0,20.0],["new",4.0e3,640.0],["new",3921.0,23040.0],["new",3845.0,40.0],["new",3.8e3,10050.0],["new",3777.5,6.4e3],["new",3774.0,3.0e3],["new",3773.0,1.0e3],["new",3754.5,1.0e3],["new",3708.0,2.7e4],["new",3.7e3,30.0],["new",3680.0,10.0],["new",3655.0,20.0],["new",3650.0,10.0],["new",3.6e3,3.6e4],["new",3590.0,1.0e4],["new",3567.0,500.0],["new",3.5e3,230.0],["new",3.4e3,80.0],["new",3230.0,10.0],["new",3228.0,10.0],["new",3.2e3,20.0],["new",3001.0,20.0],["new",3.0e3,7.2e3],["new",2999.0,40.0],["new",2879.0,300.0],["new",2601.0,20.0],["new",2544.0,10.0],["new",2.5e3,20.0],["new",2467.0,2.56e4],["new",2.4e3,1.0e3],["new",2309.0,250.0],["new",2.3e3,20.0],["new",2222.0,680.0],["new",2211.0,40.0],["new",2005.0,140.0],["new",2.0e3,21010.0],["new",1999.0,10.0],["new",1994.5,5.0e3],["new",1979.0,60.0],["new",1.9e3,30.0],["new",1.7e3,300.0],["new",1.4e3,40.0],["new",1234.0,10.0],["new",1205.0,40.0],["new",1099.0,10.0],["new",1002.5,70.0],["new",1000.5,40.0],["new",1.0e3,13480.0],["new",900.0,10.0],["new",800.0,10.0],["new",648.0,40.0],["new",600.0,760.0],["new",541.5,1.0e4],["new",502.0,1350.0],["new",500.0,3080.0],["new",400.0,150.0],["new",300.0,540.0],["new",288.0,10.0],["new",287.0,10.0],["new",281.0,100.0],["new",222.0,300.0],["new",200.0,1240.0],["new",123.0,1.0e3],["new",120.0,110.0],["new",101.0,110.0],["new",100.0,123570.0],["new",60.0,270.0],["new",58.0,10.0],["new",50.0,900.0],["new",40.0,80.0],["new",35.5,20.0],["new",30.0,10350.0],["new",25.0,30.0],["new",20.0,2050.0],["new",16.5,10.0],["new",15.0,20.0],["new",13.0,30.0],["new",12.0,10.0],["new",11.0,10.0],["new",10.0,4010.0],["new",9.0,20.0],["new",6.5,10.0],["new",6.0,40.0],["new",5.0,250.0],["new",4.0,40.0],["new",3.0,20.0],["new",1.0,390.0],["new",0.5,61150.0]],"asks":[["new",83720.0,7669940.0],["new",83739.5,10.0],["new",84556.5,10.0],["new",84872.0,20.0],["new",8.5e4,24190.0],["new",86018.0,30.0],["new",87164.5,60.0],["new",8.8e4,1.0e7],["new",88310.5,100.0],["new",89456.5,170.0],["new",90602.5,300.0],["new",90818.5,31680.0],["new",91748.5,520.0],["new",92823.0,6810.0],["new",9.5e4,10.0],["new",95042.0,4190.0],["new",9.52e4,5950.0],["new",96320.0,5620.0],["new",96819.5,15840.0],["new",97430.0,5530.0],["new",9.8e4,10.0],["new",9.9e4,20.0],["new",99670.0,5630.0],["new",1.0e5,10.0],["new",100094.5,170.0],["new",100128.0,100.0],["new",100141.5,30.0],["new",100166.5,190.0],["new",1.008e5,5570.0],["new",100894.0,20.0],["new",101144.5,190.0],["new",102106.5,20.0],["new",103085.5,30.0],["new",103097.5,70.0],["new",103102.0,200.0],["new",103114.0,90.0],["new",104059.0,180.0],["new",104115.5,40.0],["new",104160.5,70.0],["new",104228.0,50.0],["new",105206.5,80.0],["new",107232.0,230.0],["new",107667.0,290.0],["new",109004.5,500.0],["new",110298.0,210.0],["new",110763.0,260.0],["new",111228.0,310.0],["new",111693.0,370.0],["new",112158.0,440.0],["new",112285.0,450.0],["new",112623.0,530.0],["new",113088.0,640.0],["new",113553.0,770.0],["new",114018.0,920.0],["new",114483.5,1.1e3],["new",114948.5,1320.0],["new",115164.0,550.0],["new",115413.5,1590.0],["new",118043.5,680.0],["new",119094.5,120.0],["new",1.2e5,100020.0],["new",120922.5,820.0],["new",123801.5,1010.0],["new",126680.5,1230.0],["new",129559.5,1.5e3],["new",130318.5,130.0],["new",145037.0,150.0],["new",145090.5,150.0],["new",145306.5,300.0],["new",1.5e5,38100030.0]]}}}
+[22:20:54.183433001] [DeriClient] [INFO] Received streaming update.
+[22:20:59.298785821] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","method":"subscription","params":{"channel":"book.BTC-PERPETUAL.100ms","data":{"timestamp":1742489459024,"type":"change","change_id":38864862677,"instrument_name":"BTC-PERPETUAL","bids":[["new",83475.5,8003110.0],["delete",83473.5,0.0]],"asks":[],"prev_change_id":38864853078}}}
+[22:20:59.298786930] [DeriClient] [INFO] Received streaming update.
+[22:21:00.304712819] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","method":"subscription","params":{"channel":"book.BTC-PERPETUAL.100ms","data":{"timestamp":1742489460035,"type":"change","change_id":38864864457,"instrument_name":"BTC-PERPETUAL","bids":[["new",83667.5,7293910.0],["delete",83636.5,0.0]],"asks":[["delete",83739.5,0.0],["new",83753.5,10.0]],"prev_change_id":38864862677}}}
+[22:21:00.304713785] [DeriClient] [INFO] Received streaming update.
+[22:21:00.635489649] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","method":"subscription","params":{"channel":"book.BTC-PERPETUAL.100ms","data":{"timestamp":1742489460400,"type":"change","change_id":38864864898,"instrument_name":"BTC-PERPETUAL","bids":[],"asks":[["delete",83720.0,0.0],["new",83751.0,7669940.0],["delete",83753.5,0.0],["new",83769.0,10.0]],"prev_change_id":38864864457}}}
+[22:21:00.635490875] [DeriClient] [INFO] Received streaming update.
+[22:21:03.774892955] [DeriClient] [DEBUG] Successfully Sent request : {
+[22:21:03.774892955] [DeriClient] [DEBUG]         "jsonrpc": "2.0",
+[22:21:03.774892955] [DeriClient] [DEBUG]         "id": 26,
+[22:21:03.774892955] [DeriClient] [DEBUG]         "method": "public/unsubscribe",
+[22:21:03.774892955] [DeriClient] [DEBUG]         "params": {
+[22:21:03.774892955] [DeriClient] [DEBUG]             "channels": ["book.BTC-PERPETUAL.100ms"]
+[22:21:03.774892955] [DeriClient] [DEBUG]         }
+[22:21:03.774892955] [DeriClient] [DEBUG]     }
+[22:21:03.939169320] [DeriClient] [DEBUG] Received response: {"jsonrpc":"2.0","id":26,"result":["book.BTC-PERPETUAL.100ms"],"usIn":1742489463879102,"usOut":1742489463879182,"usDiff":80,"testnet":true}
+[22:21:03.939170075] [DeriClient] [INFO] Received response for request ID 26.
+[22:21:03.939172790] [DeriClient] [INFO] Request successful. Method: public/unsubscribe. Latency: 164366502 ns

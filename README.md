@@ -80,15 +80,15 @@ Adjust the following parameters in `main.cpp` to configure your setup:
 
 | Parameter     | Description                            | Default Value          |
 |---------------|----------------------------------------|------------------------|
-| `CLIENT_ID`   | Deribit API client ID                  | zavRq-oY|
-| `KEY_PATH`    | Path to your Ed25519 private key file  | `/path/to/private.key` |
+| `CLIENT_ID`   | Deribit API client ID                  | `zavRq-oY`|
+| `KEY_PATH`    | Path to your Ed25519 private key file  | `private.pem` |
 | `STREAM_ADDR` | WebSocket server listening address     | `127.0.0.1`            |
 | `STREAM_PORT` | WebSocket server listening port        | `8080`                 |
 
 ## Project Structure
 
 ```
-trading-system/
+Order management & execution system/
 ├── dericlient.h/.cpp # Client implementation for Deribit API communication
 ├── streamer.h/.cpp # WebSocket server implementation for market data distribution
 ├── main.cpp # Entry point and configuration of the application
@@ -132,6 +132,28 @@ The project uses Quill for structured logging. Logs are separated into different
 - **dericlient.log**: Logs related to Deribit API interactions.
 - **server.log**: Logs related to WebSocket server operations and client management.
 - **performance.log**: Logs related to latency measurements
+
+## Documentation
+
+This project includes detailed documentation generated using **Doxygen**. The documentation provides insights into the project's architecture, usage, and implementation details.
+
+### Viewing the Documentation
+
+To view the documentation:
+
+1. Navigate to the `docs/html/` directory in the project.
+2. Open the `index.html` file in your web browser.
+
+
+### What’s Included in the Documentation?
+
+The Doxygen-generated documentation includes:
+- Class hierarchies and relationships.
+- Detailed descriptions of all classes, methods, and their parameters.
+- Navigation between related components.
+- Search functionality for quick access.
+
+
 
 
 

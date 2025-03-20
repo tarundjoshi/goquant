@@ -23,7 +23,7 @@
  #include <unordered_map>
  #include <functional>
  #include <atomic>
- #include "concurrentqueue.h" // moodycamel's concurrent queue
+ #include "./../concurrentqueue.h" // moodycamel's concurrent queue
 
 #include "quill/Backend.h"
 #include "quill/Frontend.h"

@@ -1,1 +1,160 @@
-\hypertarget{md_README_autotoc_md1}{}\doxysection{goquant}\label{md_README_autotoc_md1}
+\hypertarget{md_README_autotoc_md1}{}\doxysection{Overview}\label{md_README_autotoc_md1}
+This project implements a high-\/performance trading system designed to provide low-\/latency market data processing and order execution. It consists of two primary components\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{\mbox{\hyperlink{classDeriClient}{Deri\+Client}}}}\+: A Web\+Socket client that connects to Deribit\textquotesingle{}s API, handling authentication, order management, and real-\/time market data streaming.
+\item {\bfseries{Streamer}}\+: A Web\+Socket server that distributes real-\/time market data to connected clients, manages subscriptions, and maintains local order books.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md2}{}\doxysection{Features}\label{md_README_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Real-\/time order book management with incremental updates
+\item Low-\/latency Web\+Socket communication
+\item Thread-\/safe concurrent operations
+\item Efficient JSON parsing using simdjson
+\item Robust error handling and structured logging with Quill
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md3}{}\doxysection{Requirements}\label{md_README_autotoc_md3}
+
+\begin{DoxyItemize}
+\item {\bfseries{C++17}} compatible compiler (GCC or Clang recommended)
+\item {\bfseries{Boost}} libraries ({\ttfamily Beast}, {\ttfamily ASIO})
+\item {\bfseries{Open\+SSL}} for secure Web\+Socket connections
+\item {\bfseries{simdjson}} for high-\/performance JSON parsing
+\item {\bfseries{\mbox{\hyperlink{classmoodycamel_1_1ConcurrentQueue}{moodycamel\+::\+Concurrent\+Queue}}}} for lock-\/free concurrent queues
+\item {\bfseries{Quill}} for high-\/performance logging
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md4}{}\doxysubsection{Install Dependencies (\+Ubuntu/\+Debian)}\label{md_README_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sudo apt-\/get update }
+\DoxyCodeLine{sudo apt-\/get install libboost-\/all-\/dev libssl-\/dev cmake git}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md5}{}\doxysubsection{Third-\/party Libraries}\label{md_README_autotoc_md5}
+Clone and build third-\/party libraries\+:
+
+{\bfseries{1) simdjson}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/simdjson/simdjson.git}
+\DoxyCodeLine{cd simdjson \&\& mkdir build \&\& cd build}
+\DoxyCodeLine{cmake .. \&\& make \&\& sudo make install}
+
+\end{DoxyCode}
+ {\bfseries{2) moodycamel Concurrent\+Queue (header-\/only)}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/cameron314/concurrentqueue.git}
+\DoxyCodeLine{sudo cp concurrentqueue/*.h /usr/local/include/}
+
+\end{DoxyCode}
+
+
+{\bfseries{3) Quill logging}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git clone https://github.com/odygrd/quill.git}
+\DoxyCodeLine{cd quill \&\& mkdir build \&\& cd build}
+\DoxyCodeLine{cmake .. \&\& make \&\& sudo make install}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md6}{}\doxysection{Building the Project}\label{md_README_autotoc_md6}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md7}{}\doxysection{Running the Project}\label{md_README_autotoc_md7}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{./a.out}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md8}{}\doxysection{Configuration}\label{md_README_autotoc_md8}
+Adjust the following parameters in {\ttfamily main.\+cpp} to configure your setup\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Parameter   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default Value    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Parameter   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default Value    }\\\cline{1-3}
+\endhead
+{\ttfamily CLIENT\+\_\+\+ID}   &Deribit API client ID   &{\ttfamily zav\+Rq-\/oY}    \\\cline{1-3}
+{\ttfamily KEY\+\_\+\+PATH}   &Path to your Ed25519 private key file   &{\ttfamily private.\+pem}    \\\cline{1-3}
+{\ttfamily STREAM\+\_\+\+ADDR}   &Web\+Socket server listening address   &{\ttfamily 127.\+0.\+0.\+1}    \\\cline{1-3}
+{\ttfamily STREAM\+\_\+\+PORT}   &Web\+Socket server listening port   &{\ttfamily 8080}   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md_README_autotoc_md9}{}\doxysection{Project Structure}\label{md_README_autotoc_md9}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Order management \& execution system/}
+\DoxyCodeLine{├── dericlient.h/.cpp \# Client implementation for Deribit API communication}
+\DoxyCodeLine{├── streamer.h/.cpp \# WebSocket server implementation for market data distribution}
+\DoxyCodeLine{├── main.cpp \# Entry point and configuration of the application}
+\DoxyCodeLine{├── Makefile \# Build configuration file}
+\DoxyCodeLine{└── logs/ \# Directory containing log files generated by Quill logger}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md10}{}\doxysection{Architecture Overview}\label{md_README_autotoc_md10}
+\hypertarget{md_README_autotoc_md11}{}\doxysubsection{Deri\+Client}\label{md_README_autotoc_md11}
+Handles communication with Deribit\textquotesingle{}s API\+:
+
+
+\begin{DoxyItemize}
+\item Authentication via Ed25519 signatures.
+\item Order placement, modification, cancellation.
+\item Market data subscription (order book updates).
+\item Position management.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md12}{}\doxysubsection{Streamer (\+Web\+Socket Server)}\label{md_README_autotoc_md12}
+Real-\/time market data distribution\+:
+
+
+\begin{DoxyItemize}
+\item Maintains local order books with incremental updates.
+\item Manages client subscriptions efficiently.
+\item Broadcasts market data updates to subscribed clients.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md13}{}\doxysubsubsection{Key Components\+:}\label{md_README_autotoc_md13}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Component   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Responsibility    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Component   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Responsibility    }\\\cline{1-2}
+\endhead
+{\ttfamily \mbox{\hyperlink{classOrderBookManager}{Order\+Book\+Manager}}}   &Maintains current state of order books    \\\cline{1-2}
+{\ttfamily \mbox{\hyperlink{classSubscriptionManager}{Subscription\+Manager}}}   &Manages client subscriptions and broadcasts updates    \\\cline{1-2}
+{\ttfamily \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}}}   &Handles individual client connections   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md_README_autotoc_md14}{}\doxysection{Logging}\label{md_README_autotoc_md14}
+The project uses Quill for structured logging. Logs are separated into different files under the {\ttfamily /logs} directory\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{dericlient.\+log}}\+: Logs related to Deribit API interactions.
+\item {\bfseries{server.\+log}}\+: Logs related to Web\+Socket server operations and client management.
+\item {\bfseries{performance.\+log}}\+: Logs related to latency measurements
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md15}{}\doxysection{Documentation}\label{md_README_autotoc_md15}
+This project includes detailed documentation generated using {\bfseries{Doxygen}}. The documentation provides insights into the project\textquotesingle{}s architecture, usage, and implementation details.\hypertarget{md_README_autotoc_md16}{}\doxysubsection{Viewing the Documentation}\label{md_README_autotoc_md16}
+To view the documentation\+:
+
+
+\begin{DoxyEnumerate}
+\item Navigate to the {\ttfamily docs/html/} directory in the project.
+\item Open the {\ttfamily index.\+html} file in your web browser.
+\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md17}{}\doxysubsection{What’s Included in the Documentation?}\label{md_README_autotoc_md17}
+The Doxygen-\/generated documentation includes\+:
+\begin{DoxyItemize}
+\item Class hierarchies and relationships.
+\item Detailed descriptions of all classes, methods, and their parameters.
+\item Navigation between related components.
+\item Search functionality for quick access. 
+\end{DoxyItemize}

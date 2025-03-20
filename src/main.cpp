@@ -18,9 +18,8 @@
 #include <queue>
 #include <unordered_map>
 #include <set>
-#include <concurrentqueue.h>
-#include "dericlient.h"
-#include "streamer.h"
+#include "./dericlient/dericlient.h"
+#include "./streamer/streamer.h"
 
 #include "quill/Backend.h"
 #include "quill/Frontend.h"
@@ -37,7 +36,7 @@ using tcp = asio::ip::tcp;
 using namespace simdjson;
 
 #define CLIENT_ID "zavRq-oY"
-#define KEY_PATH "private.pem"
+#define KEY_PATH "/home/tarun/deribit_api_keys/private.pem"
 #define STREAM_ADDR "127.0.0.1"
 #define STREAM_PORT 8080
 
@@ -96,8 +95,8 @@ int main() {
         std::filesystem::create_directories("logs");
 
         // Create sinks
-        auto file_sink_client = quill::Frontend::create_or_get_sink<quill::FileSink>("logs/dericlient.log");
-        auto file_sink_server = quill::Frontend::create_or_get_sink<quill::FileSink>("logs/server.log");
+        auto file_sink_client = quill::Frontend::create_or_get_sink<quill::FileSink>("./../logs/dericlient.log");
+        auto file_sink_server = quill::Frontend::create_or_get_sink<quill::FileSink>("./../logs/server.log");
         auto console_sink = quill::Frontend::create_or_get_sink<quill::ConsoleSink>("console");
 
         // Create loggers with pattern formatting
@@ -119,7 +118,7 @@ int main() {
         client_logger->set_log_level(quill::LogLevel::Debug);
         server_logger->set_log_level(quill::LogLevel::Debug);
 
-        auto file_sink_perf = quill::Frontend::create_or_get_sink<quill::FileSink>("logs/performance.log");
+        auto file_sink_perf = quill::Frontend::create_or_get_sink<quill::FileSink>("./../logs/performance.log");
         quill::Logger* perf_logger = quill::Frontend::create_or_get_logger(
             "Performance",
             {file_sink_perf},

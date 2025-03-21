@@ -1,0 +1,14 @@
+[10:16:20.741442650] [Performance] ===== Order placement statistics Statistics (ns) =====
+[10:16:20.741442977] [Performance]   Sample count: 26
+[10:16:20.741443015] [Performance]   Min: 164259775.00
+[10:16:20.741443029] [Performance]   Max: 181989665.00
+[10:16:20.741443040] [Performance]   Average: 169868087.38
+[10:16:20.741443052] [Performance]   Median: 167109867.00
+[10:16:20.741443064] [Performance]   Standard deviation: 5514395.47
+[10:16:20.741443915] [Performance] ===== Market data processing statistics Statistics (ns) =====
+[10:16:20.741443942] [Performance]   Sample count: 8
+[10:16:20.741443949] [Performance]   Min: 26.00
+[10:16:20.741443959] [Performance]   Max: 39.00
+[10:16:20.741443968] [Performance]   Average: 34.88
+[10:16:20.741443977] [Performance]   Median: 38.00
+[10:16:20.741443987] [Performance]   Standard deviation: 4.37

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['modify_5forder_70',['modify_order',['../classDeriClient.html#a7cf2af4fcc90bc41816d659258c9eee9',1,'DeriClient']]]
+  ['place_5forder_60',['place_order',['../classDeriClient.html#aa66493e04fd505ce1b05b9b9039dd75d',1,'DeriClient']]]
 ];

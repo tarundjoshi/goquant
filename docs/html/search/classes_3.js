@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['server_48',['Server',['../classServer.html',1,'']]],
-  ['subscriptionmanager_49',['SubscriptionManager',['../classSubscriptionManager.html',1,'']]]
+  ['websocketsession_41',['WebSocketSession',['../classWebSocketSession.html',1,'']]]
 ];

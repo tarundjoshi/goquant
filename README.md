@@ -115,7 +115,7 @@ Real-time market data distribution:
 
 ## Logging
 
-The project uses Quill for structured logging. Logs are separated into different files under the `/logs` directory:
+The project uses Quill for ultra-low latency structured logging. Logs are separated into different files under the `/logs` directory:
 
 - **dericlient.log**: Logs related to Deribit API interactions.
 - **server.log**: Logs related to WebSocket server operations and client management.

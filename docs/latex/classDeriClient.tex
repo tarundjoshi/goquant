@@ -11,8 +11,7 @@ Client for connecting to Deribit\textquotesingle{}s Web\+Socket API.
 
 
 
-Collaboration diagram for Deri\+Client\+:
-\nopagebreak
+Collaboration diagram for Deri\+Client\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -56,9 +55,9 @@ void \mbox{\hyperlink{classDeriClient_ac664a110a7ea5c69ac44eed93007a555}{get\+\_
 \mbox{\Hypertarget{classDeriClient_a6e6f0a4c88b4ade3945f9d45be3767b7}\label{classDeriClient_a6e6f0a4c88b4ade3945f9d45be3767b7}} 
 void \mbox{\hyperlink{classDeriClient_a6e6f0a4c88b4ade3945f9d45be3767b7}{get\+\_\+positions}} ()
 \begin{DoxyCompactList}\small\item\em Get current positions. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classDeriClient_adc78af181b52f32cf69109394edd7f1e}{subscribe\+\_\+to\+\_\+orderbook}} (const std\+::string \&instrument, std\+::function$<$ void(const std\+::string \&)$>$ callback=nullptr)
-\begin{DoxyCompactList}\small\item\em Subscribe to real-\/time orderbook updates. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classDeriClient_adeee3e182cdb77dcf6a395530df0d8d3}{unsubscribe\+\_\+from\+\_\+orderbook}} (const std\+::string \&instrument)
+void \mbox{\hyperlink{classDeriClient_a58e01598a50fffa811230385a4fbd39d}{subscribe\+\_\+to\+\_\+symbol}} (const std\+::string \&instrument, std\+::function$<$ void(const std\+::string \&)$>$ callback=nullptr)
+\begin{DoxyCompactList}\small\item\em Subscribe to symbol for real-\/time updates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDeriClient_a6b151ab37c85656563bda3dbf1db61f1}{unsubscribe\+\_\+from\+\_\+symbol}} (const std\+::string \&instrument)
 \begin{DoxyCompactList}\small\item\em Unsubscribe from real-\/time orderbook updates. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -300,28 +299,28 @@ Sign data using the Ed25519 private key.
 \begin{DoxyReturn}{Returns}
 URL-\/safe base64 encoded signature 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classDeriClient_adc78af181b52f32cf69109394edd7f1e}\label{classDeriClient_adc78af181b52f32cf69109394edd7f1e}} 
-\index{DeriClient@{DeriClient}!subscribe\_to\_orderbook@{subscribe\_to\_orderbook}}
-\index{subscribe\_to\_orderbook@{subscribe\_to\_orderbook}!DeriClient@{DeriClient}}
-\doxysubsubsection{\texorpdfstring{subscribe\_to\_orderbook()}{subscribe\_to\_orderbook()}}
-{\footnotesize\ttfamily void Deri\+Client\+::subscribe\+\_\+to\+\_\+orderbook (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instrument,  }\item[{std\+::function$<$ void(const std\+::string \&)$>$}]{callback = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classDeriClient_a58e01598a50fffa811230385a4fbd39d}\label{classDeriClient_a58e01598a50fffa811230385a4fbd39d}} 
+\index{DeriClient@{DeriClient}!subscribe\_to\_symbol@{subscribe\_to\_symbol}}
+\index{subscribe\_to\_symbol@{subscribe\_to\_symbol}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{subscribe\_to\_symbol()}{subscribe\_to\_symbol()}}
+{\footnotesize\ttfamily void Deri\+Client\+::subscribe\+\_\+to\+\_\+symbol (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instrument,  }\item[{std\+::function$<$ void(const std\+::string \&)$>$}]{callback = {\ttfamily nullptr} }\end{DoxyParamCaption})}
 
 
 
-Subscribe to real-\/time orderbook updates. 
+Subscribe to symbol for real-\/time updates. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em instrument} & Instrument name \\
+{\em instrument} & channel name \\
 \hline
 {\em callback} & Optional function to call when updates are received \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classDeriClient_adeee3e182cdb77dcf6a395530df0d8d3}\label{classDeriClient_adeee3e182cdb77dcf6a395530df0d8d3}} 
-\index{DeriClient@{DeriClient}!unsubscribe\_from\_orderbook@{unsubscribe\_from\_orderbook}}
-\index{unsubscribe\_from\_orderbook@{unsubscribe\_from\_orderbook}!DeriClient@{DeriClient}}
-\doxysubsubsection{\texorpdfstring{unsubscribe\_from\_orderbook()}{unsubscribe\_from\_orderbook()}}
-{\footnotesize\ttfamily void Deri\+Client\+::unsubscribe\+\_\+from\+\_\+orderbook (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instrument }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classDeriClient_a6b151ab37c85656563bda3dbf1db61f1}\label{classDeriClient_a6b151ab37c85656563bda3dbf1db61f1}} 
+\index{DeriClient@{DeriClient}!unsubscribe\_from\_symbol@{unsubscribe\_from\_symbol}}
+\index{unsubscribe\_from\_symbol@{unsubscribe\_from\_symbol}!DeriClient@{DeriClient}}
+\doxysubsubsection{\texorpdfstring{unsubscribe\_from\_symbol()}{unsubscribe\_from\_symbol()}}
+{\footnotesize\ttfamily void Deri\+Client\+::unsubscribe\+\_\+from\+\_\+symbol (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{instrument }\end{DoxyParamCaption})}
 
 
 
@@ -329,7 +328,7 @@ Unsubscribe from real-\/time orderbook updates.
 
 
 \begin{DoxyParams}{Parameters}
-{\em instrument} & Instrument name \\
+{\em instrument} & channel name \\
 \hline
 \end{DoxyParams}
 

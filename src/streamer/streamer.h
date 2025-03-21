@@ -33,99 +33,6 @@
  class WebSocketSession;
  
  /**
-  * @class OrderBook
-  * @brief Represents a single order book with bids and asks.
-  *
-  * This class maintains the current state of an order book by applying
-  * both snapshots and incremental updates.
-  */
- class OrderBook {
- public:
-     /**
-      * @brief Constructs an OrderBook for a specific symbol.
-      * @param symbol The trading symbol this order book represents.
-      */
-     OrderBook(const std::string& symbol);
-     
-     /**
-      * @brief Default constructor for use in containers.
-      */
-     OrderBook();
- 
-     /**
-      * @brief Updates the order book with new data (either snapshot or incremental update).
-      * @param data The data from the exchange.
-      * @param is_snapshot Whether this is a full snapshot (true) or an incremental update (false).
-      */
-     void update(simdjson::dom::element data, bool is_snapshot);
- 
-     /**
-      * @brief Generates a JSON string representing the current state of the order book.
-      * @return A JSON string containing the complete order book.
-      */
-     std::string to_json() const;
- 
- private:
-     std::string symbol_;
-     std::map<double, double, std::greater<double>> bids_; // Price -> Size, sorted descending
-     std::map<double, double, std::less<double>> asks_;    // Price -> Size, sorted ascending
-     std::string channel_; // Store the channel name for reconstructing messages
-     uint64_t timestamp_ = 0; // Latest timestamp
- };
- 
- /**
-  * @class OrderBookManager
-  * @brief Manages order books for different trading symbols.
-  *
-  * This class is responsible for:
-  * - Processing and storing order book data from the exchange
-  * - Maintaining up-to-date local copies of order books
-  * - Providing access to the latest order book state for each symbol
-  * - Thread-safe access to order book data
-  */
- class OrderBookManager {
- public:
-     /**
-      * @brief Constructs an OrderBookManager with the specified logger.
-      * @param logger Pointer to a quill logger for logging events.
-      */
-     OrderBookManager(quill::Logger* logger);
- 
-     /**
-      * @brief Processes an incoming WebSocket message and updates the local order book.
-      *
-      * This method parses the message, updates the appropriate order book,
-      * and maintains an up-to-date local copy.
-      *
-      * @param message The JSON message received from the WebSocket connection.
-      * @return The symbol that was updated, or empty string if not applicable.
-      */
-     std::string process_message(const std::string& message);
- 
-     /**
-      * @brief Retrieves the latest order book state for a given symbol.
-      *
-      * @param symbol The trading symbol (e.g., "BTC-PERPETUAL").
-      * @return The JSON representation of the current order book, or an empty string if not available.
-      */
-     std::string get_current_orderbook(const std::string& symbol);
- 
-     /**
-      * @brief Checks if an order book exists for a given symbol.
-      *
-      * @param symbol The trading symbol to check.
-      * @return true if an order book exists, false otherwise.
-      */
-     bool has_orderbook(const std::string& symbol);
- 
- private:
-     std::mutex book_mutex_; ///< Mutex for thread-safe access to the order books
-     std::unordered_map<std::string, OrderBook> order_books_; ///< Map of symbol -> OrderBook
-     quill::Logger* logger; ///< Logger for recording events
-     simdjson::dom::parser parser_; ///< JSON parser for processing messages
- };
- 
- /**
   * @class SubscriptionManager
   * @brief Manages client subscriptions to market data symbols
   *
@@ -137,7 +44,6 @@
  private:
      std::mutex subscription_mutex; ///< Mutex for thread-safe access to the subscribers map
      std::unordered_map<std::string, std::set<std::shared_ptr<WebSocketSession>>> symbol_subscribers; ///< Map of symbol -> set of subscribers
-     OrderBookManager order_book_manager_; ///< Manager for order book data
      DeriClient& deri_client_; ///< Client for communicating with the exchange
      quill::Logger* logger; ///< Logger for recording events
      simdjson::dom::parser parser_; ///< JSON parser for processing message
@@ -182,14 +88,6 @@
       * This is typically called when a client disconnects.
       */
      void unsubscribe_all(WebSocketSession* session);
- 
-     /**
-      * @brief Unsubscribe a client session from all symbols
-      * @param session The client session to unsubscribe (shared_ptr version)
-      *
-      * This is typically called when a client disconnects.
-      */
-     void unsubscribe_all(std::shared_ptr<WebSocketSession> session);
  
      /**
       * @brief Broadcast a market data update to all subscribed clients

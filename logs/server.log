@@ -1,25 +1,28 @@
-[22:20:31.085762599] [Streamer] [INFO] WebSocket server listening on 127.0.0.1:8080
-[22:20:35.819332076] [Streamer] [INFO] New WebSocket connection accepted
-[22:20:35.820503773] [Streamer] [INFO] WebSocket connection established
-[22:20:49.558303503] [Streamer] [ERROR] Invalid message format: {"action":"subscribe", "symbol:"BTC-PERPETUAL"}
-[22:20:49.558408986] [Streamer] [DEBUG] Successfully sent message: 34 bytes
-[22:20:53.975348884] [Streamer] [INFO] Session subscribed to BTC-PERPETUAL
-[22:20:53.975350057] [Streamer] [INFO] Subscribing to BTC-PERPETUAL on Deribit
-[22:20:53.975437970] [Streamer] [DEBUG] Successfully sent message: 48 bytes
-[22:20:54.183552509] [Streamer] [INFO] Applied order book snapshot for BTC-PERPETUAL
-[22:20:54.183604121] [Streamer] [INFO] Broadcasted update for BTC-PERPETUAL
-[22:20:54.183620451] [Streamer] [DEBUG] Successfully sent message: 12525 bytes
-[22:20:59.298793644] [Streamer] [INFO] Applied order book update for BTC-PERPETUAL
-[22:20:59.298836359] [Streamer] [INFO] Broadcasted update for BTC-PERPETUAL
-[22:20:59.298846871] [Streamer] [DEBUG] Successfully sent message: 295 bytes
-[22:21:00.304722666] [Streamer] [INFO] Applied order book update for BTC-PERPETUAL
-[22:21:00.304763775] [Streamer] [INFO] Broadcasted update for BTC-PERPETUAL
-[22:21:00.304782643] [Streamer] [DEBUG] Successfully sent message: 338 bytes
-[22:21:00.635500524] [Streamer] [INFO] Applied order book update for BTC-PERPETUAL
-[22:21:00.635539751] [Streamer] [INFO] Broadcasted update for BTC-PERPETUAL
-[22:21:00.635556272] [Streamer] [DEBUG] Successfully sent message: 339 bytes
-[22:21:03.774797926] [Streamer] [INFO] WebSocket connection closed: Connection reset by peer
-[22:21:03.774799800] [Streamer] [INFO] Session unsubscribed from all symbols
-[22:21:03.774799824] [Streamer] [INFO] Unsubscribing from BTC-PERPETUAL on Deribit (no more subscribers)
-[22:21:03.774874397] [Streamer] [INFO] Session unsubscribed from all symbols
-[22:21:03.774874751] [Streamer] [INFO] Session destroyed
+[10:14:30.075822159] [Streamer] [INFO] WebSocket server listening on 127.0.0.1:8080
+[10:14:36.111802904] [Streamer] [INFO] New WebSocket connection accepted
+[10:14:36.112720032] [Streamer] [INFO] WebSocket connection established
+[10:14:37.655334431] [Streamer] [DEBUG] Successfully sent message: 61 bytes
+[10:15:22.594187811] [Streamer] [INFO] Session subscribed to deribit_price_index.btc_usd
+[10:15:22.594189000] [Streamer] [INFO] Subscribing to deribit_price_index.btc_usd on Deribit
+[10:15:22.594276552] [Streamer] [DEBUG] Successfully sent message: 62 bytes
+[10:15:22.764853636] [Streamer] [INFO] Broadcasted notification for deribit_price_index.btc_usd
+[10:15:22.764863659] [Streamer] [DEBUG] Successfully sent message: 167 bytes
+[10:15:23.509433652] [Streamer] [INFO] Broadcasted notification for deribit_price_index.btc_usd
+[10:15:23.509550019] [Streamer] [DEBUG] Successfully sent message: 167 bytes
+[10:15:24.516481699] [Streamer] [INFO] Broadcasted notification for deribit_price_index.btc_usd
+[10:15:24.516571891] [Streamer] [DEBUG] Successfully sent message: 167 bytes
+[10:15:25.523639955] [Streamer] [INFO] Broadcasted notification for deribit_price_index.btc_usd
+[10:15:25.523732832] [Streamer] [DEBUG] Successfully sent message: 167 bytes
+[10:15:27.537735569] [Streamer] [INFO] Broadcasted notification for deribit_price_index.btc_usd
+[10:15:27.537743099] [Streamer] [DEBUG] Successfully sent message: 167 bytes
+[10:15:28.545168535] [Streamer] [INFO] Broadcasted notification for deribit_price_index.btc_usd
+[10:15:28.545271581] [Streamer] [DEBUG] Successfully sent message: 167 bytes
+[10:15:29.551820081] [Streamer] [INFO] Broadcasted notification for deribit_price_index.btc_usd
+[10:15:29.551924929] [Streamer] [DEBUG] Successfully sent message: 167 bytes
+[10:15:30.558715231] [Streamer] [INFO] Broadcasted notification for deribit_price_index.btc_usd
+[10:15:30.558797575] [Streamer] [DEBUG] Successfully sent message: 167 bytes
+[10:15:30.736846725] [Streamer] [INFO] WebSocket connection closed: Connection reset by peer
+[10:15:30.736848786] [Streamer] [INFO] Session unsubscribed from all symbols
+[10:15:30.736848813] [Streamer] [INFO] Unsubscribing from deribit_price_index.btc_usd on Deribit (no more subscribers)
+[10:15:30.736910567] [Streamer] [INFO] Session unsubscribed from all symbols
+[10:15:30.736910632] [Streamer] [INFO] Session destroyed

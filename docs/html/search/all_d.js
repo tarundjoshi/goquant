@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['send_28',['send',['../classWebSocketSession.html#a2d685b67a6ef95b4e53b726e89df56db',1,'WebSocketSession']]],
-  ['server_29',['Server',['../classServer.html',1,'Server'],['../classServer.html#a5d8a6c2ac2bf25168e12ad31458ea8d5',1,'Server::Server()']]],
-  ['sign_5fdata_30',['sign_data',['../classDeriClient.html#af440de5c03c571fc42850967a3da05e8',1,'DeriClient']]],
-  ['streamer_2eh_31',['streamer.h',['../streamer_8h.html',1,'']]],
-  ['subscribe_32',['subscribe',['../classSubscriptionManager.html#a5a11625df08b3f6978321d6b0e30a8cd',1,'SubscriptionManager']]],
-  ['subscribe_5fto_5forderbook_33',['subscribe_to_orderbook',['../classDeriClient.html#adc78af181b52f32cf69109394edd7f1e',1,'DeriClient']]],
-  ['subscriptionmanager_34',['SubscriptionManager',['../classSubscriptionManager.html',1,'SubscriptionManager'],['../classSubscriptionManager.html#a65ffe4fe5dfb4ce4a3f1d9b154168998',1,'SubscriptionManager::SubscriptionManager()']]]
+  ['unsubscribe_30',['unsubscribe',['../classSubscriptionManager.html#af31c22ca21431d39c2fe23abe34099c1',1,'SubscriptionManager']]],
+  ['unsubscribe_5fall_31',['unsubscribe_all',['../classSubscriptionManager.html#a66b96b979dd0f10395554792e34d7c5b',1,'SubscriptionManager']]],
+  ['unsubscribe_5ffrom_5fsymbol_32',['unsubscribe_from_symbol',['../classDeriClient.html#a6b151ab37c85656563bda3dbf1db61f1',1,'DeriClient']]]
 ];

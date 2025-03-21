@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['load_5fprivate_5fkey_69',['load_private_key',['../classDeriClient.html#ad5c3ae4b5abb1364678dd5de3d407567',1,'DeriClient']]]
+  ['modify_5forder_59',['modify_order',['../classDeriClient.html#a7cf2af4fcc90bc41816d659258c9eee9',1,'DeriClient']]]
 ];

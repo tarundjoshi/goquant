@@ -135,12 +135,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeriClient.html#a6e6f0a4c88b4ade3945f9d45be3767b7">get_positions</a> ()</td></tr>
 <tr class="memdesc:a6e6f0a4c88b4ade3945f9d45be3767b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current positions. <br /></td></tr>
 <tr class="separator:a6e6f0a4c88b4ade3945f9d45be3767b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc78af181b52f32cf69109394edd7f1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeriClient.html#adc78af181b52f32cf69109394edd7f1e">subscribe_to_orderbook</a> (const std::string &amp;instrument, std::function&lt; void(const std::string &amp;)&gt; callback=nullptr)</td></tr>
-<tr class="memdesc:adc78af181b52f32cf69109394edd7f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe to real-time orderbook updates.  <a href="classDeriClient.html#adc78af181b52f32cf69109394edd7f1e">More...</a><br /></td></tr>
-<tr class="separator:adc78af181b52f32cf69109394edd7f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adeee3e182cdb77dcf6a395530df0d8d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeriClient.html#adeee3e182cdb77dcf6a395530df0d8d3">unsubscribe_from_orderbook</a> (const std::string &amp;instrument)</td></tr>
-<tr class="memdesc:adeee3e182cdb77dcf6a395530df0d8d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsubscribe from real-time orderbook updates.  <a href="classDeriClient.html#adeee3e182cdb77dcf6a395530df0d8d3">More...</a><br /></td></tr>
-<tr class="separator:adeee3e182cdb77dcf6a395530df0d8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58e01598a50fffa811230385a4fbd39d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeriClient.html#a58e01598a50fffa811230385a4fbd39d">subscribe_to_symbol</a> (const std::string &amp;instrument, std::function&lt; void(const std::string &amp;)&gt; callback=nullptr)</td></tr>
+<tr class="memdesc:a58e01598a50fffa811230385a4fbd39d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe to symbol for real-time updates.  <a href="classDeriClient.html#a58e01598a50fffa811230385a4fbd39d">More...</a><br /></td></tr>
+<tr class="separator:a58e01598a50fffa811230385a4fbd39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b151ab37c85656563bda3dbf1db61f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDeriClient.html#a6b151ab37c85656563bda3dbf1db61f1">unsubscribe_from_symbol</a> (const std::string &amp;instrument)</td></tr>
+<tr class="memdesc:a6b151ab37c85656563bda3dbf1db61f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsubscribe from real-time orderbook updates.  <a href="classDeriClient.html#a6b151ab37c85656563bda3dbf1db61f1">More...</a><br /></td></tr>
+<tr class="separator:a6b151ab37c85656563bda3dbf1db61f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -557,14 +557,14 @@ quill::Logger *&#160;</td><td class="memItemRight" valign="bottom"><b>logger</b>
 
 </div>
 </div>
-<a id="adc78af181b52f32cf69109394edd7f1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc78af181b52f32cf69109394edd7f1e">&#9670;&nbsp;</a></span>subscribe_to_orderbook()</h2>
+<a id="a58e01598a50fffa811230385a4fbd39d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58e01598a50fffa811230385a4fbd39d">&#9670;&nbsp;</a></span>subscribe_to_symbol()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void DeriClient::subscribe_to_orderbook </td>
+          <td class="memname">void DeriClient::subscribe_to_symbol </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>instrument</em>, </td>
@@ -583,10 +583,10 @@ quill::Logger *&#160;</td><td class="memItemRight" valign="bottom"><b>logger</b>
       </table>
 </div><div class="memdoc">
 
-<p>Subscribe to real-time orderbook updates. </p>
+<p>Subscribe to symbol for real-time updates. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">instrument</td><td>Instrument name </td></tr>
+    <tr><td class="paramname">instrument</td><td>channel name </td></tr>
     <tr><td class="paramname">callback</td><td>Optional function to call when updates are received </td></tr>
   </table>
   </dd>
@@ -594,14 +594,14 @@ quill::Logger *&#160;</td><td class="memItemRight" valign="bottom"><b>logger</b>
 
 </div>
 </div>
-<a id="adeee3e182cdb77dcf6a395530df0d8d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adeee3e182cdb77dcf6a395530df0d8d3">&#9670;&nbsp;</a></span>unsubscribe_from_orderbook()</h2>
+<a id="a6b151ab37c85656563bda3dbf1db61f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b151ab37c85656563bda3dbf1db61f1">&#9670;&nbsp;</a></span>unsubscribe_from_symbol()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void DeriClient::unsubscribe_from_orderbook </td>
+          <td class="memname">void DeriClient::unsubscribe_from_symbol </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>instrument</em></td><td>)</td>
@@ -613,7 +613,7 @@ quill::Logger *&#160;</td><td class="memItemRight" valign="bottom"><b>logger</b>
 <p>Unsubscribe from real-time orderbook updates. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">instrument</td><td>Instrument name </td></tr>
+    <tr><td class="paramname">instrument</td><td>channel name </td></tr>
   </table>
   </dd>
 </dl>

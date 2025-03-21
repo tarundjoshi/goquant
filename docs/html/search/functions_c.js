@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['send_77',['send',['../classWebSocketSession.html#a2d685b67a6ef95b4e53b726e89df56db',1,'WebSocketSession']]],
-  ['server_78',['Server',['../classServer.html#a5d8a6c2ac2bf25168e12ad31458ea8d5',1,'Server']]],
-  ['sign_5fdata_79',['sign_data',['../classDeriClient.html#af440de5c03c571fc42850967a3da05e8',1,'DeriClient']]],
-  ['subscribe_80',['subscribe',['../classSubscriptionManager.html#a5a11625df08b3f6978321d6b0e30a8cd',1,'SubscriptionManager']]],
-  ['subscribe_5fto_5forderbook_81',['subscribe_to_orderbook',['../classDeriClient.html#adc78af181b52f32cf69109394edd7f1e',1,'DeriClient']]],
-  ['subscriptionmanager_82',['SubscriptionManager',['../classSubscriptionManager.html#a65ffe4fe5dfb4ce4a3f1d9b154168998',1,'SubscriptionManager']]]
+  ['websocketsession_72',['WebSocketSession',['../classWebSocketSession.html#af6b735c31f680b9523886526c9642c77',1,'WebSocketSession']]],
+  ['write_5fnext_73',['write_next',['../classDeriClient.html#a16cb6700da1da785fb7f608a558344e5',1,'DeriClient']]]
 ];

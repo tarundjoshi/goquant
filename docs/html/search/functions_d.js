@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['to_5fjson_83',['to_json',['../classOrderBook.html#a692aaabf437e306554fc82e33ee0abe2',1,'OrderBook']]]
+  ['_7edericlient_74',['~DeriClient',['../classDeriClient.html#a8298f7934775a3359db8895e499a6fb5',1,'DeriClient']]],
+  ['_7ewebsocketsession_75',['~WebSocketSession',['../classWebSocketSession.html#a9a95a1b78a6b9e72a43e32dee39ea0c3',1,'WebSocketSession']]]
 ];

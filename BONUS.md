@@ -99,7 +99,6 @@ for high-frequency trading systems.
 
 ### 4. Sets for Subscriber Management
 - `std::set` is used to track subscribers for each trading symbol. This ensures efficient insertion, deletion, and lookup operations.
-- Example:
 
 
 ### 5. Flat Buffers for Efficient Message Handling

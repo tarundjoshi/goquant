@@ -66,6 +66,7 @@ std::string DeriClient::generate_nonce() {
 void DeriClient::load_private_key(const std::string& private_key_path) {
     FILE* private_key_file = fopen(private_key_path.c_str(), "r");
     if (!private_key_file) {
+        LOG_ERROR(logger, "Failed to open private key file");
         throw std::runtime_error("Failed to open private key file");
     }
 
@@ -73,10 +74,10 @@ void DeriClient::load_private_key(const std::string& private_key_path) {
     fclose(private_key_file);
 
     if (!private_key || EVP_PKEY_id(private_key) != EVP_PKEY_ED25519) {
+        LOG_ERROR(logger, "Invalid or unsupported private key type. Expected Ed25519.");
         throw std::runtime_error("Invalid or unsupported private key type. Expected Ed25519.");
     }
 
-    // std::cout << "Private key loaded successfully.\n";
     LOG_INFO(logger, "Private key loaded successfully.");
 }
 
@@ -159,12 +160,10 @@ void DeriClient::write_next() {
                 is_writing.store(false);
 
                 if (ec) {
-                    // std::cerr << "Write error: " << ec.message() << "\n";
                     LOG_ERROR(logger, "Write error: {}", ec.message());
                     return;
                 }
 
-                // std::cout << "Successfully wrote (" << bytes_transferred << " bytes)\n";
                 LOG_DEBUG(logger, "Successfully Sent request : {}", msg);
                 write_next();
             });
@@ -207,7 +206,6 @@ void DeriClient::connect(const std::string& host, const std::string& port) {
         async_read_response();
 
     } catch (const std::exception& e) {
-        // std::cerr << "Connection error: " << e.what() << "\n";
         LOG_ERROR(logger, "Connection error: {}", e.what());
     }
 }
@@ -218,7 +216,6 @@ void DeriClient::async_read_response() {
         *buffer,
         [this, buffer](boost::system::error_code ec, std::size_t bytes_transferred) {
             if (ec) {
-                // std::cerr << "Read error: " << ec.message() << "\n";
                 LOG_ERROR(logger, "Read error: {}", ec.message());
                 return;
             }
@@ -229,7 +226,6 @@ void DeriClient::async_read_response() {
             try {
                 auto json = parser.parse(response);
 
-                // std::cout << "Received response: " << response << "\n\n";
                 LOG_DEBUG(logger, "Received response: {}", response);
                 
                 // Check if this is a streaming update
@@ -470,7 +466,6 @@ void DeriClient::async_read_response() {
                 }
                 
             } catch (const simdjson::simdjson_error &e) {
-                // std::cerr << "JSON parse error: " << e.what() << "\n";
                 LOG_ERROR(logger, "JSON parse error: {}", e.what());
             }
             
@@ -655,39 +650,39 @@ void DeriClient::get_positions() {
 
 }
 
-void DeriClient::subscribe_to_orderbook(const std::string& instrument, 
+void DeriClient::subscribe_to_symbol(const std::string& channel, 
     std::function<void(const std::string&)> callback) {
+    // Generate the subscription request
     std::string request = R"({
         "jsonrpc": "2.0",
         "id": )" + std::to_string(++request_id) + R"(,
         "method": "public/subscribe",
         "params": {
-            "channels": ["book.)" + instrument + R"(.100ms"]
+        "channels": [")" + channel + R"("]
         }
     })";
 
-    streaming_handlers["book." + instrument + ".100ms"] = callback;
+    // Register the callback handler for this channel
+    streaming_handlers[channel] = callback;
 
-    // Store the request method
+    // Store the request method and track latency
     request_methods[request_id] = "public/subscribe";
-
     auto start_time = std::chrono::high_resolution_clock::now();
-    
-    // Store the request ID and start time
     order_latency_timers[request_id] = start_time;
 
+    // Enqueue the subscription request and trigger write operation
     write_queue.enqueue(request);
     write_next();
-
 }
 
-void DeriClient::unsubscribe_from_orderbook(const std::string& instrument) {
+
+void DeriClient::unsubscribe_from_symbol(const std::string& channel) {
     std::string request = R"({
         "jsonrpc": "2.0",
         "id": )" + std::to_string(++request_id) + R"(,
         "method": "public/unsubscribe",
         "params": {
-            "channels": ["book.)" + instrument + R"(.100ms"]
+        "channels": [")" + channel + R"("]
         }
     })";
 
@@ -700,7 +695,7 @@ void DeriClient::unsubscribe_from_orderbook(const std::string& instrument) {
     order_latency_timers[request_id] = start_time;
 
     // Remove the handler from the map
-    streaming_handlers.erase("book." + instrument + ".100ms");
+    streaming_handlers.erase(channel);
 
     // Send the unsubscribe request
     write_queue.enqueue(request);

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['place_5forder_24',['place_order',['../classDeriClient.html#aa66493e04fd505ce1b05b9b9039dd75d',1,'DeriClient']]],
-  ['process_5fmessage_25',['process_message',['../classOrderBookManager.html#a2b2d6c30eb490fb5a20167bfcbdd5414',1,'OrderBookManager']]]
+  ['release_21',['release',['../classBufferPool.html#aa0223fb78c5f635058ec370867b86cc3',1,'BufferPool']]],
+  ['run_22',['run',['../classWebSocketSession.html#aa60a520432526e90b74fd97713469a56',1,'WebSocketSession::run()'],['../classServer.html#abb27d30b40a94326e3fd629d3b30b7d5',1,'Server::run()']]]
 ];

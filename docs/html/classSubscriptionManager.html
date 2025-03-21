@@ -92,9 +92,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a66b96b979dd0f10395554792e34d7c5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSubscriptionManager.html#a66b96b979dd0f10395554792e34d7c5b">unsubscribe_all</a> (<a class="el" href="classWebSocketSession.html">WebSocketSession</a> *session)</td></tr>
 <tr class="memdesc:a66b96b979dd0f10395554792e34d7c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsubscribe a client session from all symbols.  <a href="classSubscriptionManager.html#a66b96b979dd0f10395554792e34d7c5b">More...</a><br /></td></tr>
 <tr class="separator:a66b96b979dd0f10395554792e34d7c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc352eaa8de5e6ffa0cf4f0a3d7f8a3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSubscriptionManager.html#adc352eaa8de5e6ffa0cf4f0a3d7f8a3f">unsubscribe_all</a> (std::shared_ptr&lt; <a class="el" href="classWebSocketSession.html">WebSocketSession</a> &gt; session)</td></tr>
-<tr class="memdesc:adc352eaa8de5e6ffa0cf4f0a3d7f8a3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unsubscribe a client session from all symbols.  <a href="classSubscriptionManager.html#adc352eaa8de5e6ffa0cf4f0a3d7f8a3f">More...</a><br /></td></tr>
-<tr class="separator:adc352eaa8de5e6ffa0cf4f0a3d7f8a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09b41c36aebd58d627dbcb4ad0d55d64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSubscriptionManager.html#a09b41c36aebd58d627dbcb4ad0d55d64">broadcast</a> (const std::string &amp;symbol, const std::string &amp;message)</td></tr>
 <tr class="memdesc:a09b41c36aebd58d627dbcb4ad0d55d64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Broadcast a market data update to all subscribed clients.  <a href="classSubscriptionManager.html#a09b41c36aebd58d627dbcb4ad0d55d64">More...</a><br /></td></tr>
 <tr class="separator:a09b41c36aebd58d627dbcb4ad0d55d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -308,35 +305,8 @@ std::vector&lt; long long &gt;&#160;</td><td class="memItemRight" valign="bottom
 
 </div>
 </div>
-<a id="adc352eaa8de5e6ffa0cf4f0a3d7f8a3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc352eaa8de5e6ffa0cf4f0a3d7f8a3f">&#9670;&nbsp;</a></span>unsubscribe_all() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SubscriptionManager::unsubscribe_all </td>
-          <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classWebSocketSession.html">WebSocketSession</a> &gt;&#160;</td>
-          <td class="paramname"><em>session</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Unsubscribe a client session from all symbols. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">session</td><td>The client session to unsubscribe (shared_ptr version)</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This is typically called when a client disconnects. </p>
-
-</div>
-</div>
 <a id="a66b96b979dd0f10395554792e34d7c5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66b96b979dd0f10395554792e34d7c5b">&#9670;&nbsp;</a></span>unsubscribe_all() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a66b96b979dd0f10395554792e34d7c5b">&#9670;&nbsp;</a></span>unsubscribe_all()</h2>
 
 <div class="memitem">
 <div class="memproto">

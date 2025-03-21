@@ -56,7 +56,7 @@ class BufferPool {
          * @param size The initial size of the pool
          */
         BufferPool(size_t size = 10);
-        
+
         /**
          * @brief Acquire a buffer from the pool.
          *
@@ -201,18 +201,18 @@ class BufferPool {
      void get_positions();
  
      /**
-      * @brief Subscribe to real-time orderbook updates
-      * @param instrument Instrument name
+      * @brief Subscribe to symbol for real-time updates
+      * @param instrument channel name
       * @param callback Optional function to call when updates are received
       */
-     void subscribe_to_orderbook(const std::string& instrument,
+     void subscribe_to_symbol(const std::string& instrument,
                                std::function<void(const std::string&)> callback = nullptr);
  
      /**
       * @brief Unsubscribe from real-time orderbook updates
-      * @param instrument Instrument name
+      * @param instrument channel name
       */
-     void unsubscribe_from_orderbook(const std::string& instrument);
+     void unsubscribe_from_symbol(const std::string& instrument);
  };
 
  

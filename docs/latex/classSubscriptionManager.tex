@@ -22,8 +22,6 @@ void \mbox{\hyperlink{classSubscriptionManager_af31c22ca21431d39c2fe23abe34099c1
 \begin{DoxyCompactList}\small\item\em Unsubscribe a client session from a market data symbol. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSubscriptionManager_a66b96b979dd0f10395554792e34d7c5b}{unsubscribe\+\_\+all}} (\mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $\ast$session)
 \begin{DoxyCompactList}\small\item\em Unsubscribe a client session from all symbols. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classSubscriptionManager_adc352eaa8de5e6ffa0cf4f0a3d7f8a3f}{unsubscribe\+\_\+all}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$ session)
-\begin{DoxyCompactList}\small\item\em Unsubscribe a client session from all symbols. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classSubscriptionManager_a09b41c36aebd58d627dbcb4ad0d55d64}{broadcast}} (const std\+::string \&symbol, const std\+::string \&message)
 \begin{DoxyCompactList}\small\item\em Broadcast a market data update to all subscribed clients. \end{DoxyCompactList}\item 
 std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{classSubscriptionManager_aeaa99dfb2fc6db3b876b96f816092137}{get\+\_\+active\+\_\+symbols}} ()
@@ -141,25 +139,10 @@ Unsubscribe a client session from a market data symbol.
 {\em session} & The client session requesting unsubscription \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{classSubscriptionManager_adc352eaa8de5e6ffa0cf4f0a3d7f8a3f}\label{classSubscriptionManager_adc352eaa8de5e6ffa0cf4f0a3d7f8a3f}} 
+\mbox{\Hypertarget{classSubscriptionManager_a66b96b979dd0f10395554792e34d7c5b}\label{classSubscriptionManager_a66b96b979dd0f10395554792e34d7c5b}} 
 \index{SubscriptionManager@{SubscriptionManager}!unsubscribe\_all@{unsubscribe\_all}}
 \index{unsubscribe\_all@{unsubscribe\_all}!SubscriptionManager@{SubscriptionManager}}
-\doxysubsubsection{\texorpdfstring{unsubscribe\_all()}{unsubscribe\_all()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void Subscription\+Manager\+::unsubscribe\+\_\+all (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $>$}]{session }\end{DoxyParamCaption})}
-
-
-
-Unsubscribe a client session from all symbols. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em session} & The client session to unsubscribe (shared\+\_\+ptr version)\\
-\hline
-\end{DoxyParams}
-This is typically called when a client disconnects. \mbox{\Hypertarget{classSubscriptionManager_a66b96b979dd0f10395554792e34d7c5b}\label{classSubscriptionManager_a66b96b979dd0f10395554792e34d7c5b}} 
-\index{SubscriptionManager@{SubscriptionManager}!unsubscribe\_all@{unsubscribe\_all}}
-\index{unsubscribe\_all@{unsubscribe\_all}!SubscriptionManager@{SubscriptionManager}}
-\doxysubsubsection{\texorpdfstring{unsubscribe\_all()}{unsubscribe\_all()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{unsubscribe\_all()}{unsubscribe\_all()}}
 {\footnotesize\ttfamily void Subscription\+Manager\+::unsubscribe\+\_\+all (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWebSocketSession}{Web\+Socket\+Session}} $\ast$}]{session }\end{DoxyParamCaption})}
 
 
